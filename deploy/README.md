@@ -15,12 +15,17 @@ Defaults:
 - SSH target: `root@eidolon`
 - Domain: `eidolon.aimanthor.com`
 - Public URL: `http://eidolon.aimanthor.com/`
-- Remote base: `/root/workspace/eidolon-official-site`
+- Remote base: `/var/www/eidolon-official-site`
 
-If nginx cannot read files under `/root/workspace`, use a web-root path instead:
+Do not point nginx at `/root/workspace` unless the nginx worker user has execute
+permission on every parent directory. A default `/root` directory is usually not
+traversable by nginx and will produce `Permission denied` plus an internal
+redirect loop.
+
+If you deliberately want to use `/root/workspace`, override it explicitly:
 
 ```bash
-REMOTE_BASE=/var/www/eidolon-official-site deploy/deploy.sh --configure-nginx
+REMOTE_BASE=/root/workspace/eidolon-official-site deploy/deploy.sh --configure-nginx
 ```
 
 ## Later Deploys
@@ -41,6 +46,6 @@ deploy/deploy.sh --build-only
 SITE_URL=http://eidolon.aimanthor.com/ \
 DOMAIN=eidolon.aimanthor.com \
 REMOTE_HOST=root@eidolon \
-REMOTE_BASE=/root/workspace/eidolon-official-site \
+REMOTE_BASE=/var/www/eidolon-official-site \
 deploy/deploy.sh
 ```

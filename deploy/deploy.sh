@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 SITE_URL="${SITE_URL:-http://eidolon.aimanthor.com/}"
 REMOTE_HOST="${REMOTE_HOST:-root@eidolon}"
-REMOTE_BASE="${REMOTE_BASE:-/root/workspace/eidolon-official-site}"
+REMOTE_BASE="${REMOTE_BASE:-/var/www/eidolon-official-site}"
 REMOTE_RELEASES_DIR="${REMOTE_BASE}/releases"
 REMOTE_CURRENT_LINK="${REMOTE_BASE}/current"
 REMOTE_NGINX_CONF="${REMOTE_NGINX_CONF:-/etc/nginx/conf.d/eidolon-official-site.conf}"

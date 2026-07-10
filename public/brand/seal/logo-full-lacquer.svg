@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 318 132" width="318" height="132">
+  <defs>
+    <linearGradient id="bonef" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3EDDD"/>
+      <stop offset="1" stop-color="#D9CFB8"/>
+    </linearGradient>
+    <radialGradient id="cinbf" cx="0.38" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="#FFD8C4"/>
+      <stop offset="0.5" stop-color="#FF6242"/>
+      <stop offset="1" stop-color="#B62E19"/>
+    </radialGradient>
+    <radialGradient id="halbf" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FF6242" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#FF6242" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g>
+    <path d="M72.12 33 L94.64 46 L94.64 86 L60 106 L25.36 86 L25.36 46 L47.88 33"
+          fill="none" stroke="url(#bonef)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="60" cy="50" r="24" fill="url(#halbf)"/>
+    <circle cx="60" cy="50" r="10.5" fill="url(#cinbf)"/>
+  </g>
+  <g transform="translate(118,53)" fill="none" stroke="#EDE6D6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 0 H0 V26 H18 M0 13 H14"/>
+    <path d="M37 0 V26"/>
+    <path d="M56 0 V26 M56 0 H61 A13 13 0 0 1 61 26 H56"/>
+    <ellipse cx="93" cy="13" rx="9" ry="13"/>
+    <path d="M112 0 V26 H130"/>
+    <ellipse cx="149" cy="13" rx="9" ry="13"/>
+    <path d="M168 26 V0 L186 26 V0"/>
+  </g>
+</svg>

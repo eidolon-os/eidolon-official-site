@@ -41,6 +41,11 @@ REMOTE_BASE=/root/workspace/eidolon-official-site deploy/deploy.sh --configure-n
 deploy/deploy.sh
 ```
 
+For the current fast-iteration phase, nginx is configured to avoid browser
+cache for HTML, `favicon.svg`, `og.png`, and `/brand/` assets. Hashed build
+assets under `/assets/` keep a long immutable cache because their filenames
+change when their content changes.
+
 ## Local Build Check
 
 ```bash

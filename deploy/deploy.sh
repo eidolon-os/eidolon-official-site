@@ -201,21 +201,30 @@ server {
 
     location /brand/ {
         try_files \$uri =404;
-        add_header Cache-Control \"public, max-age=86400\";
+        add_header Cache-Control \"no-store, no-cache, must-revalidate\" always;
+        add_header Pragma \"no-cache\" always;
+        add_header Expires \"0\" always;
     }
 
     location = /og.png {
         try_files \$uri =404;
-        add_header Cache-Control \"public, max-age=86400\";
+        add_header Cache-Control \"no-store, no-cache, must-revalidate\" always;
+        add_header Pragma \"no-cache\" always;
+        add_header Expires \"0\" always;
     }
 
     location = /favicon.svg {
         try_files \$uri =404;
-        add_header Cache-Control \"public, max-age=86400\";
+        add_header Cache-Control \"no-store, no-cache, must-revalidate\" always;
+        add_header Pragma \"no-cache\" always;
+        add_header Expires \"0\" always;
     }
 
     location / {
         try_files \$uri \$uri/ /index.html;
+        add_header Cache-Control \"no-store, no-cache, must-revalidate\" always;
+        add_header Pragma \"no-cache\" always;
+        add_header Expires \"0\" always;
     }
 }
 NGINX_EOF

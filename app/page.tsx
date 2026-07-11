@@ -85,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* ── 2 · Eidolon 是什么 ── */}
-      <section id="what" className="band band-paper grain">
+      <section id="what" className="band band-lacquer grain">
         <div className="container">
           <div className="section-head wide">
             <p className="eyebrow">{whatIs.eyebrow}</p>
@@ -242,7 +242,6 @@ export default function Home() {
 
       {/* ── 7 · 走向（前瞻 + CTA）── */}
       <section className="band band-lacquer grain closing">
-        <div className="cp-glow" aria-hidden="true" />
         <div className="container">
           <p className="eyebrow">{closing.eyebrow}</p>
           <h2 className="display-1" style={{ maxWidth: "16ch", marginBottom: 20 }}>{closing.heading}</h2>

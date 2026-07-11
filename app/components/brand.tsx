@@ -95,19 +95,3 @@ export function CoreGlyph({ size = 40, className }: { size?: number; className?:
     </svg>
   );
 }
-
-/** 开口墨器（三元「器」）*/
-export function VesselGlyph({ size = 40, className, tone = "ink" }: { size?: number; className?: string; tone?: "bone" | "ink" }) {
-  return (
-    <svg viewBox="14 22 92 92" width={size} height={size} className={className} aria-hidden="true">
-      <path
-        d={HEX}
-        fill="none"
-        stroke={tone === "ink" ? "#23242B" : "#EDE6D6"}
-        strokeWidth="7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}

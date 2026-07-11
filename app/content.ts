@@ -30,7 +30,6 @@ export const hero = {
   lede:
     "个人 AI 时代的操作层——一个由你掌控的主权中枢：收拢你的身份、记忆与权限，调度所有 AI、设备与工具。硬件会换、模型会换，这一层始终归你。",
   ctaPrimary: { label: "看它怎么工作", href: "#what" },
-  ctaSecondary: { label: "为什么是 Eidolon OS", href: "/manifesto" },
 } as const;
 
 // ── 1 · 现状：今天的 AI 不属于你 ──────────────────────────────────────

@@ -62,7 +62,12 @@
   /* 布局 */
   --maxw: 1160px;
   --gutter: clamp(20px, 5vw, 64px);
-  --section-y: clamp(88px, 12vh, 156px);
+  /* 垂直节奏刻度 —— 明确分级（section ≫ block > head ≈ row > item）；
+     vw 驱动：桌面放大留白、手机收紧但保持层级不塌 */
+  --space-section: clamp(72px, 8vw, 140px);  /* section 之间：主导节奏 */
+  --space-block:   clamp(36px, 4.2vw, 76px); /* 大内容块之间（feature 交替行）*/
+  --space-head:    clamp(26px, 3vw, 52px);   /* 章节导语 → 内容 */
+  --space-row:     clamp(20px, 2.4vw, 38px); /* 中等：problem / overview 行 */
 
   --background: var(--lacquer);
   --foreground: var(--bone);
@@ -126,7 +131,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--cinnabar);
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text-wrap: balance; letter-spacing: -0.021em; }
@@ -152,14 +157,14 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 
 .container { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
 
-.band { position: relative; padding-block: var(--section-y); }
+.band { position: relative; padding-block: var(--space-section); }
 .band > .container { position: relative; z-index: 1; }
 
 .band-lacquer { background: transparent; color: var(--bone); }
 .band-lacquer + .band-lacquer { padding-top: 0; }
 
 /* 章节导语居中：eyebrow + 标题 + lede 成一列，平衡地立在内容之上（替代原左贴边窄列）*/
-.section-head { max-width: 47rem; margin: 0 auto clamp(40px, 6vh, 72px); text-align: center; }
+.section-head { max-width: 47rem; margin: 0 auto var(--space-head); text-align: center; }
 .section-head.wide { max-width: 47rem; }
 .section-head .lede { max-width: 34rem; margin-inline: auto; }
 
@@ -223,7 +228,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 /* ============================================================
    Hero — 科技产品叙事式：居中断言 + 产品面板 + 顶部辉光
    ============================================================ */
-.hero { position: relative; padding-block: clamp(72px, 12vh, 148px) clamp(60px, 8vh, 110px); overflow: hidden; }
+.hero { position: relative; padding-block: clamp(80px, 12vh, 150px) var(--space-section); overflow: hidden; }
 .hero::before { /* 顶部朱砂辉光 */
   content: ""; position: absolute; inset: -20% 0 auto 0; height: 620px; pointer-events: none; z-index: 0;
   background: radial-gradient(60% 100% at 50% 0%, rgba(255, 98, 66, 0.16), transparent 70%);
@@ -360,7 +365,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 /* ============================================================
    Ch.I 问题
    ============================================================ */
-.problem-list { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 4vw, 52px) clamp(48px, 8vw, 120px); margin-top: 4px; }
+.problem-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-row) clamp(48px, 8vw, 120px); }
 .problem-item { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
 .problem-num { font-family: var(--font-serif); font-size: 2rem; line-height: 0.9; color: var(--cinnabar); opacity: 0.55; font-weight: 500; }
 .problem-item h3 { font-size: 1.18rem; margin: 0 0 8px; }
@@ -389,7 +394,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 .stack-waist .sl-label { color: var(--cinnabar-bright); }
 .waist-assets { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 12px 0 8px; }
 .waist-asset { font-size: 0.9rem; color: var(--bone); border: 1px solid var(--line-bone-strong); border-radius: 999px; padding: 4px 14px; }
-@media (max-width: 860px) { .overview-layout { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .overview-layout { grid-template-columns: 1fr; gap: var(--space-block); } }
 
 /* ============================================================
    主权资产 · 平台 → 你 的移交
@@ -440,7 +445,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 /* ============================================================
    能力 feature blocks（文案 + 产品 UI，左右交替）
    ============================================================ */
-.features { display: grid; gap: clamp(60px, 9vh, 116px); margin-top: clamp(20px, 3vh, 40px); }
+.features { display: grid; gap: var(--space-block); margin-top: 0; }
 .feature { display: grid; grid-template-columns: 1fr 1.12fr; gap: clamp(32px, 5vw, 76px); align-items: center; }
 .feature.reverse .feature-copy { order: 2; }
 .feature.reverse .feature-ui { order: 1; }
@@ -508,9 +513,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 .thesis > .container { text-align: center; }
 .thesis .eyebrow { text-align: center; }
 .thesis-heading { max-width: 22ch; margin: 0 auto 18px; }
-.thesis-lead { max-width: 52ch; margin: 0 auto clamp(36px, 5vh, 56px); }
+.thesis-lead { max-width: 52ch; margin: 0 auto var(--space-head); }
 /* 三股「为什么是现在」的驱动力：与全站正文同尺度，居中成一列、行内左对齐 */
-.thesis-drivers { display: grid; gap: 0; max-width: 640px; margin: 0 auto clamp(44px, 6vh, 68px); text-align: left; border-top: 1px solid var(--line-bone); }
+.thesis-drivers { display: grid; gap: 0; max-width: 640px; margin: 0 auto var(--space-block); text-align: left; border-top: 1px solid var(--line-bone); }
 .tdriver { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: baseline; padding: 22px 2px; border-bottom: 1px solid var(--line-bone); }
 .td-n { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--cinnabar); }
 .td-k { font-size: 1.16rem; font-weight: 600; letter-spacing: -0.01em; color: var(--bone); margin: 0 0 7px; }

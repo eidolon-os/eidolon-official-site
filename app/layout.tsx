@@ -4,7 +4,9 @@ import "./globals.css";
 
 const siteTitle = "Eidolon OS | Personal Sovereign Agent OS";
 const siteDescription =
-  "Eidolon OS is a local-first, cloud-optional sovereign control plane for personal agents, living memory, body mesh, EID-* protocols, and real-world tool execution.";
+  "Eidolon 是一个由你拥有的长期 AI 伙伴：它记得你、听你调度、能跨设备持续存在。一个 local-first、云可选的个人智能体主权操作系统。";
+const siteDescriptionEn =
+  "A personal AI companion you own — one identity, portable memory, governed permissions, and many bodies. Local-first, cloud-optional.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -28,15 +30,13 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: siteTitle,
-      description:
-        "A user-owned Agent OS for identity, memory, permissions, bodies, scenes, tools, and optional cloud compute.",
+      description: siteDescriptionEn,
       images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: siteTitle,
-      description:
-        "A user-owned Agent OS for identity, memory, permissions, bodies, scenes, tools, and optional cloud compute.",
+      description: siteDescriptionEn,
       images: [ogImage],
     },
   };
@@ -49,6 +49,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/noto-serif-sc-headings.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/newsreader-headings.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

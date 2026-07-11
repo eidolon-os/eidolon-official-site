@@ -32,9 +32,9 @@ test("server-renders the Eidolon official site", async () => {
 
   const html = await response.text();
   assert.match(html, /Eidolon OS \| Personal Sovereign Agent OS/);
-  assert.match(html, /个人 AI 时代的主权操作层/);
-  assert.match(html, /Sovereign Control Plane/);
-  assert.match(html, /EID-\* Protocol Family/);
+  assert.match(html, /个人智能体主权操作系统/);
+  assert.match(html, /Personal Sovereign Agent OS/);
+  assert.match(html, /Own the agent/);
   assert.match(html, /github\.com\/eidolon-os/);
 });
 

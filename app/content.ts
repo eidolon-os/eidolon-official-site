@@ -126,6 +126,36 @@ export const capabilities = {
   ],
 } as const;
 
+// ── 场景 · Scene Horizon（从陪伴到执行…从个人到生态，融合蓝图 §9.2）──
+export const scenes = {
+  eyebrow: "场景 · Scene Horizon",
+  heading: "从陪伴到执行，从房间到机器人，从个人到生态。",
+  lede: "同一个核，长进你生活的每一处；关系越深，它能到达的边界越远。",
+  items: [
+    { k: "家", en: "Home", d: "家里的长期数字成员：认得主人、记得关系，也知道什么时候不该外放。" },
+    { k: "工作", en: "Work", d: "从一句口头交代，进入文件、流程、软件与后台长任务的真实执行。" },
+    { k: "创作", en: "Studio", d: "听得见想法、按需看见现场，沉淀你的风格与项目脉络。" },
+    { k: "陪护", en: "Care", d: "尊重隐私边界的低打扰陪伴、提醒与安全感。" },
+    { k: "机器人", en: "Robotics", d: "机器人只是身体层——同一个 companion 换上一具会移动的身体。" },
+    { k: "生态", en: "Ecosystem", d: "开发者接入能力，你保留身份、记忆、权限与审计的根。" },
+  ],
+} as const;
+
+// ── 壁垒 · Technical Moat（六层护城河，融合蓝图 §7.2）──
+export const moat = {
+  eyebrow: "壁垒 · Technical Moat",
+  heading: "壁垒不在某个模型或硬件，而在把算法、设备和工具编排进主权化的多身体 OS。",
+  lede: "单点能力都会被商品化；真正难复制的，是把它们收进一个以你为根的系统——而且每一层都得从第一天就拆对，后补会牵动全局。",
+  items: [
+    { n: "01", title: "身份与身体解耦", en: "Identity–Body Decoupling", hard: "Human / Agent / Body / Scene 必须从第一天拆开；后补会牵动权限、记忆、路由与体验。", value: "换设备不换人，增加身体只是扩大同一个 Eidolon 的在场范围。" },
+    { n: "02", title: "可治理长期记忆", en: "Governable Memory", hard: "不是向量库检索，而是身份、来源、时间、敏感度、纠错、迁移与可审计遗忘的复合系统。", value: "你信它会记住，也信自己能纠正、撤回、导出与删除。" },
+    { n: "03", title: "本地主权信任内核", en: "Local Trust Kernel", hard: "声纹、私密模式、设备权限、敏感授权与审计要在本地优先的架构里稳定闭环。", value: "AI 进得了家庭与工作空间，控制权仍在你手里。" },
+    { n: "04", title: "多身体实时编排", en: "Multi-body Orchestration", hard: "多麦、barge-in、floor、场景路由、身体迁移与状态同步，远比单聊天窗口复杂。", value: "一个智能体从桌面说、随身控、房间看、执行器做。" },
+    { n: "05", title: "到执行的闭环", en: "Execution Loop", hard: "从回答到产出真实文件与动作，需要异步任务、权限、失败处理与结果写回记忆。", value: "你交代的事能被做完、回报、追踪并沉淀。" },
+    { n: "06", title: "协议化生态接口", en: "Protocol Ecosystem", hard: "设备生态不是开放一个 API，而是定义身份、能力、状态、租约、升级与认证全过程。", value: "第三方接得进来，却抢不走你的身份与记忆主权。" },
+  ],
+} as const;
+
 // ── 为什么是现在（战略帧：位移 + 三问 + 窗口 + 归属，融合蓝图 §摘要/§2）──
 export const thesis = {
   eyebrow: "为什么是现在",

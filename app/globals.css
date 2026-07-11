@@ -729,3 +729,34 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 .kw-en { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cinnabar); }
 .kw-card p { margin: 0; color: var(--bone-soft); font-size: 0.98rem; line-height: 1.72; }
 @media (max-width: 720px) { .kw-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   场景 · Scene Horizon（六域卡片）
+   ============================================================ */
+.scene-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.scene-card { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(22px, 2.4vw, 30px); transition: border-color 0.25s, background 0.25s; }
+.scene-card:hover { border-color: var(--line-bone-strong); background: rgba(255, 255, 255, 0.025); }
+.scene-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 13px; }
+.scene-cn { font-size: 1.2rem; font-weight: 640; letter-spacing: -0.02em; color: var(--bone); }
+.scene-en { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cinnabar); }
+.scene-card p { margin: 0; color: var(--bone-soft); font-size: 0.95rem; line-height: 1.68; }
+@media (max-width: 900px) { .scene-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .scene-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   壁垒 · Technical Moat（六层护城河：难复制 + 对你的价值）
+   ============================================================ */
+.moat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.moat-card { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(20px, 2.2vw, 28px); transition: border-color 0.25s, background 0.25s; }
+.moat-card:hover { border-color: rgba(240, 82, 46, 0.35); background: rgba(240, 82, 46, 0.028); }
+.moat-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 15px; padding-bottom: 13px; border-bottom: 1px solid var(--line-bone); }
+.moat-n { font-family: var(--font-mono); font-size: 11px; color: var(--cinnabar); }
+.moat-cn { font-size: 1.08rem; font-weight: 640; letter-spacing: -0.02em; color: var(--bone); }
+.moat-en { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bone-faint); margin-left: auto; }
+.moat-row { display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: baseline; }
+.moat-row + .moat-row { margin-top: 10px; }
+.moat-k { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.04em; color: var(--bone-faint); }
+.moat-row.value .moat-k { color: var(--cinnabar); }
+.moat-row p { margin: 0; font-size: 0.93rem; line-height: 1.62; color: var(--bone-soft); }
+.moat-row.value p { color: var(--bone); }
+@media (max-width: 720px) { .moat-grid { grid-template-columns: 1fr; } }

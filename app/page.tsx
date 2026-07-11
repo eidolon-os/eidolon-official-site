@@ -1,4 +1,4 @@
-import { site, nav, hero, problem, thesis, keywords, whatIs, assets, capabilities, closing } from "./content";
+import { site, nav, hero, problem, thesis, keywords, whatIs, assets, capabilities, scenes, moat, closing } from "./content";
 import { HubPanel } from "./components/HubPanel";
 import { FeatureUI } from "./components/featureUI";
 import { VesselMark } from "./components/brand";
@@ -194,7 +194,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5 · 走向（前瞻 + CTA）── */}
+      {/* ── 5 · 场景 · Scene Horizon ── */}
+      <section id="scenes" className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{scenes.eyebrow}</p>
+            <h2 className="display-2">{scenes.heading}</h2>
+            <p className="lede" style={{ marginTop: 18 }}>{scenes.lede}</p>
+          </div>
+          <div className="scene-grid">
+            {scenes.items.map((s) => (
+              <article className="scene-card reveal" key={s.en}>
+                <div className="scene-head">
+                  <span className="scene-cn">{s.k}</span>
+                  <span className="scene-en">{s.en}</span>
+                </div>
+                <p>{s.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6 · 壁垒 · Technical Moat（六层护城河）── */}
+      <section id="moat" className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{moat.eyebrow}</p>
+            <h2 className="display-2">{moat.heading}</h2>
+            <p className="lede" style={{ marginTop: 18 }}>{moat.lede}</p>
+          </div>
+          <div className="moat-grid">
+            {moat.items.map((m) => (
+              <article className="moat-card reveal" key={m.en}>
+                <div className="moat-head">
+                  <span className="moat-n">{m.n}</span>
+                  <span className="moat-cn">{m.title}</span>
+                  <span className="moat-en">{m.en}</span>
+                </div>
+                <div className="moat-row"><span className="moat-k">难复制</span><p>{m.hard}</p></div>
+                <div className="moat-row value"><span className="moat-k">对你</span><p>{m.value}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7 · 走向（前瞻 + CTA）── */}
       <section className="band band-lacquer grain closing">
         <div className="cp-glow" aria-hidden="true" />
         <div className="container">

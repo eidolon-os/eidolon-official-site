@@ -34,7 +34,7 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(html, /Eidolon OS \| Personal Sovereign Agent OS/);
   assert.match(html, /个人智能体主权操作系统/);
   assert.match(html, /Personal Sovereign Agent OS/);
-  assert.match(html, /Own the agent/);
+  assert.match(html, /Identity before body/);
   assert.match(html, /github\.com\/eidolon-os/);
 });
 

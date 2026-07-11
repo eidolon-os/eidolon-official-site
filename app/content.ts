@@ -13,8 +13,8 @@ export const site = {
     "Eidolon OS — a personal Agent OS you own. One identity, portable memory, governed permissions, running across all your devices. Local-first, cloud-optional.",
   github: "https://github.com/eidolon-os",
   githubLabel: "github.com/eidolon-os",
-  mantraEn: "Own the agent. Keep the memory. Hold the keys.",
-  mantraZh: "拥有智能体 · 留住记忆 · 掌握权限",
+  mantraEn: "Identity before body. Memory as your asset. Sovereignty as the control plane.",
+  mantraZh: "身份先于身体，记忆成为资产，主权即中枢。",
 } as const;
 
 export const nav = [
@@ -26,7 +26,6 @@ export const nav = [
 
 // ── Hero ──────────────────────────────────────────────────────────────
 export const hero = {
-  eyebrow: "Personal Sovereign Agent OS · 个人智能体主权操作系统",
   lede:
     "个人 AI 时代的操作层——一个由你掌控的主权中枢：收拢你的身份、记忆与权限，调度所有 AI、设备与工具。硬件会换、模型会换，这一层始终归你。",
   ctaPrimary: { label: "看它怎么工作", href: "#what" },
@@ -187,7 +186,7 @@ export const closing = {
   eyebrow: "走向 · Where it goes",
   heading: "这一层，该由你拥有。",
   sub: "AI 正在变成个人生活的操作层——我们把它开源，和你一起定义。",
-  cta: { label: "在 GitHub 上开源", href: site.github },
+  cta: { label: "上 GitHub 一起共建", href: site.github },
 } as const;
 
 // ── 子页复用：产品宪法 / 六平面 / 协议 / 壁垒 / 术语 ─────────────────────

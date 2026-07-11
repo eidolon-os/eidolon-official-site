@@ -27,7 +27,12 @@ export default function Home() {
       <section id="top" className="band band-lacquer hero">
         <div className="container">
           <div className="hero-copy">
-            <span className="hero-badge"><i className="dot-on" />{hero.eyebrow}</span>
+            <span className="hero-badge">
+              <i className="dot-on" />
+              <span className="hb-en">{site.positioningEn}</span>
+              <span className="hb-sep" aria-hidden="true">·</span>
+              <span className="hb-zh">{site.positioningZh}</span>
+            </span>
             <h1 className="display-1">
               拥有一个 AI，<br />而不是<span className="accent">登录</span>一个。
             </h1>

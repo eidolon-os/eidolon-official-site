@@ -240,12 +240,17 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 }
 .hero-copy { position: relative; z-index: 1; text-align: center; max-width: 780px; margin: 0 auto; }
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 26px;
+  display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  column-gap: 8px; row-gap: 2px; margin-bottom: 26px;
   font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em; color: var(--bone-soft);
-  padding: 6px 14px; border: 1px solid var(--line-bone-strong); border-radius: 999px;
-  background: rgba(237, 230, 214, 0.03);
+  padding: 6px 15px; border: 1px solid var(--line-bone-strong); border-radius: 999px;
+  background: rgba(237, 238, 242, 0.03);
 }
-.hero-badge .dot-on { width: 6px; height: 6px; border-radius: 50%; background: #37f5b3; box-shadow: 0 0 8px #37f5b3; }
+.hero-badge .dot-on { width: 6px; height: 6px; border-radius: 50%; background: #37f5b3; box-shadow: 0 0 8px #37f5b3; flex: none; }
+/* 中英各自不折断，只在两段之间换行；窄屏隐藏分隔点，干净地分成两行 */
+.hero-badge .hb-en, .hero-badge .hb-zh { white-space: nowrap; }
+.hero-badge .hb-sep { color: var(--bone-faint); }
+@media (max-width: 480px) { .hero-badge .hb-sep { display: none; } }
 .hero h1 { margin-bottom: 22px; }
 .hero h1 .accent { color: var(--cinnabar-bright); }
 .hero .lede { font-size: clamp(1.05rem, 1.4vw, 1.24rem); color: var(--bone-soft); max-width: 40ch; margin: 0 auto 34px; }

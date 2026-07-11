@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
   const metadataBase = new URL(`${proto}://${host}`);
-  const ogImage = new URL("/og.png", metadataBase).toString();
+  const ogImage = new URL("/og.jpg", metadataBase).toString();
 
   return {
     metadataBase,
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: siteTitle,
       description: siteDescriptionEn,
-      images: [ogImage],
+      images: [{ url: ogImage, width: 1200, height: 1200, alt: siteTitle }],
     },
     twitter: {
       card: "summary_large_image",

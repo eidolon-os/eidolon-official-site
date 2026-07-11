@@ -51,5 +51,5 @@ test("keeps starter preview code out of the finished site", async () => {
 
   await access(new URL("public/brand/seal/logo-full-lacquer.svg", projectRoot));
   await access(new URL("public/brand/cyber/mark-neon.svg", projectRoot));
-  await access(new URL("public/og.png", projectRoot));
+  await access(new URL("public/og.jpg", projectRoot));
 });

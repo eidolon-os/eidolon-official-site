@@ -1,65 +1,182 @@
 import type { Metadata } from "next";
-import { site, whyNow, constitution, planes } from "../content";
+import { site, investor } from "../content";
+import { SiteHeader } from "../components/SiteHeader";
+import { VesselMark } from "../components/brand";
 
 export const metadata: Metadata = {
-  title: "宣言 · 为什么是现在 | Eidolon OS",
-  description: "个人 AI 的价值正从「某一次回答」转移到「谁拥有这个智能体」。Eidolon 的战略论述、六条产品宪法与主权架构。",
+  title: "为什么是 Eidolon OS · 投资视角 | Eidolon OS",
+  description:
+    "核心论点、为什么是现在（含数据主权与中国合规）、大厂为何不会做成 Eidolon、护城河、首批用户、尽调硬问题预答与未来宏图。",
 };
 
-export default function Manifesto() {
+export default function Investors() {
+  const phases = investor.roadmap.phases;
   return (
-    <article className="doc">
-      <a className="back" href="/">← 返回首页</a>
-      <p className="eyebrow" style={{ marginTop: 32 }}>Manifesto · 为什么是现在</p>
-      <h1 className="serif">价值正在从「某一次回答」，转移到「谁拥有这个智能体」。</h1>
-      <p className="lede">{whyNow.lede}</p>
+    <main className="site-shell">
+      <SiteHeader />
 
-      <p>
-        模型会更强，硬件会更新，入口会轮换。一旦 AI 开始承载长期记忆、任务权限、关系上下文和现实行动能力，
-        竞争就不再停留在「谁的回答更好」，而落到三个更根本的问题上——
-        <strong>谁拥有这个智能体、它如何持续存在、它以什么边界进入现实世界。</strong>
-      </p>
+      {/* Hero + 核心概要 */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">{investor.eyebrow}</p>
+            <h1 className="display-1">{investor.heading}</h1>
+            <p className="lede" style={{ marginTop: 18 }}>{investor.lede}</p>
+          </div>
+          <div className="inv-glance">
+            {investor.glance.map((g) => (
+              <article className="glance-card reveal" key={g.k}>
+                <span className="glance-k">{g.k}</span>
+                <b className="glance-v">{g.v}</b>
+                <p>{g.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <h2 className="serif">两条路，两种优化目标</h2>
-      <p>
-        平台拥有的助手（{whyNow.contrast[0].term}）优化的是账号、生态、云服务、硬件闭环与商业留存；
-        用户拥有的智能体 OS（{whyNow.contrast[1].term}）优化的是身份归属、记忆治理、权限撤销、身体调度与协议边界。
-        Eidolon 选择后者：把身份、记忆、权限和身体调度权从平台云里拿回来，放进用户自己的主权中枢。
-      </p>
+      {/* 为什么是现在 · 外部坐标 */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{investor.signals.eyebrow}</p>
+            <h2 className="display-2">{investor.signals.heading}</h2>
+          </div>
+          <div className="signal-list">
+            {investor.signals.items.map((s) => (
+              <article className="signal-item reveal" key={s.k}>
+                <h3>{s.k}</h3>
+                <p>{s.d}</p>
+              </article>
+            ))}
+          </div>
+          <p className="signal-punch">{investor.signals.punch}</p>
+        </div>
+      </section>
 
-      <h2 className="serif">六条产品宪法</h2>
-      <ol>
-        {constitution.map((c) => (
-          <li key={c.n}>
-            <strong>{c.title}</strong>——{c.body}
-          </li>
-        ))}
-      </ol>
+      {/* 竞争格局 · 大厂悖论 */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{investor.bigco.eyebrow}</p>
+            <h2 className="display-2">{investor.bigco.heading}</h2>
+            <p className="lede" style={{ marginTop: 18 }}>{investor.bigco.lead}</p>
+          </div>
+          <div className="asset-shift">
+            {investor.bigco.points.map((p) => (
+              <div className="asset-row reveal" key={p.k}>
+                <div className="asset-title">{p.k}</div>
+                <div className="asset-move">
+                  <span className="asset-plat">{p.plat}</span>
+                  <span className="asset-arrow">→</span>
+                  <span className="asset-you">{p.you}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="signal-punch">{investor.bigco.punch}</p>
+        </div>
+      </section>
 
-      <h2 className="serif">一个稳定不变的主权中枢</h2>
-      <p>{planes.lede}</p>
-      <ul>
-        {planes.items.map((p) => (
-          <li key={p.title}>
-            <strong>{p.title}</strong>（{p.term}）——{p.body}
-          </li>
-        ))}
-      </ul>
+      {/* 护城河 */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{investor.moat.eyebrow}</p>
+            <h2 className="display-2">{investor.moat.heading}</h2>
+          </div>
+          <div className="inv-moat">
+            {investor.moat.items.map((m) => (
+              <article className="inv-moat-card reveal" key={m.k}>
+                <b>{m.k}</b>
+                <p>{m.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <h2 className="serif">{whyNow.moatHeading}</h2>
-      <ul>
-        {whyNow.moats.map((m) => (
-          <li key={m.title}>
-            <strong>{m.title}</strong>——{m.body}
-          </li>
-        ))}
-      </ul>
+      {/* 首批用户 · 从哪切入 */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{investor.users.eyebrow}</p>
+            <h2 className="display-2">{investor.users.heading}</h2>
+          </div>
+          <div className="inv-moat">
+            {investor.users.items.map((u) => (
+              <article className="inv-moat-card reveal" key={u.k}>
+                <b>{u.k}</b>
+                <p>{u.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <p style={{ marginTop: 48 }}>
-        <a className="back" href={site.github} target="_blank" rel="noreferrer">↗ {site.githubLabel}</a>
-        &nbsp;&nbsp;·&nbsp;&nbsp;
-        <a className="back" href="/protocol">开发者协议 →</a>
-      </p>
-    </article>
+      {/* 尽调预答 · 硬问题 */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{investor.objections.eyebrow}</p>
+            <h2 className="display-2">{investor.objections.heading}</h2>
+          </div>
+          <div className="qa-list">
+            {investor.objections.items.map((o) => (
+              <article className="qa-item reveal" key={o.q}>
+                <h3 className="qa-q">{o.q}</h3>
+                <p className="qa-a">{o.a}</p>
+              </article>
+            ))}
+          </div>
+          <p className="signal-punch">{investor.objections.punch}</p>
+        </div>
+      </section>
+
+      {/* 未来宏图 */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{investor.roadmap.eyebrow}</p>
+            <h2 className="display-2">{investor.roadmap.heading}</h2>
+          </div>
+          <div className="roadmap">
+            {phases.map((p, i) => (
+              <article className="rm-phase reveal" key={p.phase}>
+                <div className="rm-marker">
+                  <span className="rm-dot" />
+                  {i < phases.length - 1 && <span className="rm-line" />}
+                </div>
+                <div className="rm-body">
+                  <span className="rm-phase-k">{p.phase}</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.d}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 收尾金句（替代原「走向」CTA）*/}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="final-word">
+            <p className="fw-quote">{investor.finalWord.quote}</p>
+            <p className="fw-sub">{investor.finalWord.sub}</p>
+            <a className="fw-link" href={site.github} target="_blank" rel="noreferrer">
+              ↗ {investor.finalWord.ctaLabel}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <VesselMark size={44} tone="bone" idSuffix="foot" />
+        <p className="foot-name">{site.fullName}</p>
+        <span className="mantra">{site.mantraEn}</span>
+        <span className="mantra mantra-zh">{site.mantraZh}</span>
+      </footer>
+    </main>
   );
 }

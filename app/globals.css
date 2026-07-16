@@ -575,3 +575,70 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 .moat-row p { margin: 0; font-size: 0.93rem; line-height: 1.62; color: var(--bone-soft); }
 .moat-row.value p { color: var(--bone); }
 @media (max-width: 720px) { .moat-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   开发者 · Coming soon
+   ============================================================ */
+.coming2 { position: relative; min-height: calc(100vh - 64px); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 60px var(--gutter); }
+.coming2-glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(50% 46% at 50% 42%, rgba(240, 82, 46, 0.16), transparent 70%); filter: blur(14px); }
+.coming2-inner { position: relative; z-index: 1; max-width: 620px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.coming2-glyph { filter: drop-shadow(0 0 26px rgba(240, 82, 46, 0.55)); margin-bottom: 22px; }
+.coming-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--cinnabar); border: 1px solid rgba(240, 82, 46, 0.35); border-radius: 999px; padding: 6px 14px; margin-bottom: 20px; }
+.coming-badge i { width: 6px; height: 6px; border-radius: 50%; background: var(--cinnabar); box-shadow: 0 0 8px var(--cinnabar); }
+.coming2 .eyebrow { margin-bottom: 14px; }
+.coming2-title { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.12; letter-spacing: -0.03em; font-weight: 640; margin-bottom: 18px; }
+.coming2-lede { max-width: 42ch; font-size: clamp(1rem, 1.3vw, 1.14rem); line-height: 1.75; color: var(--bone-soft); margin: 0 auto 20px; }
+.coming2-hint { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--bone-faint); margin: 0 auto 36px; }
+.coming-actions { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.coming-back { font-family: var(--font-mono); font-size: 13px; color: var(--bone-soft); transition: color 0.2s; }
+.coming-back:hover { color: var(--cinnabar-bright); }
+
+/* ============================================================
+   投资人页 · glance / signals / moat / roadmap
+   ============================================================ */
+.inv-glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.glance-card { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(22px, 2.6vw, 32px); }
+.glance-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-faint); }
+.glance-v { display: block; font-size: clamp(1.15rem, 1.8vw, 1.45rem); font-weight: 640; letter-spacing: -0.02em; color: var(--bone); margin: 10px 0; }
+.glance-card p { margin: 0; font-size: 0.95rem; line-height: 1.68; color: var(--bone-soft); }
+@media (max-width: 820px) { .inv-glance { grid-template-columns: 1fr; } }
+
+.signal-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.signal-item { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(20px, 2.4vw, 28px); }
+.signal-item h3 { font-size: 1.08rem; margin: 0 0 10px; color: var(--bone); }
+.signal-item p { margin: 0; font-size: 0.92rem; line-height: 1.66; color: var(--bone-soft); }
+@media (max-width: 820px) { .signal-list { grid-template-columns: 1fr; } }
+.signal-punch { max-width: 54ch; margin: clamp(30px, 4vh, 46px) auto 0; text-align: center; font-size: clamp(1.05rem, 1.7vw, 1.28rem); font-weight: 600; color: var(--cinnabar-bright); letter-spacing: -0.01em; line-height: 1.55; }
+
+.inv-moat { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.inv-moat-card { border: 1px solid var(--line-bone); border-radius: 11px; background: rgba(255, 255, 255, 0.015); padding: clamp(18px, 2.2vw, 26px); }
+.inv-moat-card b { display: block; font-size: 1.05rem; color: var(--bone); margin-bottom: 8px; }
+.inv-moat-card p { margin: 0; font-size: 0.92rem; line-height: 1.62; color: var(--bone-soft); }
+@media (max-width: 640px) { .inv-moat { grid-template-columns: 1fr; } }
+
+/* 未来宏图 · 竖向时间线 */
+.roadmap { display: grid; gap: 0; max-width: 720px; margin: 0 auto; }
+.rm-phase { display: grid; grid-template-columns: auto 1fr; gap: 20px; }
+.rm-marker { display: flex; flex-direction: column; align-items: center; }
+.rm-dot { width: 14px; height: 14px; border-radius: 50%; flex: none; margin-top: 5px; background: radial-gradient(circle at 40% 35%, #ff8a6a, #ef4e2e 60%, #b4331c); box-shadow: 0 0 14px 2px rgba(255, 98, 66, 0.4); }
+.rm-line { flex: 1; width: 1px; background: var(--line-bone-strong); margin: 6px 0; }
+.rm-body { padding-bottom: clamp(28px, 4vh, 46px); }
+.rm-phase:last-child .rm-body { padding-bottom: 0; }
+.rm-phase-k { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--cinnabar); }
+.rm-body h3 { font-size: 1.2rem; margin: 6px 0 8px; color: var(--bone); }
+.rm-body p { margin: 0; font-size: 0.96rem; line-height: 1.7; color: var(--bone-soft); }
+
+/* 尽调预答 · Q/A */
+.qa-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.qa-item { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(20px, 2.4vw, 28px); }
+.qa-q { display: flex; gap: 10px; font-size: 1.04rem; font-weight: 600; color: var(--bone); margin: 0 0 10px; }
+.qa-q::before { content: "Q"; font-family: var(--font-mono); font-size: 0.8em; color: var(--cinnabar); flex: none; }
+.qa-a { margin: 0; font-size: 0.92rem; line-height: 1.68; color: var(--bone-soft); }
+@media (max-width: 720px) { .qa-list { grid-template-columns: 1fr; } }
+
+/* 收尾金句（投资人页，替代大 CTA）*/
+.final-word { max-width: 42rem; margin: 0 auto; text-align: center; }
+.fw-quote { font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.42; letter-spacing: -0.02em; font-weight: 600; color: var(--bone); margin: 0 0 18px; }
+.fw-sub { font-size: clamp(1.05rem, 1.7vw, 1.28rem); color: var(--cinnabar-bright); font-weight: 600; letter-spacing: -0.01em; margin: 0 0 28px; }
+.fw-link { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--bone); border-bottom: 1px solid var(--line-bone-strong); padding-bottom: 3px; transition: color 0.2s, border-color 0.2s; }
+.fw-link:hover { color: var(--cinnabar-bright); border-color: var(--cinnabar); }

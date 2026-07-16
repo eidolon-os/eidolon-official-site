@@ -1,27 +1,14 @@
-import { site, nav, hero, problem, thesis, keywords, whatIs, assets, capabilities, scenes, moat, closing } from "./content";
+import { site, hero, problem, thesis, keywords, whatIs, assets, capabilities, scenes, moat, closing } from "./content";
 import { HubPanel } from "./components/HubPanel";
 import { FeatureUI } from "./components/featureUI";
 import { VesselMark } from "./components/brand";
+import { SiteHeader } from "./components/SiteHeader";
 
 export default function Home() {
   return (
     <main className="site-shell">
       {/* ── 顶栏 ── */}
-      <header className="topbar">
-        <a className="brand-lockup" href="#top" aria-label="Eidolon OS 首页">
-          <img src="/brand/seal/logo-full-lacquer.svg" alt="Eidolon" />
-        </a>
-        <nav className="nav-links" aria-label="主导航">
-          {nav.map((item) => (
-            <a key={item.href} href={item.href} className="nav-hide">
-              {item.label}
-            </a>
-          ))}
-          <a className="nav-github" href={site.github} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       {/* ── Hero ── */}
       <section id="top" className="band band-lacquer hero">

@@ -35,6 +35,37 @@ export default function Investors() {
         </div>
       </section>
 
+      {/* 机会 · Opportunity */}
+      <section className="band band-lacquer grain">
+        <div className="container">
+          <div className="section-head wide">
+            <p className="eyebrow">{investor.opportunity.eyebrow}</p>
+            <h2 className="display-2">{investor.opportunity.heading}</h2>
+            <p className="lede" style={{ marginTop: 18 }}>{investor.opportunity.lead}</p>
+          </div>
+          <div className="opp-lineage" aria-hidden="true">
+            {investor.opportunity.lineage.flatMap((l, i) => {
+              const node = (
+                <span className={`opp-node${i === investor.opportunity.lineage.length - 1 ? " now" : ""}`} key={l}>
+                  {l}
+                </span>
+              );
+              return i === 0 ? [node] : [<span className="opp-arrow" key={`${l}-a`}>→</span>, node];
+            })}
+          </div>
+          <div className="stat-row">
+            {investor.opportunity.stats.map((s) => (
+              <div className="stat reveal" key={s.k}>
+                <b>{s.v}</b>
+                <span>{s.k}</span>
+              </div>
+            ))}
+          </div>
+          <p className="opp-note">{investor.opportunity.note}</p>
+          <p className="signal-punch">{investor.opportunity.punch}</p>
+        </div>
+      </section>
+
       {/* 为什么是现在 · 外部坐标 */}
       <section className="band band-lacquer grain">
         <div className="container">

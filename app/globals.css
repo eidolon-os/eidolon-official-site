@@ -628,6 +628,18 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 .rm-body h3 { font-size: 1.2rem; margin: 6px 0 8px; color: var(--bone); }
 .rm-body p { margin: 0; font-size: 0.96rem; line-height: 1.7; color: var(--bone-soft); }
 
+/* 机会 · 平台换代谱系 + 市场规模 */
+.opp-lineage { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 6px 0 clamp(28px, 4vh, 44px); }
+.opp-arrow { color: var(--bone-faint); font-size: 12px; }
+.opp-node { font-family: var(--font-mono); font-size: 13px; color: var(--bone-soft); padding: 8px 14px; border: 1px solid var(--line-bone); border-radius: 8px; white-space: nowrap; }
+.opp-node.now { color: var(--cinnabar-bright); border-color: rgba(240, 82, 46, 0.5); background: rgba(240, 82, 46, 0.06); font-weight: 600; }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.stat { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(22px, 2.6vw, 32px); text-align: center; }
+.stat b { display: block; font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 640; letter-spacing: -0.03em; color: var(--cinnabar-bright); line-height: 1; margin-bottom: 12px; }
+.stat span { font-size: 0.9rem; line-height: 1.55; color: var(--bone-soft); }
+@media (max-width: 720px) { .stat-row { grid-template-columns: 1fr; } }
+.opp-note { text-align: center; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.02em; color: var(--bone-faint); margin: 14px 0 0; }
+
 /* 尽调预答 · Q/A */
 .qa-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .qa-item { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(20px, 2.4vw, 28px); }

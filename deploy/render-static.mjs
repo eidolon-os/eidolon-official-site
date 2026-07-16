@@ -11,6 +11,14 @@ const distDir = resolve(projectRoot, "dist");
 const clientDir = resolve(distDir, "client");
 const serverEntry = resolve(distDir, "server/index.js");
 
+// 每条路由都要单独预渲染成静态 HTML；nginx 用 `try_files $uri $uri/ /index.html`，
+// 所以子页必须写成 <route>/index.html 才能被 $uri/ 命中，否则会回退到首页。
+const routes = [
+  { path: "/", out: "index.html" },
+  { path: "/manifesto", out: "manifesto/index.html" },
+  { path: "/protocol", out: "protocol/index.html" },
+];
+
 function usage() {
   return [
     "Usage:",
@@ -41,38 +49,41 @@ await cp(clientDir, outDir, { recursive: true });
 
 const { default: worker } = await import(pathToFileURL(serverEntry).href);
 
-const response = await worker.fetch(
-  new Request(publicUrl, {
-    headers: {
-      accept: "text/html",
-      host: publicUrl.host,
-      "x-forwarded-host": publicUrl.host,
-      "x-forwarded-proto": publicUrl.protocol.replace(":", ""),
-    },
-  }),
-  {
-    ASSETS: {
-      fetch: async () => new Response("Not found", { status: 404 }),
-    },
-  },
-  {
-    waitUntil() {},
-    passThroughOnException() {},
-  },
-);
+async function renderRoute(path, out) {
+  const url = new URL(path, publicUrl);
+  const response = await worker.fetch(
+    new Request(url, {
+      headers: {
+        accept: "text/html",
+        host: publicUrl.host,
+        "x-forwarded-host": publicUrl.host,
+        "x-forwarded-proto": publicUrl.protocol.replace(":", ""),
+      },
+    }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
 
-if (!response.ok) {
-  console.error(`Static render failed with HTTP ${response.status}`);
-  process.exit(1);
+  if (!response.ok) {
+    console.error(`Static render failed for ${path}: HTTP ${response.status}`);
+    process.exit(1);
+  }
+
+  const html = await response.text();
+  if (!html.includes("Eidolon OS") || !html.includes("/assets/")) {
+    console.error(`Static render for ${path} did not look like a complete Eidolon page.`);
+    process.exit(1);
+  }
+
+  const outPath = resolve(outDir, out);
+  await mkdir(dirname(outPath), { recursive: true });
+  await writeFile(outPath, html);
+  console.log(`Rendered ${path} -> ${out}`);
 }
 
-const html = await response.text();
-if (!html.includes("Eidolon OS") || !html.includes("/assets/")) {
-  console.error("Static render did not look like a complete Eidolon page.");
-  process.exit(1);
+for (const route of routes) {
+  await renderRoute(route.path, route.out);
 }
-
-await writeFile(resolve(outDir, "index.html"), html);
 
 const headersPath = resolve(outDir, "_headers");
 let headers = "";
@@ -89,6 +100,7 @@ await writeFile(
       generatedAt: new Date().toISOString(),
       siteUrl: publicUrl.toString(),
       source: "vinext-static-snapshot",
+      routes: routes.map((r) => r.path),
       hasHeadersFile: headers.length > 0,
     },
     null,

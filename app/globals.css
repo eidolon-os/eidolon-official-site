@@ -628,6 +628,16 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text
 .rm-body h3 { font-size: 1.2rem; margin: 6px 0 8px; color: var(--bone); }
 .rm-body p { margin: 0; font-size: 0.96rem; line-height: 1.7; color: var(--bone-soft); }
 
+/* 竞争格局 · 行业实证 */
+.bigco-mid { text-align: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--bone-faint); margin: clamp(34px, 4.5vh, 52px) 0 16px; }
+.ev-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 880px; margin: 0 auto; }
+.ev-card { border: 1px solid var(--line-bone); border-radius: 12px; background: rgba(255, 255, 255, 0.015); padding: clamp(20px, 2.4vw, 28px); }
+.ev-tag { display: inline-block; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; color: var(--cinnabar); border: 1px solid rgba(240, 82, 46, 0.3); border-radius: 5px; padding: 2px 8px; margin-bottom: 13px; }
+.ev-card b { display: block; font-size: 1.05rem; color: var(--bone); margin-bottom: 9px; }
+.ev-card p { margin: 0 0 12px; font-size: 0.92rem; line-height: 1.68; color: var(--bone-soft); }
+.ev-src { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; color: var(--bone-faint); }
+@media (max-width: 720px) { .ev-grid { grid-template-columns: 1fr; } }
+
 /* 机会 · 平台换代谱系 + 市场规模 */
 .opp-lineage { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 6px 0 clamp(28px, 4vh, 44px); }
 .opp-arrow { color: var(--bone-faint); font-size: 12px; }

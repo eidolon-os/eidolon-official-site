@@ -105,6 +105,17 @@ export default function Investors() {
               </div>
             ))}
           </div>
+          <p className="bigco-mid">正在发生的两个事实</p>
+          <div className="ev-grid">
+            {investor.bigco.evidence.map((e) => (
+              <article className="ev-card reveal" key={e.k}>
+                <span className="ev-tag">{e.tag}</span>
+                <b>{e.k}</b>
+                <p>{e.d}</p>
+                <span className="ev-src">{e.src}</span>
+              </article>
+            ))}
+          </div>
           <p className="signal-punch">{investor.bigco.punch}</p>
         </div>
       </section>

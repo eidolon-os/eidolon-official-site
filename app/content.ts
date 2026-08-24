@@ -1,10 +1,10 @@
 export const site = {
   name: "Eidolon",
   fullName: "Eidolon OS",
-  title: "Eidolon OS | 由你拥有的个人 AI 操作系统",
+  title: "Eidolon OS | 一个真正属于你的个人 AI",
   positioningEn: "The Sovereign Personal AI OS",
   positioningZh: "由你拥有的个人 AI 操作系统",
-  description: "身份、记忆、权限与长期关系属于你；模型可以替换，设备可以更换，同一个 Eidolon 持续存在。",
+  description: "Eidolon 记得你的生活，接住没做完的事，并在不同场景之间继续陪你；换模型、换设备，它都还是它。",
   descriptionEn: "A sovereign personal AI operating system. Your identity, memory and authority remain yours while models and devices change.",
   github: "https://github.com/eidolon-os",
   githubLabel: "github.com/eidolon-os",
@@ -13,11 +13,11 @@ export const site = {
 } as const;
 
 export const nav = [
-  { label: "主权架构", href: "/#architecture" },
-  { label: "生活场景", href: "/#continuity" },
-  { label: "产品", href: "/#product" },
+  { label: "产品哲学", href: "/#philosophy" },
+  { label: "生活场景", href: "/#life" },
+  { label: "Eidolon One", href: "/#product" },
+  { label: "平台", href: "/#company" },
   { label: "愿景", href: "/manifesto" },
-  { label: "开发者", href: "/protocol" },
 ] as const;
 
 export const architecture = {

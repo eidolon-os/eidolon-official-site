@@ -1,115 +1,94 @@
-import { architecture, continuity, horizons, product, site, sovereignty } from "./content";
 import { SiteHeader } from "./components/SiteHeader";
-import { SovereignConsole } from "./components/SovereignConsole";
+import { EidolonOne } from "./components/EidolonOne";
+import { LifeScenes } from "./components/LifeScenes";
 import { VesselMark } from "./components/brand";
-
-function SectionLead({ eyebrow, heading, lead }: { eyebrow: string; heading: string; lead?: string }) {
-  return <header className="section-lead"><p>{eyebrow}</p><h2>{heading}</h2>{lead && <span>{lead}</span>}</header>;
-}
+import { site } from "./content";
 
 export default function Home() {
   return (
-    <main className="site-shell sovereign-site">
+    <main className="site-shell product-story">
       <SiteHeader />
 
-      <section id="top" className="sovereign-hero">
-        <div className="hero-copy">
-          <p className="kicker">EIDOLON OS · THE SOVEREIGN PERSONAL AI OS</p>
-          <h1>你的 AI，<br />不应属于任何<br /><em>模型、设备或平台。</em></h1>
-          <span>身份、记忆、权限与长期关系属于你。模型可以替换，设备可以更换；同一个 Eidolon 仍然认识你，并只在你允许的地方出现。</span>
-          <div className="hero-actions"><a className="button primary" href="#architecture">理解主权架构</a><a className="text-link" href="#continuity">看它如何进入生活 <i>↓</i></a></div>
+      <section id="top" className="product-hero">
+        <div className="product-hero-copy">
+          <p className="story-kicker">EIDOLON · YOUR PERSONAL AI</p>
+          <h1>一个真正<br /><em>属于你的 AI。</em></h1>
+          <p className="hero-deck">Eidolon 记得你的生活，接住没做完的事，并在手机、家、车与工作之间继续陪你。换模型、换设备，它都还是它。</p>
+          <div className="story-actions"><a className="story-button" href="#product">认识 Eidolon One</a><a className="story-link" href="#life">看它的一天 <i>↓</i></a></div>
+          <div className="hero-promises" aria-label="Eidolon 的三个承诺"><span><b>认识你</b>共同经历不会归零</span><span><b>跟随你</b>事情在场景间继续</span><span><b>属于你</b>记忆与决定由你掌握</span></div>
         </div>
-        <div className="hero-product"><SovereignConsole /><p><span>不是概念图</span>这就是 Eidolon 应该让用户看见并掌控的关系。</p></div>
+        <EidolonOne />
       </section>
 
-      <section className="thesis-strip">
-        <p>模型提供智能。设备提供身体。</p>
-        <h2>Eidolon 保存那个穿过它们，<br />仍然属于你的“我”。</h2>
+      <section className="category-statement">
+        <p>今天的 AI 住在一个个 App 里。每次打开，都像第一次见你。</p>
+        <h2>Eidolon 不再造一个新的助手。<br />它让你第一次拥有<em>同一个 AI。</em></h2>
+        <div className="category-change" aria-label="产品范式变化"><span>一堆彼此失忆的助手</span><i>→</i><b>一个持续存在的 Eidolon</b></div>
       </section>
 
-      <section id="architecture" className="content-section architecture-section">
-        <div className="container architecture-layout">
-          <div className="architecture-intro"><SectionLead {...architecture} /><p className="architecture-note">人 / 车 / 家不是三套 AI，而是同一个 Eidolon 在不同世界里获得的临时身体。</p></div>
-          <div className="layer-list">
-            {architecture.layers.map((layer, index) => (
-              <article key={layer.en} className={index === 1 ? "core-layer" : ""}>
-                <span>{layer.n}</span><div><small>{layer.en}</small><h3>{layer.k}</h3></div><p>{layer.d}</p>
-              </article>
-            ))}
-            <div className="replaceable-axis"><span>不可被平台替代</span><i /><span>可以持续更换与扩展</span></div>
+      <section id="philosophy" className="philosophy-section">
+        <header className="story-heading"><span>01 · THE EIDOLON PRINCIPLE</span><h2>产品的中心不是模型。<br />是一个真实的人。</h2><p>所以我们用三个简单原则做所有决定。它们既是用户得到的体验，也是 Eidolon 不会越过的边界。</p></header>
+        <div className="principle-run">
+          <article><span>01</span><h3>认识你</h3><p>记得共同经历、你的偏好与正在进行的事。不是把所有数据塞进提示词，而是知道什么在此刻真正相关。</p><small>LONG-TERM MEMORY</small></article>
+          <article><span>02</span><h3>跟随你</h3><p>同一件事从手机到车、从耳机到桌面自然继续。设备只是入口，不会各自养出一个新的、失忆的你。</p><small>CONTINUITY ACROSS PLACES</small></article>
+          <article><span>03</span><h3>属于你</h3><p>你能带走记忆、换掉模型、撤回设备、看见行动依据。能力可以越来越强，权力不能越过你的允许。</p><small>USER SOVEREIGNTY</small></article>
+        </div>
+      </section>
+
+      <section id="life" className="life-section">
+        <header className="story-heading light"><span>02 · ONE LIFE, ONE CONTINUITY</span><h2>不是“人、车、家”三套 AI。<br />是同一个 Eidolon，接住你的一天。</h2><p>它跟随的是事情的前因后果，不是把所有隐私复制到所有设备。</p></header>
+        <LifeScenes />
+      </section>
+
+      <section id="product" className="one-section">
+        <header className="story-heading"><span>03 · THE FIRST PRODUCT</span><h2>Eidolon One<br />你的个人 AI 主机。</h2><p>它不是更聪明的音箱，也不是另一块需要盯着的屏幕。它是你与 AI 长期关系的家。</p></header>
+        <div className="one-product-layout">
+          <EidolonOne />
+          <div className="one-explainer">
+            <p className="product-definition">一台由你掌握的 AI 主机，<br />加上一组随你出现的入口。</p>
+            <dl>
+              <div><dt>它保存什么</dt><dd>你的长期记忆、关系、偏好、未完成任务，以及每次重要行动的来龙去脉。</dd></div>
+              <div><dt>它如何思考</dt><dd>按任务选择本地模型、云模型或专业 Agent。更好的智能出现时，Eidolon 不必重新认识你。</dd></div>
+              <div><dt>它如何出现</dt><dd>通过手机与桌面 App 开始；再进入耳机、家庭、车和未来机器人，只取得当前场景需要的能力。</dd></div>
+            </dl>
+            <p className="form-note"><b>今天</b> Core 可运行在个人电脑、家庭主机或私有环境。<b>未来</b> Eidolon One 是它最自然的专用产品形态。</p>
           </div>
         </div>
       </section>
 
-      <section className="content-section sovereignty-section">
-        <div className="container">
-          <SectionLead {...sovereignty} />
-          <div className="sovereignty-list">
-            {sovereignty.items.map((item) => (
-              <article key={item.en}>
-                <div className="sovereignty-index"><span>{item.n}</span><b>{item.verb}</b><small>{item.en}</small></div>
-                <h3>{item.title}</h3><p>{item.d}</p><i>→</i>
-              </article>
-            ))}
-          </div>
+      <section id="architecture" className="plain-architecture">
+        <header className="story-heading"><span>04 · HOW IT WORKS</span><h2>Eidolon 不是模型。<br />它是不会换主人的那一层。</h2><p>架构只服务一个直观结果：模型可以升级，设备可以更换，属于你的连续性不能被带走。</p></header>
+        <div className="relation-map">
+          <div className="relation-owner"><span>OWNER</span><h3>你</h3><p>拥有、恢复、决定</p></div>
+          <i className="relation-arrow" />
+          <div className="relation-core"><VesselMark size={68} tone="bone" idSuffix="map" /><span>EIDOLON CORE</span><h3>记忆你，代表你，向你负责</h3><p>长期记忆 · 身份与关系 · 权限边界 · 任务状态 · 行动记录</p></div>
+          <i className="relation-arrow" />
+          <div className="relation-world"><div><span>MINDS</span><b>本地模型 / 云模型 / Agents</b></div><div><span>PLACES</span><b>手机 / 家 / 车 / 工作 / 机器人</b></div><p>它们提供能力与身体，但不拥有你。</p></div>
+        </div>
+        <p className="architecture-plain">每个场景得到的不是你的全部数据，而是一份有范围、有期限、可随时收回的能力。Eidolon 知道信息从哪里来、为何被使用、结果去了哪里。</p>
+      </section>
+
+      <section id="company" className="company-section">
+        <header className="story-heading light"><span>05 · WHY THIS BECOMES A PLATFORM</span><h2>从一个人每天离不开，<br />到所有智能设备都愿意接入。</h2><p>这是 Eidolon 对投资人的产品逻辑：先用“连续的个人 AI”建立高频关系，再把这份关系带进家庭与现实世界。</p></header>
+        <div className="growth-path">
+          <article><span>ENTER</span><h3>个人</h3><p>以记忆、任务接力与主权控制切入，成为每天真正使用的个人 AI。</p><b>Core 软件 / Eidolon One</b></article><i>→</i>
+          <article><span>EXPAND</span><h3>家庭与场景</h3><p>家人建立共同空间；汽车、空间和设备成为同一个 Eidolon 的新入口。</p><b>家庭方案 / 场景服务</b></article><i>→</i>
+          <article><span>PLATFORM</span><h3>身体网络</h3><p>品牌与开发者不用再从零训练一个助手，而是安全接入用户已经拥有的关系。</p><b>EID-* 协议 / OEM 授权</b></article>
+        </div>
+        <div className="moat-statement">
+          <p>大厂可以复刻功能，<br />却很难成为跨模型、跨品牌的中立层。</p>
+          <div><h3>壁垒会随使用共同生长</h3><span>更深的个人语境</span><i>×</i><span>更明确的授权关系</span><i>×</i><span>更多可用的现实身体</span><i>×</i><span>更长期的信任</span><small>这些资产由用户拥有，却让 Eidolon 成为最值得托付的承载方式。开放不是削弱壁垒，而是建立中立地位的前提。</small></div>
         </div>
       </section>
 
-      <section id="continuity" className="content-section continuity-section">
-        <div className="container"><SectionLead {...continuity} /></div>
-        <div className="scene-track">
-          {continuity.scenes.map((scene, index) => (
-            <article key={scene.time}>
-              <div className="scene-time"><span>{scene.time}</span><small>0{index + 1} · {scene.en}</small></div>
-              <div className="scene-place"><i />{scene.place}</div>
-              <h3>{scene.title}</h3><p>{scene.d}</p>
-              <div className="scene-state"><span>{scene.state}</span><span className="sealed">{scene.sealed}</span></div>
-            </article>
-          ))}
-        </div>
-        <p className="scene-principle">连续的不是“所有数据随处可见”。连续的是：<b>同一个 Owner，在每个场景都保有选择。</b></p>
+      <section className="future-section">
+        <p>从一个人的 AI 主权开始</p>
+        <div className="future-line"><span>个人 Eidolon</span><i /><span>家庭共同空间</span><i /><span>车与具身设备</span><i /><span>代表人的智能体社会</span></div>
+        <h2>未来不是每件设备都有一个 AI。<br />而是每个人，都真正拥有一个。</h2>
+        <div className="story-actions"><a className="story-button light" href="/manifesto">阅读完整愿景</a><a className="story-link on-dark" href="/protocol">了解 EID-* 协议 ↗</a></div>
       </section>
 
-      <section id="product" className="content-section product-section">
-        <div className="container product-layout">
-          <SectionLead {...product} />
-          <div className="product-system">
-            <article className="product-core">
-              <span>{product.core.kind}</span><VesselMark size={74} tone="bone" idSuffix="product" /><h3>{product.core.name}</h3><p>{product.core.d}</p><div>IDENTITY · MEMORY · AUTHORITY · AUDIT</div>
-            </article>
-            <div className="product-surfaces">
-              {product.surfaces.map((surface, index) => <article key={surface.name}><span>0{index + 1}</span><div><small>{surface.en}</small><h3>{surface.name}</h3></div><p>{surface.d}</p></article>)}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="content-section compounding-section">
-        <div className="container compounding-layout">
-          <SectionLead eyebrow="THE COMPOUNDING ADVANTAGE" heading="真正难复制的，不是一项功能。是一个人愿意长期托付的关系基础。" lead="大厂可以复刻界面和功能，但很难天然拥有一个跨模型、跨品牌、由用户控制的中立位置。Eidolon 的壁垒来自随时间共同增长的四种资产。" />
-          <div className="compound-line">
-            <div><span>01</span><b>个人语境</b><small>不是训练素材，是可迁移的共同历史</small></div><i>→</i>
-            <div><span>02</span><b>治理关系</b><small>谁能知道、何时能做、结果归谁</small></div><i>→</i>
-            <div><span>03</span><b>身体网络</b><small>跨品牌设备以同一主权契约接入</small></div><i>→</i>
-            <div><span>04</span><b>长期信任</b><small>更多可委托任务与更深生活入口</small></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="content-section horizon-section">
-        <div className="container"><SectionLead {...horizons} />
-          <div className="horizon-list">{horizons.items.map((item, index) => <article key={item.phase}><span>0{index + 1}</span><small>{item.phase}</small><h3>{item.k}</h3><p>{item.d}</p></article>)}</div>
-        </div>
-      </section>
-
-      <section className="closing-section">
-        <VesselMark size={68} tone="bone" idSuffix="closing" />
-        <p>THE EIDOLON PRINCIPLE</p>
-        <h2>未来最强的 AI，<br />首先应该真正属于你。</h2>
-        <div><a className="button light" href="/manifesto">阅读完整愿景</a><a className="text-link" href={site.github} target="_blank" rel="noreferrer">在 GitHub 上共建 ↗</a></div>
-      </section>
-
-      <footer className="site-footer"><VesselMark size={36} tone="bone" idSuffix="footer" /><p>{site.fullName}</p><span>{site.mantraEn}</span><small>{site.mantraZh}</small></footer>
+      <footer className="story-footer"><VesselMark size={36} tone="bone" idSuffix="footer-new" /><p>{site.fullName}</p><span>Your AI. Your memory. Your authority.</span><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></footer>
     </main>
   );
 }

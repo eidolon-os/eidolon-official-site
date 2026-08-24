@@ -31,9 +31,12 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Eidolon OS \| 由你拥有的个人 AI 操作系统/);
-  assert.match(html, /你的 AI/);
-  assert.match(html, /不应属于任何/);
+  assert.match(html, /Eidolon OS \| 一个真正属于你的个人 AI/);
+  assert.match(html, /一个真正/);
+  assert.match(html, /属于你的 AI/);
+  assert.match(html, /Eidolon One/);
+  assert.match(html, /睡前一句话/);
+  assert.match(html, /不会换主人/);
   assert.match(html, /Your AI\. Your memory\. Your authority\./);
   assert.match(html, /github\.com\/eidolon-os/);
 });
@@ -52,4 +55,5 @@ test("keeps starter preview code out of the finished site", async () => {
   await access(new URL("public/brand/seal/logo-full-lacquer.svg", projectRoot));
   await access(new URL("public/brand/cyber/mark-neon.svg", projectRoot));
   await access(new URL("public/og.png", projectRoot));
+  await access(new URL("public/og-v2.png", projectRoot));
 });

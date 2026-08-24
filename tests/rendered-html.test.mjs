@@ -4,13 +4,13 @@ import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -39,6 +39,18 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(html, /不会换主人/);
   assert.match(html, /Your AI\. Your memory\. Your authority\./);
   assert.match(html, /github\.com\/eidolon-os/);
+});
+
+test("server-renders the Eidolon One product page", async () => {
+  const response = await render("/one");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Eidolon One \| 个人 AI 主机/);
+  assert.match(html, /把你的 AI/);
+  assert.match(html, /Eidolon Ear/);
+  assert.match(html, /Eidolon Car Link/);
+  assert.match(html, /EID Body/);
+  assert.match(html, /ONE IS THE HOST/);
 });
 
 test("keeps starter preview code out of the finished site", async () => {

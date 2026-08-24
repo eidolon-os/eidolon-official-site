@@ -11,10 +11,10 @@ export default function Home() {
 
       <section id="top" className="product-hero">
         <div className="product-hero-copy">
-          <p className="story-kicker">EIDOLON · YOUR PERSONAL AI</p>
+          <p className="story-kicker">EIDOLON OS · YOUR PERSONAL AI</p>
           <h1>一个真正<br /><em>属于你的 AI。</em></h1>
-          <p className="hero-deck">Eidolon 记得你的生活，接住没做完的事，并在手机、家、车与工作之间继续陪你。换模型、换设备，它都还是它。</p>
-          <div className="story-actions"><a className="story-button" href="#product">认识 Eidolon One</a><a className="story-link" href="#life">看它的一天 <i>↓</i></a></div>
+          <p className="hero-deck">Eidolon OS 让同一个 AI 记得你的生活，接住没做完的事，并在手机、家、车与工作之间继续陪你。换模型、换设备，它都还是它。</p>
+          <div className="story-actions"><a className="story-button" href="#os">了解 Eidolon OS</a><a className="story-link" href="/one">认识 One 主机 <i>↗</i></a></div>
           <div className="hero-promises" aria-label="Eidolon 的三个承诺"><span><b>认识你</b>共同经历不会归零</span><span><b>跟随你</b>事情在场景间继续</span><span><b>属于你</b>记忆与决定由你掌握</span></div>
         </div>
         <EidolonOne />
@@ -22,7 +22,7 @@ export default function Home() {
 
       <section className="category-statement">
         <p>今天的 AI 住在一个个 App 里。每次打开，都像第一次见你。</p>
-        <h2>Eidolon 不再造一个新的助手。<br />它让你第一次拥有<em>同一个 AI。</em></h2>
+        <h2>Eidolon OS 不再造一个新的助手。<br />它让你第一次拥有<em>同一个 AI。</em></h2>
         <div className="category-change" aria-label="产品范式变化"><span>一堆彼此失忆的助手</span><i>→</i><b>一个持续存在的 Eidolon</b></div>
       </section>
 
@@ -40,19 +40,16 @@ export default function Home() {
         <LifeScenes />
       </section>
 
-      <section id="product" className="one-section">
-        <header className="story-heading"><span>03 · THE FIRST PRODUCT</span><h2>Eidolon One<br />你的个人 AI 主机。</h2><p>它不是更聪明的音箱，也不是另一块需要盯着的屏幕。它是你与 AI 长期关系的家。</p></header>
-        <div className="one-product-layout">
+      <section id="os" className="one-section os-section">
+        <header className="story-heading"><span>03 · THE PRODUCT</span><h2>Eidolon OS<br />一个 AI，多种存在方式。</h2><p>OS 是完整产品；One 是承载它的主机。手机、桌面、耳机、车与机器人则是同一个 Eidolon 获得的入口与身体。</p></header>
+        <div className="os-product-map">
+          <div className="os-presence"><span>PRESENCE</span><h3>随你出现</h3><p>手机 · 桌面 · 耳机</p><small>交互入口随场景改变，但不会产生新的身份。</small></div>
+          <div className="os-core-product"><VesselMark size={76} tone="bone" idSuffix="os-product" /><span>EIDOLON OS</span><h3>记忆、关系与决定<br />都在这一层连续</h3><p>Core · Memory · Authority · Tasks</p></div>
+          <div className="os-connect"><span>CONNECT</span><h3>进入现实</h3><p>家 · 车 · 机器人</p><small>设备按范围取得能力，离开场景即可撤回。</small></div>
+        </div>
+        <div className="one-home-teaser">
+          <div><span>THE FIRST HOST</span><h3>Eidolon One</h3><p>一台具体的个人 AI 主机，把 Eidolon OS 的长期状态安放在你掌握的设备里。</p><a className="story-link" href="/one">查看 One 与外设产品设想 <i>↗</i></a></div>
           <EidolonOne />
-          <div className="one-explainer">
-            <p className="product-definition">一台由你掌握的 AI 主机，<br />加上一组随你出现的入口。</p>
-            <dl>
-              <div><dt>它保存什么</dt><dd>你的长期记忆、关系、偏好、未完成任务，以及每次重要行动的来龙去脉。</dd></div>
-              <div><dt>它如何思考</dt><dd>按任务选择本地模型、云模型或专业 Agent。更好的智能出现时，Eidolon 不必重新认识你。</dd></div>
-              <div><dt>它如何出现</dt><dd>通过手机与桌面 App 开始；再进入耳机、家庭、车和未来机器人，只取得当前场景需要的能力。</dd></div>
-            </dl>
-            <p className="form-note"><b>今天</b> Core 可运行在个人电脑、家庭主机或私有环境。<b>未来</b> Eidolon One 是它最自然的专用产品形态。</p>
-          </div>
         </div>
       </section>
 

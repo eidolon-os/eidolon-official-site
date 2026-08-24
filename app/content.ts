@@ -13,11 +13,11 @@ export const site = {
 } as const;
 
 export const nav = [
-  { label: "产品哲学", href: "/#philosophy" },
+  { label: "Eidolon OS", href: "/#os" },
   { label: "生活场景", href: "/#life" },
-  { label: "Eidolon One", href: "/#product" },
-  { label: "平台", href: "/#company" },
+  { label: "Eidolon One", href: "/one" },
   { label: "愿景", href: "/manifesto" },
+  { label: "开发者", href: "/protocol" },
 ] as const;
 
 export const architecture = {

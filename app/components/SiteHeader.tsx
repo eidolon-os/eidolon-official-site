@@ -6,7 +6,7 @@ export function SiteHeader() {
   return (
     <header className="topbar">
       <a className="brand-lockup" href="/#top" aria-label="Eidolon OS 首页">
-        <img src="/brand/seal/logo-full-lacquer.svg" alt="Eidolon" />
+        <img src="/brand/seal/logo-full-paper.svg" alt="Eidolon" />
       </a>
       <nav className="nav-links" aria-label="主导航">
         {nav.map((item) => (

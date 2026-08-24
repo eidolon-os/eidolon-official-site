@@ -1,21 +1,21 @@
 export const site = {
   name: "Eidolon",
   fullName: "Eidolon OS",
-  title: "Eidolon OS | A World for Living Intelligence",
-  positioningEn: "A World for Living Intelligence",
-  positioningZh: "让智能，真正住进生活里",
-  description: "Eidolon OS 为每个人建立一个长期存在的智能世界：一颗属于你的内核，可以选择不同心智、进入不同身体，并在生活、关系与时间中持续成长。",
-  descriptionEn: "A world for living intelligence — one enduring being, many minds, many bodies, woven through your life.",
+  title: "Eidolon OS | Personal Agent OS for Human, Car, Home & Work",
+  positioningEn: "Personal Agent Operating System",
+  positioningZh: "贯穿人、车、家与工作的个人智能体操作系统",
+  description: "同一个长期智能体，带着你的身份、记忆、任务与权限，在随身设备、汽车、家庭、工作空间和机器人之间自然接续。",
+  descriptionEn: "One personal agent, continuous across your devices, car, home, work and future bodies.",
   github: "https://github.com/eidolon-os",
   githubLabel: "github.com/eidolon-os",
-  mantraEn: "One being. Many minds. Many bodies. One world.",
-  mantraZh: "一颗核，多种心智，许多身体，一个世界。",
+  mantraEn: "One Eidolon. Every scene.",
+  mantraZh: "同一个 Eidolon，贯穿每一种生活。",
 } as const;
 
 export const nav = [
-  { label: "世界", href: "/#world" },
-  { label: "一天", href: "/#day" },
-  { label: "未来", href: "/#horizon" },
+  { label: "架构", href: "/#architecture" },
+  { label: "产品", href: "/#products" },
+  { label: "场景", href: "/#life" },
   { label: "愿景", href: "/manifesto" },
   { label: "开发者", href: "/protocol" },
 ] as const;
@@ -107,4 +107,56 @@ export const protocol = {
   ],
   path: ["被发现", "说明自己", "获得邀请", "进入关系", "感知与行动", "留下回响"],
   invitation: "未来的硬件不必各自制造一个失忆的助手。它们可以成为同一个 Eidolon 看见世界、触碰世界的新方式。",
+} as const;
+
+export const productSystem = {
+  eyebrow: "PRODUCT ARCHITECTURE",
+  heading: "不是给每台设备装一个 AI。是让同一个 Eidolon，进入不同生活场景。",
+  lead: "车企正在把手机、汽车和家庭设备连成一个生态。Eidolon 再向前一步：连接的不只是设备和服务，而是同一个长期智能体的身份、记忆、任务与关系。",
+  layers: [
+    { en: "PERSONAL CORE", k: "个人中枢", d: "保存 Eidolon 的身份、长期记忆、关系边界、权限与任务状态。可以运行在你的家庭主机、个人设备或私有环境中。", role: "始终属于你" },
+    { en: "COMPANION RUNTIME", k: "智能体运行时", d: "组合本地模型、云端模型和专业智能体，负责理解、推理、规划与协作。模型可以更换，Eidolon 不需要重新开始。", role: "持续思考" },
+    { en: "SCENE RUNTIME", k: "场景运行时", d: "理解谁在场、你在哪里、正在做什么，以及此刻应该通过哪具身体出现。它让对话、任务和权限自然流转。", role: "理解此刻" },
+    { en: "BODY MESH", k: "身体网络", d: "手机、耳机、桌面设备、汽车、家庭空间、摄像头与机器人，以统一方式提供声音、视觉、屏幕、移动和执行能力。", role: "抵达现实" },
+  ],
+  base: ["身份与长期记忆", "关系与场景图", "权限、授权与审计", "任务、工具与结果", "端侧优先 · 云端可选"],
+} as const;
+
+export const productFamily = {
+  eyebrow: "PRODUCT FORMS",
+  heading: "一套 Eidolon OS，沿着人的生活长出不同产品形态。",
+  lead: "每一种形态都不是新的助手，而是同一个 Eidolon 的入口、空间或身体。",
+  items: [
+    { name: "Eidolon Core", kind: "个人中枢", form: "家庭主机 / 私有服务", d: "长期身份、记忆、关系与权限的事实源。即使更换汽车、手机或模型，它仍然存在。" },
+    { name: "Eidolon Link", kind: "随身入口", form: "手机 / 耳机 / 手表", d: "贴身感知日程、位置、健康状态和即时意图，在不同场景之间负责身份确认与接力。" },
+    { name: "Eidolon Drive", kind: "移动空间", form: "汽车 / 车机", d: "把行程、工作、家庭与车内环境连起来。上车不是打开另一个助手，而是继续刚才的生活。" },
+    { name: "Eidolon Room", kind: "家庭空间", form: "音箱 / 屏幕 / 视觉节点", d: "理解房间、在场者和家庭关系；决定何时回应、在哪里回应，以及哪些内容不应被共享。" },
+    { name: "Eidolon Studio", kind: "工作与创作", form: "桌面端 / 工作空间", d: "承接长期项目，组织资料和多个专业智能体，把口头想法变成文档、研究、代码与真实任务。" },
+    { name: "Eidolon Body", kind: "行动身体", form: "机器人 / 专用设备", d: "让同一个 Eidolon 获得移动、观察、制作和照料能力；高风险动作必须经过明确授权。" },
+  ],
+} as const;
+
+export const lifeContinuum = {
+  eyebrow: "HUMAN · CAR · HOME · WORK",
+  heading: "生活没有 App 边界，Eidolon 也不该有。",
+  lead: "真正的场景融合不是远程控制更多设备，而是意图、上下文和任务能跟随人自然移动，并在每个空间重新遵守当地的关系和权限。",
+  scenes: [
+    { time: "07:30", place: "家", en: "HOME", title: "出门前，车与今天一起准备好。", story: "Eidolon 结合日程、天气、家庭安排和昨晚未完成的事，给出简短晨间提示。你确认出发后，汽车完成温度与路线准备，家进入离家状态。", tech: "场景图 · 日程与家庭上下文 · 家车联动" },
+    { time: "08:10", place: "车", en: "DRIVE", title: "上车后，不必重新描述你在想什么。", story: "耳机里的讨论切换到车内。Eidolon 知道哪些内容适合驾驶时继续，主动把复杂操作延后，只保留语音、导航和必要确认。", tech: "跨身体会话 · 驾驶模式 · 权限降级" },
+    { time: "09:00", place: "工作", en: "WORK", title: "到达工作室，谈话变成可以交付的工作。", story: "车里确定的思路已经进入项目空间。桌面端展开资料，专业智能体开始研究和整理；Eidolon 仍负责目标、上下文与最终取舍。", tech: "长期项目记忆 · 多智能体协作 · 工具执行" },
+    { time: "18:40", place: "归途", en: "RETURN", title: "工作结果跟你回家，但工作内容不会闯进家庭。", story: "Eidolon 在车里汇报结果，把需要你决定的事项留到合适时机。接近家时，它恢复家庭身份与共享边界，不把私密工作信息带到公共空间。", tech: "任务回执 · 空间边界 · 身份与关系切换" },
+    { time: "21:20", place: "家", en: "TOGETHER", title: "在共同空间里，它理解的不只有设备，还有人。", story: "家人可以拥有各自的 Eidolon，也可以共享家庭计划、相册和设备。谁可以听到什么、谁能控制什么，由关系和当下在场共同决定。", tech: "多用户识别 · 共享记忆域 · 房间级隐私" },
+  ],
+} as const;
+
+export const technicalFoundation = {
+  eyebrow: "WHAT MAKES IT AN OS",
+  heading: "看起来像连续生活，下面其实是一套新的个人智能架构。",
+  items: [
+    { k: "身份与身体解耦", en: "IDENTITY ≠ DEVICE", d: "Eidolon 的身份不属于汽车、音箱或机器人。设备可以加入、离开和更换，同一个智能体仍然连续。" },
+    { k: "长期记忆与关系图", en: "MEMORY + RELATIONSHIPS", d: "不仅记住事实，还记录来源、时间、人物关系、场景归属，以及什么可以共享、纠正或遗忘。" },
+    { k: "场景与在场感知", en: "SCENE + PRESENCE", d: "系统持续理解人、空间、设备和任务状态，让能力在正确的时间进入正确的身体。" },
+    { k: "可治理行动", en: "AUTHORITY + AUDIT", d: "从发消息、开门到控制机器人，每种能力都有范围、期限、确认方式和结果记录。" },
+    { k: "本地优先的混合智能", en: "LOCAL-FIRST INTELLIGENCE", d: "敏感身份、记忆与场景尽量留在个人中枢；复杂推理可以按需调用云端，并随时替换。" },
+  ],
 } as const;

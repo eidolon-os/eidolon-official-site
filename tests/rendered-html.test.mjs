@@ -31,10 +31,10 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Eidolon OS \| A World for Living Intelligence/);
-  assert.match(html, /让智能/);
-  assert.match(html, /真正住进生活里/);
-  assert.match(html, /One being\. Many minds\. Many bodies\. One world\./);
+  assert.match(html, /Eidolon OS \| Personal Agent OS for Human, Car, Home (?:&|&amp;) Work/);
+  assert.match(html, /一个 Eidolon/);
+  assert.match(html, /贯穿人、车、家与工作/);
+  assert.match(html, /One Eidolon\. Every scene\./);
   assert.match(html, /github\.com\/eidolon-os/);
 });
 

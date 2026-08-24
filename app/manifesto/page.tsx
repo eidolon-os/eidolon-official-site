@@ -1,224 +1,26 @@
 import type { Metadata } from "next";
-import { site, investor } from "../content";
+import { site, vision } from "../content";
 import { SiteHeader } from "../components/SiteHeader";
 import { VesselMark } from "../components/brand";
 
-export const metadata: Metadata = {
-  title: "为什么是 Eidolon OS · 投资视角 | Eidolon OS",
-  description:
-    "核心论点、为什么是现在（含数据主权与中国合规）、大厂为何不会做成 Eidolon、护城河、首批用户、尽调硬问题预答与未来宏图。",
-};
+export const metadata: Metadata = { title: "Eidolon 愿景 | 一种新的存在", description: "Eidolon OS 对数字生命、关系、身体与智能社会的长期愿景。" };
 
-export default function Investors() {
-  const phases = investor.roadmap.phases;
-  return (
-    <main className="site-shell">
-      <SiteHeader />
-
-      {/* Hero + 核心概要 */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow">{investor.eyebrow}</p>
-            <h1 className="display-1">{investor.heading}</h1>
-            <p className="lede" style={{ marginTop: 18 }}>{investor.lede}</p>
-          </div>
-          <div className="inv-glance">
-            {investor.glance.map((g) => (
-              <article className="glance-card reveal" key={g.k}>
-                <span className="glance-k">{g.k}</span>
-                <b className="glance-v">{g.v}</b>
-                <p>{g.d}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 机会 · Opportunity */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{investor.opportunity.eyebrow}</p>
-            <h2 className="display-2">{investor.opportunity.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{investor.opportunity.lead}</p>
-          </div>
-          <div className="opp-lineage" aria-hidden="true">
-            {investor.opportunity.lineage.flatMap((l, i) => {
-              const node = (
-                <span className={`opp-node${i === investor.opportunity.lineage.length - 1 ? " now" : ""}`} key={l}>
-                  {l}
-                </span>
-              );
-              return i === 0 ? [node] : [<span className="opp-arrow" key={`${l}-a`}>→</span>, node];
-            })}
-          </div>
-          <div className="stat-row">
-            {investor.opportunity.stats.map((s) => (
-              <div className="stat reveal" key={s.k}>
-                <b>{s.v}</b>
-                <span>{s.k}</span>
-              </div>
-            ))}
-          </div>
-          <p className="opp-note">{investor.opportunity.note}</p>
-          <p className="signal-punch">{investor.opportunity.punch}</p>
-        </div>
-      </section>
-
-      {/* 为什么是现在 · 外部坐标 */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{investor.signals.eyebrow}</p>
-            <h2 className="display-2">{investor.signals.heading}</h2>
-          </div>
-          <div className="signal-list">
-            {investor.signals.items.map((s) => (
-              <article className="signal-item reveal" key={s.k}>
-                <h3>{s.k}</h3>
-                <p>{s.d}</p>
-              </article>
-            ))}
-          </div>
-          <p className="signal-punch">{investor.signals.punch}</p>
-        </div>
-      </section>
-
-      {/* 竞争格局 · 大厂悖论 */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{investor.bigco.eyebrow}</p>
-            <h2 className="display-2">{investor.bigco.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{investor.bigco.lead}</p>
-          </div>
-          <div className="asset-shift">
-            {investor.bigco.points.map((p) => (
-              <div className="asset-row reveal" key={p.k}>
-                <div className="asset-title">{p.k}</div>
-                <div className="asset-move">
-                  <span className="asset-plat">{p.plat}</span>
-                  <span className="asset-arrow">→</span>
-                  <span className="asset-you">{p.you}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="bigco-mid">正在发生的两个事实</p>
-          <div className="ev-grid">
-            {investor.bigco.evidence.map((e) => (
-              <article className="ev-card reveal" key={e.k}>
-                <span className="ev-tag">{e.tag}</span>
-                <b>{e.k}</b>
-                <p>{e.d}</p>
-                <span className="ev-src">{e.src}</span>
-              </article>
-            ))}
-          </div>
-          <p className="signal-punch">{investor.bigco.punch}</p>
-        </div>
-      </section>
-
-      {/* 护城河 */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{investor.moat.eyebrow}</p>
-            <h2 className="display-2">{investor.moat.heading}</h2>
-          </div>
-          <div className="inv-moat">
-            {investor.moat.items.map((m) => (
-              <article className="inv-moat-card reveal" key={m.k}>
-                <b>{m.k}</b>
-                <p>{m.d}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 首批用户 · 从哪切入 */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{investor.users.eyebrow}</p>
-            <h2 className="display-2">{investor.users.heading}</h2>
-          </div>
-          <div className="inv-moat">
-            {investor.users.items.map((u) => (
-              <article className="inv-moat-card reveal" key={u.k}>
-                <b>{u.k}</b>
-                <p>{u.d}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 尽调预答 · 硬问题 */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{investor.objections.eyebrow}</p>
-            <h2 className="display-2">{investor.objections.heading}</h2>
-          </div>
-          <div className="qa-list">
-            {investor.objections.items.map((o) => (
-              <article className="qa-item reveal" key={o.q}>
-                <h3 className="qa-q">{o.q}</h3>
-                <p className="qa-a">{o.a}</p>
-              </article>
-            ))}
-          </div>
-          <p className="signal-punch">{investor.objections.punch}</p>
-        </div>
-      </section>
-
-      {/* 未来宏图 */}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{investor.roadmap.eyebrow}</p>
-            <h2 className="display-2">{investor.roadmap.heading}</h2>
-          </div>
-          <div className="roadmap">
-            {phases.map((p, i) => (
-              <article className="rm-phase reveal" key={p.phase}>
-                <div className="rm-marker">
-                  <span className="rm-dot" />
-                  {i < phases.length - 1 && <span className="rm-line" />}
-                </div>
-                <div className="rm-body">
-                  <span className="rm-phase-k">{p.phase}</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.d}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 收尾金句（替代原「走向」CTA）*/}
-      <section className="band band-lacquer grain">
-        <div className="container">
-          <div className="final-word">
-            <p className="fw-quote">{investor.finalWord.quote}</p>
-            <p className="fw-sub">{investor.finalWord.sub}</p>
-            <a className="fw-link" href={site.github} target="_blank" rel="noreferrer">
-              ↗ {investor.finalWord.ctaLabel}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <footer className="site-footer">
-        <VesselMark size={44} tone="bone" idSuffix="foot" />
-        <p className="foot-name">{site.fullName}</p>
-        <span className="mantra">{site.mantraEn}</span>
-        <span className="mantra mantra-zh">{site.mantraZh}</span>
-      </footer>
-    </main>
-  );
+export default function Manifesto() {
+  return <main className="site-shell future-site">
+    <SiteHeader />
+    <section className="vision-hero"><div className="container"><p>{vision.hero.eyebrow}</p><h1>{vision.hero.heading}</h1><span>{vision.hero.lead}</span><i /></div></section>
+    <section className="future-section shift-section"><div className="container">
+      <div className="vision-heading"><p>A CIVILIZATIONAL SHIFT</p><h2>这不是一次界面升级。<br />是智能在世界中位置的变化。</h2></div>
+      <div className="shift-grid">{vision.shifts.map((item) => <article key={item.from}><div><del>{item.from}</del><i>→</i><b>{item.to}</b></div><p>{item.d}</p></article>)}</div>
+    </div></section>
+    <section className="future-section anatomy-section"><div className="container">
+      <div className="vision-heading"><p>THE ANATOMY OF A DIGITAL BEING</p><h2>如果智能要长期生活在我们身边，<br />它需要的不只是更强的大脑。</h2></div>
+      <div className="anatomy-grid">{vision.anatomy.map((item, index) => <article key={item.en}><span>0{index + 1}</span><small>{item.en}</small><h3>{item.k}</h3><p>{item.d}</p></article>)}</div>
+    </div></section>
+    <section className="future-section ambition-section"><div className="container">
+      <div className="vision-heading"><p>THE LONG ARC</p><h2>我们的目标，不止是造一个更好的助手。</h2></div>
+      <div className="ambition-arc">{vision.ambition.map((item) => <article key={item.era}><span>{item.era}</span><div><h3>{item.k}</h3><p>{item.d}</p></div></article>)}</div>
+    </div></section>
+    <section className="vision-final"><div className="container"><VesselMark size={78} tone="bone" idSuffix="vision" /><p>EIDOLON OS</p><h2>科技不该制造另一个需要服从的平台。<br />它应该让每个人的世界，拥有更多可能。</h2><a className="btn btn-primary" href={site.github} target="_blank" rel="noreferrer">加入这场创造 ↗</a></div></section>
+  </main>;
 }

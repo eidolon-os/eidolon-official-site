@@ -1,254 +1,54 @@
-import { site, hero, problem, thesis, keywords, whatIs, assets, capabilities, scenes, moat, closing } from "./content";
-import { HubPanel } from "./components/HubPanel";
-import { FeatureUI } from "./components/featureUI";
-import { VesselMark } from "./components/brand";
+import { day, horizons, principles, site, world } from "./content";
+import { LivingWorld } from "./components/LivingWorld";
 import { SiteHeader } from "./components/SiteHeader";
+import { VesselMark } from "./components/brand";
+
+function Intro({ eyebrow, heading, lead }: { eyebrow: string; heading: string; lead?: string }) {
+  return <div className="future-intro"><p>{eyebrow}</p><h2>{heading}</h2>{lead && <span>{lead}</span>}</div>;
+}
 
 export default function Home() {
   return (
-    <main className="site-shell">
-      {/* ── 顶栏 ── */}
+    <main className="site-shell future-site">
       <SiteHeader />
-
-      {/* ── Hero ── */}
-      <section id="top" className="band band-lacquer hero">
-        <div className="container">
-          <div className="hero-copy">
-            <span className="hero-badge">
-              <i className="dot-on" />
-              <span className="hb-en">{site.positioningEn}</span>
-              <span className="hb-sep" aria-hidden="true">·</span>
-              <span className="hb-zh">{site.positioningZh}</span>
-            </span>
-            <h1 className="display-1">
-              拥有一个 AI，<br />而不是<span className="accent">登录</span>一个。
-            </h1>
-            <p className="lede">{hero.lede}</p>
-            <div className="hero-actions">
-              <a className="btn btn-primary" href={hero.ctaPrimary.href}>{hero.ctaPrimary.label} →</a>
-            </div>
+      <section id="top" className="future-hero">
+        <div className="future-hero-glow" aria-hidden="true" />
+        <div className="container future-hero-grid">
+          <div className="future-copy">
+            <p className="future-kicker">EIDOLON OS · A WORLD FOR LIVING INTELLIGENCE</p>
+            <h1>让智能，<br /><em>真正住进生活里。</em></h1>
+            <p className="future-lede">不是每次打开都重新认识你的工具，而是一位长期存在的数字生命：它有自己的身份与记忆，能换心智、换身体，也能在你的家、工作与旅途中持续成长。</p>
+            <div className="future-actions"><a className="btn btn-primary" href="#world">进入这个世界 →</a><span>一个人 · 一颗核 · 许多身体 · 一整个世界</span></div>
           </div>
-          <HubPanel />
+          <LivingWorld />
         </div>
+        <div className="future-scroll"><span>SCROLL TO ENTER</span><i /></div>
       </section>
 
-      {/* ── 1 · 现状 ── */}
-      <section id="problem" className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow">{problem.eyebrow}</p>
-            <h2 className="display-2">{problem.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{problem.lede}</p>
-          </div>
-          <div className="problem-list">
-            {problem.items.map((it, i) => (
-              <article className="problem-item reveal" key={it.title}>
-                <span className="problem-num">{String(i + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{it.title}</h3>
-                  <p>{it.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="future-declaration"><div className="container"><p>今天，我们打开一个 AI。</p><h2>未来，智能会像一个真实的存在，<br />长期生活在我们身边。</h2><span>Eidolon OS 正在为这种未来，建造它的第一座家。</span></div></section>
 
-      {/* ── 为什么是现在（战略帧：位移 + 三问 + 窗口 + 归属）── */}
-      <section className="band band-lacquer grain thesis">
-        <div className="container">
-          <p className="eyebrow">{thesis.eyebrow}</p>
-          <h2 className="display-2 thesis-heading">{thesis.heading}</h2>
-          <p className="lede thesis-lead">{thesis.lead}</p>
-          <div className="thesis-drivers">
-            {thesis.drivers.map((d) => (
-              <div className="tdriver reveal" key={d.n}>
-                <span className="td-n">{d.n}</span>
-                <div className="td-body">
-                  <h3 className="td-k">{d.k}</h3>
-                  <p className="td-d">{d.d}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <h2 className="display-2 thesis-punch">{thesis.punch}</h2>
-          <p className="thesis-punchsub">{thesis.punchSub}</p>
-        </div>
-      </section>
+      <section id="world" className="future-section world-section"><div className="container">
+        <Intro eyebrow={world.eyebrow} heading={world.heading} lead={world.lead} />
+        <div className="world-ledger">{world.layers.map((layer) => <article key={layer.en}><span>{layer.n}</span><div><small>{layer.en}</small><h3>{layer.k}</h3></div><p>{layer.d}</p><b>{layer.accent}</b></article>)}</div>
+        <p className="world-sentence">{world.sentence}</p>
+      </div></section>
 
-      {/* ── 2 · Eidolon 是什么 ── */}
-      <section id="what" className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{whatIs.eyebrow}</p>
-            <h2 className="display-2">{whatIs.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{whatIs.lede}</p>
-          </div>
-          <div className="overview-layout">
-            <div className="not-is">
-              {whatIs.contrasts.map((c) => (
-                <div className="not-is-row reveal" key={c.is}>
-                  <span className="ni-not">不是{c.not}</span>
-                  <span className="ni-is">{c.is}</span>
-                </div>
-              ))}
-            </div>
-            <div className="stack reveal" aria-label="Eidolon OS 三层结构">
-              <div className="stack-layer stack-soft">
-                <span className="sl-label">{whatIs.stack.top.label}</span>
-                <span className="sl-note">{whatIs.stack.top.note}</span>
-              </div>
-              <div className="stack-connector" />
-              <div className="stack-layer stack-waist">
-                <span className="sl-label">{whatIs.stack.waist.label}</span>
-                <div className="waist-assets">
-                  {whatIs.stack.waist.assets.map((a) => (<span className="waist-asset" key={a}>{a}</span>))}
-                </div>
-                <span className="sl-note">{whatIs.stack.waist.note}</span>
-              </div>
-              <div className="stack-connector" />
-              <div className="stack-layer stack-soft">
-                <span className="sl-label">{whatIs.stack.bottom.label}</span>
-                <span className="sl-note">{whatIs.stack.bottom.note}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section id="day" className="future-section day-section"><div className="container">
+        <Intro eyebrow={day.eyebrow} heading={day.heading} lead={day.lead} />
+        <div className="day-line">{day.moments.map((moment, index) => <article key={moment.time}><div className="day-time"><b>{moment.time}</b><i /><span>0{index + 1}</span></div><div className="day-story"><small>{moment.place}</small><h3>{moment.title}</h3><p>{moment.d}</p><b>{moment.body}</b></div></article>)}</div>
+      </div></section>
 
-      {/* ── 四个关键词（名字即架构）── */}
-      <section id="keywords" className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{keywords.eyebrow}</p>
-            <h2 className="display-2">{keywords.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{keywords.lede}</p>
-          </div>
-          <div className="kw-grid">
-            {keywords.items.map((it) => (
-              <article className="kw-card reveal" key={it.en}>
-                <div className="kw-head">
-                  <span className="kw-cn">{it.k}</span>
-                  <span className="kw-en">{it.en}</span>
-                </div>
-                <p>{it.d}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section id="horizon" className="future-section horizon-section"><div className="container">
+        <Intro eyebrow={horizons.eyebrow} heading={horizons.heading} lead={horizons.lead} />
+        <div className="horizon-worlds">{horizons.worlds.map((item) => <article key={item.n}><div className="horizon-code"><span>{item.n}</span><i>{item.glow}</i></div><small>{item.en}</small><h3>{item.k}</h3><p>{item.d}</p></article>)}</div>
+        <p className="horizon-note">{horizons.note}</p>
+      </div></section>
 
-      {/* ── 3 · 你真正拥有的 ── */}
-      <section id="own" className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{assets.eyebrow}</p>
-            <h2 className="display-2">{assets.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{assets.lede}</p>
-          </div>
-          <div className="asset-shift">
-            {assets.items.map((a) => (
-              <div className="asset-row reveal" key={a.title}>
-                <div className="asset-title">{a.title}</div>
-                <div className="asset-move">
-                  <span className="asset-plat">{a.plat}</span>
-                  <span className="asset-arrow">→</span>
-                  <span className="asset-you">{a.you}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="future-section promise-section"><div className="container"><Intro eyebrow={principles.eyebrow} heading={principles.heading} /><div className="promise-grid">{principles.items.map((item, index) => <article key={item.k}><span>0{index + 1}</span><h3>{item.k}</h3><p>{item.d}</p></article>)}</div></div></section>
 
-      {/* ── 4 · 能力 ×4 ── */}
-      <section id="capabilities" className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{capabilities.eyebrow}</p>
-            <h2 className="display-2">{capabilities.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{capabilities.lede}</p>
-          </div>
-          <div className="features">
-            {capabilities.blocks.map((b, i) => (
-              <article className={`feature${i % 2 === 1 ? " reverse" : ""}`} key={b.id}>
-                <div className="feature-copy reveal">
-                  <span className="feature-tag">{b.tag}</span>
-                  <h3 className="display-3">{b.title}</h3>
-                  <p>{b.body}</p>
-                </div>
-                <div className="feature-ui reveal">
-                  <FeatureUI id={b.id} />
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="future-final"><div className="container"><VesselMark size={70} tone="bone" idSuffix="future-final" /><p>THE WORLD WE WANT</p><h2>让每个人，都拥有自己的智能世界。</h2><span>它认识你，与你共同成长；它可以抵达远方，但永远不会越过你。</span><div><a className="btn btn-primary" href="/manifesto">阅读 Eidolon 愿景 →</a><a className="future-text-link" href={site.github} target="_blank" rel="noreferrer">在 GitHub 上共建 ↗</a></div></div></section>
 
-      {/* ── 5 · 场景 · Scene Horizon ── */}
-      <section id="scenes" className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{scenes.eyebrow}</p>
-            <h2 className="display-2">{scenes.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{scenes.lede}</p>
-          </div>
-          <div className="scene-grid">
-            {scenes.items.map((s) => (
-              <article className="scene-card reveal" key={s.en}>
-                <div className="scene-head">
-                  <span className="scene-cn">{s.k}</span>
-                  <span className="scene-en">{s.en}</span>
-                </div>
-                <p>{s.d}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6 · 壁垒 · Technical Moat（六层护城河）── */}
-      <section id="moat" className="band band-lacquer grain">
-        <div className="container">
-          <div className="section-head wide">
-            <p className="eyebrow">{moat.eyebrow}</p>
-            <h2 className="display-2">{moat.heading}</h2>
-            <p className="lede" style={{ marginTop: 18 }}>{moat.lede}</p>
-          </div>
-          <div className="moat-grid">
-            {moat.items.map((m) => (
-              <article className="moat-card reveal" key={m.en}>
-                <div className="moat-head">
-                  <span className="moat-n">{m.n}</span>
-                  <span className="moat-cn">{m.title}</span>
-                  <span className="moat-en">{m.en}</span>
-                </div>
-                <div className="moat-row"><span className="moat-k">难复制</span><p>{m.hard}</p></div>
-                <div className="moat-row value"><span className="moat-k">对你</span><p>{m.value}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7 · 走向（前瞻 + CTA）── */}
-      <section className="band band-lacquer grain closing">
-        <div className="container">
-          <p className="eyebrow">{closing.eyebrow}</p>
-          <h2 className="display-1" style={{ maxWidth: "16ch", marginBottom: 20 }}>{closing.heading}</h2>
-          <p className="lede" style={{ marginBottom: 36, maxWidth: "36ch" }}>{closing.sub}</p>
-          <a className="btn btn-primary" href={closing.cta.href} target="_blank" rel="noreferrer">↗ {closing.cta.label}</a>
-        </div>
-      </section>
-
-      {/* ── Footer ── */}
-      <footer className="site-footer">
-        <VesselMark size={44} tone="bone" idSuffix="foot" />
-        <p className="foot-name">{site.fullName}</p>
-        <span className="mantra">{site.mantraEn}</span>
-        <span className="mantra mantra-zh">{site.mantraZh}</span>
-      </footer>
+      <footer className="site-footer"><VesselMark size={44} tone="bone" idSuffix="foot" /><p className="foot-name">{site.fullName}</p><span className="mantra">{site.mantraEn}</span><span className="mantra mantra-zh">{site.mantraZh}</span></footer>
     </main>
   );
 }

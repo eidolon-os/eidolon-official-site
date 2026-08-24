@@ -1,36 +1,16 @@
 import type { Metadata } from "next";
-import { devPreview } from "../content";
+import { protocol, site } from "../content";
 import { SiteHeader } from "../components/SiteHeader";
 import { CoreGlyph } from "../components/brand";
 
-export const metadata: Metadata = {
-  title: "开发者 · 即将上线 | Eidolon OS",
-  description:
-    "EID-* 协议家族与接入 SDK 正在快速成形，即将开源。先在 GitHub 关注进展、参与共建。",
-};
+export const metadata: Metadata = { title: "为 Eidolon 建造 | 开发者", description: "让新的身体、感官、空间与能力进入同一个长期智能世界。" };
 
 export default function Developers() {
-  const hint = devPreview.willInclude.map((w) => w.k).join("　·　");
-  return (
-    <>
-      <SiteHeader />
-      <main className="coming2 band-lacquer grain">
-        <div className="coming2-glow" aria-hidden="true" />
-        <div className="coming2-inner">
-          <CoreGlyph size={60} className="coming2-glyph" />
-          <span className="coming-badge"><i />Coming soon · 即将上线</span>
-          <p className="eyebrow">{devPreview.eyebrow}</p>
-          <h1 className="coming2-title">开发者文档，<br />正在成形。</h1>
-          <p className="coming2-lede">{devPreview.lede}</p>
-          <p className="coming2-hint">将包含　{hint}</p>
-          <div className="coming-actions">
-            <a className="btn btn-primary" href={devPreview.cta.href} target="_blank" rel="noreferrer">
-              ↗ {devPreview.cta.label}
-            </a>
-            <a className="coming-back" href="/">← 返回首页</a>
-          </div>
-        </div>
-      </main>
-    </>
-  );
+  return <main className="site-shell future-site">
+    <SiteHeader />
+    <section className="builder-hero"><div className="builder-glow" /><div className="container builder-grid"><div><p>{protocol.hero.eyebrow}</p><h1>{protocol.hero.heading}</h1><span>{protocol.hero.lead}</span></div><div className="builder-core"><div><CoreGlyph size={62} /><b>EIDOLON</b></div>{["BODY","SENSE","SPACE","ABILITY"].map((x,i)=><span className={`builder-node node-${i+1}`} key={x}>{x}</span>)}</div></div></section>
+    <section className="future-section exchange-section"><div className="container"><div className="exchange-grid">{protocol.sides.map((side,index)=><article key={side.k}><small>0{index+1}</small><h2>{side.k}</h2><ul>{side.items.map(x=><li key={x}>{x}</li>)}</ul></article>)}</div></div></section>
+    <section className="future-section path-section"><div className="container"><p>HOW SOMETHING NEW ENTERS THE WORLD</p><h2>接入不是一次调用。<br />是进入一段关系。</h2><ol>{protocol.path.map((x,i)=><li key={x}><span>0{i+1}</span><b>{x}</b>{i<protocol.path.length-1&&<i>→</i>}</li>)}</ol></div></section>
+    <section className="builder-final"><div className="container"><p>{protocol.invitation}</p><a className="btn btn-primary" href={site.github} target="_blank" rel="noreferrer">在 GitHub 上一起建造 ↗</a></div></section>
+  </main>;
 }

@@ -1,130 +1,323 @@
+// 全站内容源 —— 科技产品叙事式（Linear/Vercel 语气）：干练、笃定、系统性。
+// 已弃：认得我/记得我五瞬间、钤印宣纸、陪伴腔。文案与呈现分离。
+
 export const site = {
   name: "Eidolon",
   fullName: "Eidolon OS",
-  title: "Eidolon OS | Personal AI Continuity Infrastructure",
-  positioningEn: "Personal AI Continuity Infrastructure",
-  positioningZh: "个人 AI 连续性基础设施",
-  description: "Eidolon OS 把身份、记忆、权限、设备状态与行动结果留在一个由你拥有的中枢里。模型会换，身体会换；你的连续性不必重新开始。",
-  descriptionEn: "The continuity layer for personal AI: owner-controlled identity, memory, authority, bodies, and outcomes. Local-first, cloud-optional.",
+  title: "Eidolon OS | Personal Sovereign Agent OS",
+  positioningEn: "Personal Sovereign Agent OS",
+  positioningZh: "个人智能体主权操作系统",
+  description:
+    "Eidolon 是一套个人智能体操作系统：一个属于你的长期 AI，带着你的身份、记忆和权限，在你所有设备上持续存在。本地优先，云可选。",
+  descriptionEn:
+    "Eidolon OS — a personal Agent OS you own. One identity, portable memory, governed permissions, running across all your devices. Local-first, cloud-optional.",
   github: "https://github.com/eidolon-os",
   githubLabel: "github.com/eidolon-os",
-  mantraEn: "Identity before body. Continuity before capability.",
-  mantraZh: "身份先于身体，连续性先于能力。",
+  mantraEn: "Identity before body. Memory as your asset. Sovereignty as the control plane.",
+  mantraZh: "身份先于身体，记忆成为资产，主权即中枢。",
 } as const;
 
 export const nav = [
-  { label: "产品", href: "/#product" },
-  { label: "壁垒", href: "/#moat" },
-  { label: "证据", href: "/#evidence" },
-  { label: "研究与投资", href: "/manifesto" },
+  { label: "是什么", href: "/#what" },
+  { label: "能力", href: "/#capabilities" },
   { label: "开发者", href: "/protocol" },
+  { label: "为什么是 Eidolon OS", href: "/manifesto" },
 ] as const;
 
-export const continuity = {
-  eyebrow: "The continuity stack",
-  heading: "真正会复利的，不是模型能力。是每一次被验证过的连续状态。",
-  lead: "大模型把能力普及了，也把单点功能的半衰期压到了最低。Eidolon 把竞争面从“这次回答有多强”移到“多年以后，它仍知道自己是谁、代表谁、记得什么、能做什么”。",
-  layers: [
-    { n: "01", k: "身份", en: "Identity", d: "一个 owner、一个长期 companion。身份不绑定某台硬件，也不随模型供应商变化。", state: "稳定根" },
-    { n: "02", k: "记忆", en: "Memory", d: "带来源、时间、置信度、纠错和删除语义的个人知识资产，而不是一袋聊天向量。", state: "持续校正" },
-    { n: "03", k: "权限", en: "Authority", d: "谁允许了什么、在何种场景下允许、何时撤销，形成可审计的行动边界。", state: "逐次验证" },
-    { n: "04", k: "身体", en: "Bodies", d: "手机、桌面、音箱、视觉节点和机器人只是可替换端点，共享同一身份与上下文。", state: "不断扩展" },
-    { n: "05", k: "结果", en: "Outcomes", d: "完成、失败、确认与回滚都写回系统，下一次执行继承经验，而不是重新猜一次。", state: "形成经验" },
-  ],
+// ── Hero ──────────────────────────────────────────────────────────────
+export const hero = {
+  lede:
+    "个人 AI 时代的操作层——一个由你掌控的主权中枢：收拢你的身份、记忆与权限，调度所有 AI、设备与工具。硬件会换、模型会换，这一层始终归你。",
+  ctaPrimary: { label: "看它怎么工作", href: "#what" },
 } as const;
 
-export const product = {
-  eyebrow: "Product wedge",
-  heading: "先做一位真正交付结果的桌面数字同事。",
-  lead: "不从“全能家庭管家”开始。第一战场是创作者、顾问与小团队主理人的桌面：高频语音输入、长项目记忆、跨工具执行和明确的时间回报，在一个场景里同时验证连续性、信任与付费意愿。",
-  moments: [
-    { n: "01", k: "说出来", d: "随口交代想法、承诺与任务，不需要重新组织成 prompt。" },
-    { n: "02", k: "接得住", d: "识别项目、人物与前情，知道哪些记忆可信、哪些需要确认。" },
-    { n: "03", k: "做下去", d: "拆任务、调工具、产出文件；敏感动作在权限门前停下。" },
-    { n: "04", k: "带回来", d: "主动汇报结果、失败与下一步，把真实产出写回项目脉络。" },
-    { n: "05", k: "换身体", d: "从桌面到手机再到机器人，身份、上下文和责任链保持连续。" },
-  ],
-  focus: [
-    { k: "首批用户", v: "创作者 / 顾问 / 小团队主理人", d: "任务密度高、上下文长、时间价值明确。" },
-    { k: "北极星指标", v: "每周被可信完成的任务数", d: "不是消息量、token 或陪聊时长。" },
-    { k: "付费理由", v: "更低的交代成本 + 可验证的结果", d: "关系连续性必须转化成执行 ROI。" },
-  ],
-} as const;
-
-export const evidence = {
-  eyebrow: "Evidence, not adjectives",
-  heading: "把“系统”从一个称呼，变成一组可复核的证据。",
-  lead: "下面是当前工程基线，不是市场成绩，也不伪装成已经完成的产品成熟度。下一阶段的核心任务，是让性能证据继续长出留存、信任、付费与生态证据。",
-  metrics: [
-    { value: "96.1%", label: "LongMemEval 检索 Recall@5", note: "500 题公开基准复现 · 零 LLM 调用" },
-    { value: "98.9 ms", label: "记忆召回端到端 p50", note: "49 次真实链路查询 · 300 ms 预算" },
-    { value: "664 ms", label: "语音结束到首帧语音 p50", note: "真机重复会话基线 · p95 777 ms" },
-  ],
-  maturity: [
-    { state: "已形成", k: "主权控制面", d: "Owner / Companion / Device / Mount 的权威边界与审计路径已经落到独立服务。" },
-    { state: "已形成", k: "长期记忆热路径", d: "向量召回、双时序知识图谱、来源与隐私语义、灾备重放均有实现与评测。" },
-    { state: "正在闭环", k: "多身体连续体验", d: "设备准入、会话、语音链路已通；Floor 权威与附体迁移仍需产品级验收。" },
-    { state: "必须证明", k: "市场证据", d: "付费留存、任务完成率、信任事件、OEM 接入周期与单位经济尚待真实用户验证。" },
-  ],
-} as const;
-
-export const dataStrategy = {
-  eyebrow: "A data advantage without data possession",
-  heading: "数据不必归公司，系统仍然可以变得更难复制。",
-  lead: "如果“主权”最后变成把用户数据集中到另一朵云里，Eidolon 就失去了存在理由。数据飞轮必须被重新设计：原始个人数据留在用户侧；公司积累的是经同意、去身份化或在本地完成计算后得到的系统证据。",
-  lanes: [
-    { k: "用户持有", en: "OWNER-HELD", items: ["原始对话与声像", "长期记忆与个人图谱", "权限与关系边界", "完整导出与删除权"] },
-    { k: "本地派生", en: "EDGE-DERIVED", items: ["匿名失败类别", "延迟与资源曲线", "策略命中/拒绝统计", "设备兼容结果"] },
-    { k: "公司复利", en: "COMPANY-COMPOUNDED", items: ["评测与红队语料", "协议一致性套件", "场景策略包", "认证与部署知识"] },
-  ],
-  rule: "不上传原始个人数据，也能让每一次部署改善下一次部署。",
-} as const;
-
-export const moats = {
-  eyebrow: "Compounding moat",
-  heading: "六层壁垒，只有第一层能被快速抄走。",
-  lead: "功能会被复制，架构也会被研究。真正的防御来自多个慢变量叠加：时间、真实状态、评测纪律、生态接入、可信品牌和分发关系。",
+// ── 1 · 现状：今天的 AI 不属于你 ──────────────────────────────────────
+export const problem = {
+  eyebrow: "现状",
+  heading: "AI 越来越强，却始终不是你的。",
+  lede:
+    "模型每年翻倍地强。可它越是能替你记事、替你做事、走进你的家和工作，有几个被所有产品绕开的问题就越尖锐——而它们指向同一件事：这个越来越懂你的智能体，到底归谁。",
   items: [
-    { speed: "周", k: "功能与界面", d: "记忆、语音、任务、设备面板都可以被复刻。", kind: "copy" },
-    { speed: "月", k: "跨域系统闭环", d: "身份、记忆、权限、设备与执行的一致性，需要真实失败才能磨合。", kind: "build" },
-    { speed: "季", k: "评测与故障语料", d: "跨模型、跨硬件、跨场景的回归基线由每一次事故和修复累积。", kind: "compound" },
-    { speed: "年", k: "用户连续状态", d: "被纠正过的记忆、授权史和任务结果形成个体经验；可迁移，但不能凭空生成。", kind: "compound" },
-    { speed: "年", k: "OEM 与身体生态", d: "接入、认证、售后与渠道关系带来分发和切换成本。", kind: "network" },
-    { speed: "长期", k: "主权信任品牌", d: "愿意把家庭、工作和行动权限交给谁，只能用长期无事故记录赢得。", kind: "trust" },
+    {
+      title: "它到底归谁",
+      body: "你把时间、习惯和信任都喂给了它，它却绑在平台账号上——换个 App 就重新做人，注销账号它就当没认识过你。你投入越深，反而越不属于你。",
+    },
+    {
+      title: "记忆是你的资产，还是它的养料",
+      body: "你沉淀的一切都存在厂商云里，成了平台的留存与推荐资产：你看不到全貌、改不了错、导不出来，也无法验证它真的删干净了。",
+    },
+    {
+      title: "换台设备，它就断片",
+      body: "它被锁在一台设备、一个入口里。换手机得从头再来，硬件一停服就只剩空壳——AI Pin 已经演示过：云一断，再贵的设备也丢了灵魂。",
+    },
+    {
+      title: "它能动手了，边界却没人定",
+      body: "当它开始调用工具、进入现实，问题就从「答得对不对」变成「谁授权、谁追责、能不能撤回」。今天只有两种选择：钥匙全交，或什么都不敢让它碰。",
+    },
   ],
 } as const;
 
-export const route = {
-  eyebrow: "Route to market",
-  heading: "一个产品切口，三层价值放大。",
-  phases: [
-    { n: "L1", title: "参考产品", en: "Desktop colleague", d: "用桌面数字同事跑通高频使用、可信任务完成与跨设备连续性。它不是最终市场，是所有后续承诺的证据机。", proof: "付费留存 · 每周可信完成任务 · 多身体迁移成功率" },
-    { n: "L2", title: "OEM 主权层", en: "Companion infrastructure", d: "向陪伴硬件、桌面机器人和私有化智能体厂商提供身份、记忆、权限、合规与设备接入底座。", proof: "首个第三方身体 · 接入周期 · 单台授权收入" },
-    { n: "L3", title: "协议与认证", en: "Body ecosystem", d: "把 EID-* 变成“身体接入即受治理”的契约与认证体系；第三方贡献能力，中枢保留主权根。", proof: "认证设备数 · 活跃能力数 · 生态收入" },
+// ── 2 · Eidolon 是什么（合并 总览+主张+为什么现在，前置）──────────────
+export const whatIs = {
+  eyebrow: "Eidolon",
+  heading: "不是又一个 AI 应用，是一套你拥有的操作系统。",
+  lede:
+    "AI 正在变成个人生活的操作层——而这一层，还没人把主权交给用户。Eidolon 把身份、记忆、权限和设备调度收进一个由你掌控的中枢：上面的模型能力随便换，下面的设备随便加，中间这条归你的中枢稳定不变。",
+  contrasts: [
+    { not: "把聊天机器人塞进音箱或机器人", is: "把长期智能体放进你的中枢，再连接不同设备" },
+    { not: "又一个陪伴 App、又一个办公 Agent", is: "让记忆、执行、感知共用同一套底座" },
+    { not: "和大厂比模型谁更强", is: "把身份、记忆、权限、设备调度权留在你手里" },
+    { not: "一台会说话的单机设备", is: "任何设备都只是它一具可替换的身体" },
+  ],
+  stack: {
+    top: { label: "能力与模型", note: "本地 / 私有云 / 公有云——可选、可换" },
+    waist: { label: "你的主权中枢", assets: ["身份", "记忆", "权限 · 审计"], note: "稳定不变，归你" },
+    bottom: { label: "设备网格", note: "手机 · 音箱 · 桌面 · 摄像头 · 机器人——可增、可换" },
+  },
+} as const;
+
+// ── 3 · 你真正拥有的（主权资产，平台 → 你）────────────────────────────
+export const assets = {
+  eyebrow: "主权资产",
+  heading: "交给别人的，现在归你。",
+  lede: "平台默认把这些握在自己手里；Eidolon 把它们交回你手上。",
+  items: [
+    { title: "身份", plat: "绑在平台账号上", you: "一个从始至终属于你的智能体" },
+    { title: "记忆", plat: "锁在厂商云里", you: "可查、可改、可导出、可删，换产品也带得走" },
+    { title: "设备调度", plat: "锁死在一台设备", you: "同一个智能体，在你所有设备间连续存在" },
+    { title: "权限", plat: "一次授权、之后不透明", you: "每个动作都要授权、留痕、可随时撤销" },
+    { title: "数据", plat: "默认先上厂商云", you: "默认跑在你自己的设备上，云只是可选算力" },
   ],
 } as const;
 
-export const sources = [
-  { k: "Agent 身份与授权成为标准议题", d: "NIST 在 2026 年启动 AI Agent Standards Initiative，并把 agent identity、authorization、audit 与 non-repudiation 列为核心问题。", href: "https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative", src: "NIST · 2026" },
-  { k: "工具与 Agent 互联正在标准化", d: "Linux Foundation 已托管 MCP、A2A 等开放项目；连接层会逐步商品化，治理层反而更重要。", href: "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation", src: "Linux Foundation · 2025–2026" },
-  { k: "长期记忆仍远未解决", d: "LongMemEval 显示，持续交互中的信息抽取、时间推理、知识更新与拒答仍是商用助手的显著难题。", href: "https://arxiv.org/abs/2410.10813", src: "LongMemEval · ICLR 2025" },
-  { k: "监管正把连续交互变成治理问题", d: "中国《人工智能拟人化互动服务管理暂行办法》已于 2026 年 7 月施行，覆盖数据安全、用户权益、人机边界与风险干预。", href: "https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm", src: "国家网信办 · 2026" },
-  { k: "可携带与互操作正在变成制度方向", d: "欧盟 DMA 要求守门人提供数据可携带与 OS 能力互操作，说明封闭平台的控制点正受到持续约束。", href: "https://digital-markets-act.ec.europa.eu/developer-portal/interoperability_en", src: "European Commission · DMA" },
-] as const;
-
-export const protocol = {
-  eyebrow: "For developers",
-  heading: "Build a body, not another silo.",
-  lead: "EID-* 不试图替代 MCP、A2A 或 Matter。它定义一件更窄也更关键的事：一个设备或能力如何进入某个人的 Agent OS，并在身份、权限、租约与审计之下工作。",
-  lifecycle: ["Discover", "Declare", "Authorize", "Lease", "Act", "Audit", "Remember"],
-  families: [
-    { k: "Pair", d: "设备身份、准入、Owner 归属与撤销。", state: "implemented" },
-    { k: "Media", d: "实时语音、PTT、打断与会话媒体。", state: "implemented" },
-    { k: "Task", d: "长任务、状态、结果与主动回推。", state: "implemented" },
-    { k: "Memory", d: "写入、召回、来源、隐私与审计。", state: "implemented" },
-    { k: "Room", d: "空间、在场、发言权与身体迁移。", state: "partial" },
-    { k: "Tools", d: "能力发现、调用与风险分级。", state: "partial" },
-    { k: "State", d: "设备状态、遥测与事实投影。", state: "partial" },
-    { k: "Capability", d: "通用能力租约与物理执行安全。", state: "research" },
+// ── 4 · 能力 ×4（替换五瞬间；每块配产品 UI，左右交替）────────────────
+export const capabilities = {
+  eyebrow: "能力",
+  heading: "一个操作系统该有的能力，围绕「你」重建。",
+  lede:
+    "记忆、多设备、执行、治理——单拎出一项，别的 AI 也在做。真正的差别是：在 Eidolon 上，它们都长在一个由你拥有的主权底座上，那正是平台在结构上不愿交给你的那一半。",
+  blocks: [
+    {
+      id: "memory",
+      tag: "Living Memory · 归你的记忆",
+      title: "记忆不再是它的养料，而是你的资产。",
+      body: "别的 AI 也有记忆，但存在它的云里、服务于它的留存。Eidolon 的记忆带来源、置信度与归属：你能看、能改、能导出、能删，换产品也带得走。可治理的记忆，才敢真的托付。",
+    },
+    {
+      id: "devices",
+      tag: "Body Mesh · 附体迁移",
+      title: "换设备不换人，走到哪它跟到哪。",
+      body: "不是每台设备各装一个助手，而是同一个智能体在多具身体间连续存在：几台同时听见，只应答一次；走进另一个房间换台设备接着说，上下文不断线。身份和对话权，从不被某台硬件带走。",
+    },
+    {
+      id: "task",
+      tag: "Agent Runtime · 到执行的闭环",
+      title: "交办的事，带着你的上下文做完。",
+      body: "它能拆任务、调工具、跑后台长任务，把结果落成真实文件和动作。差别在于：它长期懂你、握着你的记忆与权限，交办不必每次从头解释，做完还按归属和权限写回记忆——不是一个转身就失忆的通用 Agent。",
+    },
+    {
+      id: "govern",
+      tag: "Trust Kernel · 本地主权",
+      title: "它进得了你的家，因为钥匙一直在你手里。",
+      body: "声纹、私密模式、敏感授权与审计都在本地优先地闭环——不是「承诺不看」，而是从架构上把身份、权限和记忆放进你的中枢。每次动手都要授权、留痕、可随时撤销；云端只是可选算力，不是默认的事实源。",
+    },
   ],
+} as const;
+
+// ── 场景 · Scene Horizon（从陪伴到执行…从个人到生态，融合蓝图 §9.2）──
+export const scenes = {
+  eyebrow: "场景 · Scene Horizon",
+  heading: "从陪伴到执行，从房间到机器人，从个人到生态。",
+  lede: "同一个核，长进你生活的每一处；关系越深，它能到达的边界越远。",
+  items: [
+    { k: "家", en: "Home", d: "家里的长期数字成员：认得主人、记得关系，也知道什么时候不该外放。" },
+    { k: "工作", en: "Work", d: "从一句口头交代，进入文件、流程、软件与后台长任务的真实执行。" },
+    { k: "创作", en: "Studio", d: "听得见想法、按需看见现场，沉淀你的风格与项目脉络。" },
+    { k: "陪护", en: "Care", d: "尊重隐私边界的低打扰陪伴、提醒与安全感。" },
+    { k: "机器人", en: "Robotics", d: "机器人只是身体层——同一个 companion 换上一具会移动的身体。" },
+    { k: "生态", en: "Ecosystem", d: "开发者接入能力，你保留身份、记忆、权限与审计的根。" },
+  ],
+} as const;
+
+// ── 壁垒 · Technical Moat（六层护城河，融合蓝图 §7.2）──
+export const moat = {
+  eyebrow: "壁垒 · Technical Moat",
+  heading: "壁垒不在某个模型或硬件，而在把算法、设备和工具编排进主权化的多身体 OS。",
+  lede: "单点能力都会被商品化；真正难复制的，是把它们收进一个以你为根的系统——而且每一层都得从第一天就拆对，后补会牵动全局。",
+  items: [
+    { n: "01", title: "身份与身体解耦", en: "Identity–Body Decoupling", hard: "Human / Agent / Body / Scene 必须从第一天拆开；后补会牵动权限、记忆、路由与体验。", value: "换设备不换人，增加身体只是扩大同一个 Eidolon 的在场范围。" },
+    { n: "02", title: "可治理长期记忆", en: "Governable Memory", hard: "不是向量库检索，而是身份、来源、时间、敏感度、纠错、迁移与可审计遗忘的复合系统。", value: "你信它会记住，也信自己能纠正、撤回、导出与删除。" },
+    { n: "03", title: "本地主权信任内核", en: "Local Trust Kernel", hard: "声纹、私密模式、设备权限、敏感授权与审计要在本地优先的架构里稳定闭环。", value: "AI 进得了家庭与工作空间，控制权仍在你手里。" },
+    { n: "04", title: "多身体实时编排", en: "Multi-body Orchestration", hard: "多麦、barge-in、floor、场景路由、身体迁移与状态同步，远比单聊天窗口复杂。", value: "一个智能体从桌面说、随身控、房间看、执行器做。" },
+    { n: "05", title: "到执行的闭环", en: "Execution Loop", hard: "从回答到产出真实文件与动作，需要异步任务、权限、失败处理与结果写回记忆。", value: "你交代的事能被做完、回报、追踪并沉淀。" },
+    { n: "06", title: "协议化生态接口", en: "Protocol Ecosystem", hard: "设备生态不是开放一个 API，而是定义身份、能力、状态、租约、升级与认证全过程。", value: "第三方接得进来，却抢不走你的身份与记忆主权。" },
+  ],
+} as const;
+
+// ── 为什么是现在（战略帧：位移 + 三问 + 窗口 + 归属，融合蓝图 §摘要/§2）──
+export const thesis = {
+  eyebrow: "为什么是现在",
+  heading: "AI 正在 OS 化，窗口才刚打开。",
+  lead: "过去，「拥有一个属于自己的 AI」更像口号——智能全住在别人的云里，无从谈起。而此刻，三股力量同时到位，把它第一次变成能落地的工程：",
+  drivers: [
+    { n: "01", k: "AI 正在 OS 化", d: "它不再是某个应用里的聊天框，而开始跨设备、跨工具地承载你的记忆、权限、关系和现实行动。" },
+    { n: "02", k: "端侧刚跨过拐点", d: "本地模型的能力与成本第一次让 AI 能常驻在你自己的设备上，而不必把一切都上交云端。" },
+    { n: "03", k: "入口正在重新洗牌", d: "家庭语音 LLM 化、办公 Agent 能执行、随身硬件与家用机器人集中放量——个人 AI 的入口正被整体重写一遍。" },
+  ],
+  punch: "但个人主权层，还没人定义。",
+  punchSub: "别人的 AI 属于平台——Eidolon 属于你。",
+} as const;
+
+// ── 四个关键词（名字即架构，融合蓝图 §1.1）——核心价值 ────────────────
+export const keywords = {
+  eyebrow: "拆开这个名字",
+  heading: "四个词，每个都是一根承重柱。",
+  lede: "「个人智能体主权操作系统」不是堆形容词，是四层缺一不可的主张。",
+  items: [
+    { k: "个人", en: "Personal", d: "AI 时代的基本单位不再是账号或设备，而是一个人所拥有的长期智能体宇宙——家庭、团队、车、机器人都是它的延展。" },
+    { k: "智能体", en: "Agent", d: "不是聊天窗口，而是有记忆、有人格、能调用工具、能持续完成目标的长期数字成员。" },
+    { k: "主权", en: "Sovereign", d: "当 AI 承载你的记忆、关系和生活轨迹，控制权本身就是价值——身份、记忆、权限、数据、身体调度权都归你。" },
+    { k: "操作系统", en: "OS", d: "不是一个 App 或一台硬件，而是连接智能、身体、工具、记忆和场景的底层调度层，所有入口都跑在同一个 Eidolon 上。" },
+  ],
+} as const;
+
+// ── 收尾 · 走向（只留前瞻 + CTA）──────────────────────────────────────
+export const closing = {
+  eyebrow: "走向 · Where it goes",
+  heading: "这一层，该由你拥有。",
+  sub: "AI 正在变成个人生活的操作层——我们把它开源，和你一起定义。",
+  cta: { label: "上 GitHub 一起共建", href: site.github },
+} as const;
+
+// ── 开发者页（Coming soon —— 协议/SDK 迭代快，先预告）──────────────────
+export const devPreview = {
+  eyebrow: "For developers · EID-* Protocol & SDK",
+  heading: "开发者文档，正在成形。",
+  lede:
+    "EID-* 协议家族与接入 SDK 仍在快速迭代。与其贴一份很快过时的规格，不如等它稳定——先在 GitHub 关注进展、参与共建。",
+  willInclude: [
+    { k: "EID-* 协议家族", d: "Pair / Media / Tools / State / Task / Memory —— 身体与能力的接入契约。" },
+    { k: "能力与租约模型", d: "(exclusive｜shared) × (safe｜sensitive) 分类，Lease + epoch + 优先级门控。" },
+    { k: "参考接入", d: "Discover → Declare → Authorize → Lease → Act → Audit → Remember 七步流程与参考固件。" },
+  ],
+  cta: { label: "在 GitHub 关注进展", href: site.github },
+} as const;
+
+// ── 投资人页（核心概要 + 外部坐标[含中国合规] + 未来宏图）────────────────
+export const investor = {
+  eyebrow: "For investors · 为什么是 Eidolon OS",
+  heading: "个人 AI 的价值，正从「答得好」转移到「归谁有」。",
+  lede:
+    "模型与硬件会持续商品化；真正稀缺、且尚未被定义的，是一个由用户拥有的个人主权层。Eidolon 押注这一层。",
+  glance: [
+    { k: "定位", v: "个人智能体主权操作系统", d: "不是又一个 AI 应用，是收拢身份、记忆、权限与身体调度的主权中枢。" },
+    { k: "赌注", v: "个人主权层尚未被定义", d: "大厂优化的是平台留存，结构上不会把主权交还用户——这一层留白。" },
+    { k: "差异", v: "比归属，不比模型", d: "护城河不在某个模型或硬件，而在把它们编排进一个用户拥有的多身体 OS。" },
+  ],
+  opportunity: {
+    eyebrow: "机会 · Opportunity",
+    heading: "每一次平台换代，都在重新分配「归属」。这次轮到个人。",
+    lead: "大型机 → PC → 移动 → 云，每一层新平台都诞生一场归属之争，而前几次的答案都落到了平台手里。个人 AI 是下一层——不同的是，智能第一次能常驻你自己的设备，归属第一次可能真正回到个人。",
+    lineage: ["大型机", "PC", "移动", "云", "个人 AI"],
+    stats: [
+      { v: "以「人」为单位", k: "个人 AI 不按调用计价，而按人——数十亿人，每人一个终身、难以迁移的智能体。" },
+      { v: "价值沉淀在归属层", k: "OS、应用商店、云都证明：长期价值属于拥有身份与分发的那一层，而非单个应用。" },
+      { v: "换层刚刚开始", k: "端侧跨过拐点、协议在标准化、监管转向主权——个人 AI 的归属之争才刚拉开。" },
+    ],
+    note: "参照：AI agent 市场 2025→2030 年复合增速约 46%（MarketsandMarkets, 2025）。",
+    punch: "Eidolon 要的不是一个应用的份额，而是这一层的归属。",
+  },
+  signals: {
+    eyebrow: "外部坐标",
+    heading: "大势正在成形",
+    items: [
+      {
+        k: "协议在标准化",
+        d: "MCP（Anthropic）、A2A（Google）等 agent 协议于 2025-12 并入 Linux 基金会 Agentic AI Foundation（OpenAI/Anthropic/Google/微软/AWS/Block 共建）。agent 互联的基础设施正在定型。",
+      },
+      {
+        k: "主权成头号议题",
+        d: "2026 年 72% 的 IT 决策者把数据主权与合规列为首要 AI 挑战；local-first、端侧（edge）AI 快速崛起。",
+      },
+      {
+        k: "中国监管同向",
+        d: "生成式 AI 备案放量（2026-04 累计 868 款）；《AI 生成合成内容标识办法》(2025-09) 及强制国标要求可溯源标识；《人工智能拟人化互动服务管理暂行办法》(2026-07-15) 明确监管陪伴类交互；数据跨境三路径收紧。方向指向：可溯源、可标识、数据本地、拟人服务受管。",
+      },
+    ],
+    punch: "监管与生态的方向，正与 Eidolon 的主权化、本地优先、记忆可审计、身份可治理同向——是顺风，不是逆风。",
+  },
+  moat: {
+    eyebrow: "护城河",
+    heading: "为什么难被复制",
+    items: [
+      { k: "主权控制平面", d: "owner → companion → 记忆域 → 身体 → 权限/审计，一条从第一天就拆开的稳定窄边。" },
+      { k: "身份 × 身体解耦", d: "换设备不换人，加设备只是扩大在场；后补会牵动整个架构。" },
+      { k: "可治理长期记忆", d: "带来源、时效、纠错、迁移与可审计遗忘，是复合系统，不是向量库检索。" },
+      { k: "协议化生态边界", d: "第三方接得进来贡献能力，却抢不走用户的身份与记忆主权。" },
+    ],
+  },
+  roadmap: {
+    eyebrow: "未来宏图",
+    heading: "从最小完整系统，到生态底座",
+    phases: [
+      { phase: "现在", title: "主权中枢 + Council", d: "一个 owner、多个 companion、多个 body、一份记忆、一个执行器——Developer / Council Preview 跑通最小完整系统。" },
+      { phase: "接下来", title: "多身体 × 协议接入", d: "桌面 / 随身 / 视觉 / 车机 / 机器人身体扩展，EID-* 协议开放接入；Pi Hub Kit、Companion Kit、Vision Node 等套件把原型变成可复制产品。" },
+      { phase: "远期", title: "主权层成为底座", d: "第三方身体与能力经协议接入，用户始终保留身份、记忆、权限主权；个人 AI 主权层沉淀为生态底座。" },
+    ],
+  },
+  bigco: {
+    eyebrow: "竞争格局",
+    heading: "大厂会碾压模型和入口，却不会让出这一层。",
+    lead: "平台助手的收入，建立在账号绑定、生态锁定与留存之上；把可携带的身份、记忆与权限交还用户，等于亲手拆掉自己的护城河——这是结构性的商业模式冲突，不是能力问题。",
+    points: [
+      { k: "长期身份", plat: "绑定平台账号", you: "owner 拥有的长期 companion" },
+      { k: "记忆归属", plat: "留在平台云、服务于留存", you: "本地优先、可迁移的记忆域" },
+      { k: "身体扩展", plat: "优先自家设备与生态", you: "任意身体经 EID-* 平权接入" },
+      { k: "工具权限", plat: "平台授权、之后不透明", you: "owner 级权限 + 审计 + 撤销" },
+      { k: "断网 / 停服", plat: "账号降级、设备失能", you: "本地优先，云端只是可选" },
+    ],
+    evidence: [
+      {
+        tag: "行业现状",
+        k: "记忆，正被锁进各自的围墙",
+        d: "ChatGPT、Gemini、Claude 的长期记忆各自封闭、互不流通——「记忆型平台锁定」已服务十亿级用户；跨平台迁移直到 2026 年才被竞争与监管压力逼着松动。",
+        src: "AI memory silos · 2024–2026",
+      },
+      {
+        tag: "监管信号",
+        k: "可携带，要靠监管强制",
+        d: "欧盟《数字市场法》认定 7 家「守门人」，强制数据可携带与互操作，2026-01 仍需专项程序推动 Google 履约。可迁移、可互操作、归属用户，是大厂被「要求」才做的事——而 Eidolon 生而如此。",
+        src: "EU DMA · 2025–2026",
+      },
+    ],
+    punch: "大厂不是做不到；只是它们的收入建立在锁定之上——主权，从来不是它们的最优解。",
+  },
+  users: {
+    eyebrow: "从哪切入",
+    heading: "先赢下最在意主权的人。",
+    items: [
+      { k: "极客 / AI power user", d: "有家庭服务器或高配电脑、愿意折腾；要本地优先、可定制、可扩展——最能容忍早期形态，并贡献插件与协议反馈。" },
+      { k: "独立创作者 / 顾问", d: "大量语音想法、会议与写作；想要「说出来就有人整理」——陪伴 + 创作 / 执行闭环最强。" },
+      { k: "小团队主理人", d: "日程、资料、周报、客户跟进密集；低成本个人助理，Cowork 执行场景产生可量化 ROI。" },
+      { k: "隐私敏感家庭", d: "不愿家中麦克风连厂商云；本地中枢、声纹与家庭记忆边界最有说服力。" },
+    ],
+  },
+  objections: {
+    eyebrow: "直面质疑",
+    heading: "把最尖锐的问题，摆在前面。",
+    items: [
+      { q: "大厂下场会不会直接碾压？", a: "大厂会碾压模型、入口和云端 Agent，但默认最优解是平台助手，不是把主权交还用户。机会在主权控制平面，而非通用模型能力。" },
+      { q: "本地优先会不会牺牲体验？", a: "本地优先不是拒绝云，而是把默认归属放本地。实时语音与复杂模型可用云加速，但身份、记忆、权限、审计与迁移权不被云绑架。" },
+      { q: "长期记忆不准，会不会反伤信任？", a: "正因如此才把记忆做成资产而非聊天记录：带来源、置信度、确认、纠错、删除与审计。可治理的不完美，优于不可见的「平台替你记住」。" },
+      { q: "硬件是不是太难规模化？", a: "价值不锁死在某个硬件本体。自研身体用于验证体验与建立参考实现，长期价值在 Hub、协议、记忆与生态认证。" },
+      { q: "开放协议会不会让别人抢走生态？", a: "EID-* 开放的是接入能力，不开放主权资产。第三方贡献感知与执行，Hub 保留身份、记忆、权限与审计——这正是平台边界。" },
+      { q: "隐私是不是只是话术？", a: "不是「承诺不看」，而是架构上把 owner、记忆域、设备、策略、事件放进用户中枢；云端是可选算力，不是默认事实源。" },
+    ],
+    punch: "Eidolon 不赌某个单点能力永远领先，而赌个人 AI 时代一定需要一个用户拥有的主权控制平面。",
+  },
+  finalWord: {
+    quote: "人拥有一个智能体中枢；中枢里住着长期数字成员——有身份、有记忆、有边界、有身体。",
+    sub: "个人 AI 时代的主权层，理应归你。",
+    ctaLabel: "在 GitHub 上关注",
+  },
 } as const;

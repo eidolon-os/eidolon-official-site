@@ -1,40 +1,110 @@
-# Eidolon OS Official Site
+# vinext-starter
 
-Eidolon OS 的官方产品、战略与开发者网站。
+A clean full-stack starter running on
+[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
+Drizzle support.
 
-当前叙事核心不是“不可复制的 AI 功能”，而是 **Personal AI Continuity Infrastructure**：
-由用户拥有的身份、记忆、权限、身体状态与行动结果，在模型、硬件与云服务变化后仍保持连续。
+## Prerequisites
 
-## 页面
+- Node.js `>=22.13.0`
 
-- `/`：产品定位、连续性栈、首发切口、工程证据、数据策略、复利壁垒与商业路线
-- `/manifesto`：设计哲学、竞争判断、投资证据与 18 个月执行框架
-- `/protocol`：EID-* 协议定位、接入生命周期与真实成熟度
-
-## 本地运行
-
-需要 Node.js `>=22.13.0`。
+## Quick Start
 
 ```bash
 npm install
 npm run dev
 npm run build
-npm test
 ```
 
-## 内容维护原则
+This starter does not use `wrangler.jsonc`.
 
-1. 已实现、正在闭环、研究中必须分开标注。
-2. 性能数字必须说明样本、口径与边界，不用工程指标冒充市场证据。
-3. “主权”意味着用户可查看、纠正、导出和删除，不以数据锁定作为壁垒。
-4. EID-* 与 MCP、A2A、Matter 互补，不把内部草案描述为事实标准。
-5. 官网母命题保持稳定：**模型可以被复刻，你的连续性不能。**
+## Included Shape
 
-详细战略见 [STRATEGY.md](STRATEGY.md)。
+- edit site code under `app/`
+- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
+- `vite.config.ts` simulates declared bindings for local development
+- `db/schema.ts` starts intentionally empty
+- `examples/d1/` contains an optional D1 example surface
+- `drizzle.config.ts` supports local migration generation when needed
+
+## Workspace Auth Headers
+
+OpenAI workspace sites can read the current user's email from
+`oai-authenticated-user-email`.
+
+SIWC-authenticated workspace sites may also receive
+`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
+`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
+`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+
+Treat the full name as optional and fall back to email when it is absent:
+
+```tsx
+import { headers } from "next/headers";
+
+export default async function Home() {
+  const requestHeaders = await headers();
+  const email = requestHeaders.get("oai-authenticated-user-email");
+  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
+  const fullName =
+    encodedFullName &&
+    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
+      "percent-encoded-utf-8"
+      ? decodeURIComponent(encodedFullName)
+      : null;
+
+  const displayName = fullName ?? email;
+  // ...
+}
+```
+
+## Optional Dispatch-Owned ChatGPT Sign-In
+
+Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
+optional or required ChatGPT sign-in:
+
+- Use `getChatGPTUser()` for optional signed-in UI.
+- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
+  anonymous visitors through Sign in with ChatGPT.
+- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
+  browser links or actions.
+- Pass a same-origin relative `returnTo` path for the destination after sign-in
+  or sign-out. The helper validates and safely encodes it.
+- Mark protected pages with `export const dynamic = "force-dynamic"` because
+  they depend on per-request identity headers.
+
+Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
+OAuth cookies, and identity header injection. Do not implement app routes for
+those reserved paths. Routes that do not import and call the helper remain
+anonymous-compatible.
+
+SIWC establishes identity only; it does not prove workspace membership. Use the
+Sites hosting platform's access policy controls for workspace-wide restrictions,
+or enforce explicit server-side membership or allowlist checks.
+
+Use SIWC for account pages, user-specific dashboards, saved records, and write
+actions tied to the current ChatGPT user. Leave public content anonymous.
+
+## Useful Commands
+
+- `npm run dev`: start local development
+- `npm run build`: verify the vinext build output
+- `npm test`: build the starter and verify its rendered loading skeleton
+- `npm run db:generate`: generate Drizzle migrations after schema changes
+
+## Learn More
+
+- [vinext Documentation](https://github.com/cloudflare/vinext)
+- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
 
 ## License
 
 Copyright © 2026 Li Jinsong.
 
-Noncommercial use follows the [PolyForm Noncommercial License 1.0.0](LICENSE).
-Commercial use requires a separate written license; see [LICENSING.md](LICENSING.md).
+This project is available under the
+[PolyForm Noncommercial License 1.0.0](LICENSE) for permitted noncommercial
+use. Commercial use requires a separate written license; contact
+[lijinsong@aimanthor.com](mailto:lijinsong@aimanthor.com).
+
+See [LICENSING.md](LICENSING.md) and [NOTICE](NOTICE) for scope, exceptions,
+and required notices.

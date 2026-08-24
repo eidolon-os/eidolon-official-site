@@ -1,31 +1,46 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import "./globals.css";
 
-const siteTitle = "Eidolon OS | Personal AI Continuity Infrastructure";
+const siteTitle = "Eidolon OS | Personal Sovereign Agent OS";
 const siteDescription =
-  "Eidolon OS 是个人 AI 的连续性基础设施：由你拥有的身份、记忆、权限、身体与行动结果。Local-first，云可选。";
+  "Eidolon 是一个由你拥有的长期 AI 伙伴：它记得你、听你调度、能跨设备持续存在。一个 local-first、云可选的个人智能体主权操作系统。";
 const siteDescriptionEn =
-  "The continuity layer for personal AI: owner-controlled identity, memory, authority, bodies, and outcomes. Local-first, cloud-optional.";
+  "A personal AI companion you own — one identity, portable memory, governed permissions, and many bodies. Local-first, cloud-optional.";
 
-const metadataBase = new URL("https://eidolon.aimanthor.com/");
+export async function generateMetadata(): Promise<Metadata> {
+  const requestHeaders = await headers();
+  const host =
+    requestHeaders.get("x-forwarded-host") ??
+    requestHeaders.get("host") ??
+    "localhost:3001";
+  const proto =
+    requestHeaders.get("x-forwarded-proto") ??
+    (host.startsWith("localhost") ? "http" : "https");
+  const metadataBase = new URL(`${proto}://${host}`);
+  const ogImage = new URL("/og.jpg", metadataBase).toString();
 
-export const metadata: Metadata = {
-  metadataBase,
-  title: siteTitle,
-  description: siteDescription,
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
-  openGraph: {
+  return {
+    metadataBase,
     title: siteTitle,
-    description: siteDescriptionEn,
-    images: [{ url: "/og-continuity.png", width: 1732, height: 908, alt: siteTitle }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteTitle,
-    description: siteDescriptionEn,
-    images: ["/og-continuity.png"],
-  },
-};
+    description: siteDescription,
+    icons: {
+      icon: "/favicon.svg",
+      shortcut: "/favicon.svg",
+    },
+    openGraph: {
+      title: siteTitle,
+      description: siteDescriptionEn,
+      images: [{ url: ogImage, width: 1200, height: 1200, alt: siteTitle }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteTitle,
+      description: siteDescriptionEn,
+      images: [ogImage],
+    },
+  };
+}
 
 export default function RootLayout({
   children,

@@ -25,7 +25,7 @@ export default function Manifesto() {
     <section className="subhero">
       <p>THE EIDOLON MANIFESTO</p>
       <h1>AI 时代真正稀缺的，<br />不是更强的模型。<br /><em>是人的主权位置。</em></h1>
-      <span>模型会快速商品化，设备会持续换代，平台会不断争夺入口。Eidolon OS 选择成为个人 AI 的共同系统基础：让身份、记忆、权限与场景连续性不再依附某一个模型或某一台设备。</span>
+      <span>模型会快速商品化，设备会持续换代，平台会不断争夺入口。Eidolon OS 选择成为个人 AI 的共同系统基础：让身份、记忆、权限与活动连续性不再依附某一个模型或某一台设备。</span>
     </section>
 
     <section className="doc-section light-doc">
@@ -36,7 +36,7 @@ export default function Manifesto() {
       <div className="manifest-shifts">{shifts.map(([from,to,d],i)=><article key={from}><span>0{i+1}</span><del>{from}</del><i>→</i><h3>{to}</h3><p>{d}</p></article>)}</div>
     </div></section>
 
-    <section className="doc-section conviction-doc"><div className="container split-prose"><div><p>WHY THIS CAN ENDURE</p><h2>功能会被复刻。<br />中立位置、历史与信任不会被瞬间复制。</h2></div><div className="prose"><p>Eidolon 的价值随时间复利：越多真实场景进入，个人语境越完整；边界被反复验证，用户越敢委托；更多硬件接受同一套主权契约，迁移成本越低，生态价值越高。</p><p>这不是用锁定用户建立壁垒，而是用“用户可以离开”建立信任。真正的防御力来自一个悖论：因为人始终保有退出权，才愿意把更多生活交给它。</p></div></div></section>
+    <section className="doc-section conviction-doc"><div className="container split-prose"><div><p>WHY THIS CAN ENDURE</p><h2>功能会被复刻。<br />中立位置、历史与信任不会被瞬间复制。</h2></div><div className="prose"><p>Eidolon 的价值随时间复利：越多真实活动由它陪伴，个人语境越完整；边界被反复验证，用户越敢委托；更多硬件接受同一套主权契约，迁移成本越低，生态价值越高。</p><p>这不是用锁定用户建立壁垒，而是用“用户可以离开”建立信任。真正的防御力来自一个悖论：因为人始终保有退出权，才愿意把更多生活交给它。</p></div></div></section>
 
     <section className="doc-section roadmap-doc"><div className="container"><header className="section-lead"><p>THE PATH</p><h2>从一个人的主权闭环，走向开放的智能世界。</h2></header><div className="roadmap-list">{roadmap.map(([n,k,d])=><article key={n}><span>{n}</span><h3>{k}</h3><p>{d}</p></article>)}</div></div></section>
 

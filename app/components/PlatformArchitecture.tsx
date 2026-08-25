@@ -9,9 +9,9 @@ export function PlatformArchitecture({ compact = false }: { compact?: boolean })
       </div>
       <div className="pa-os">
         <header><small>THE OPERATING SYSTEM</small><h3>Eidolon OS</h3><p>让个人 AI 能在不同产品上运行、迁移和连续协作</p></header>
-        <div className="pa-services"><span>Personal AI Runtime</span><span>Memory &amp; Identity</span><span>Agent &amp; Model Fabric</span><span>Experience &amp; Scene</span><span>Security &amp; Authority</span></div>
+        <div className="pa-services"><span>Personal AI Runtime</span><span>Memory &amp; Identity</span><span>Agent &amp; Model Fabric</span><span>Experience &amp; Context</span><span>Security &amp; Authority</span></div>
       </div>
-      <div className="pa-eidx"><b>EID-X</b><span>设备发现 · 身份认证 · 能力声明 · 场景交接 · 权限与追溯</span></div>
+      <div className="pa-eidx"><b>EID-X</b><span>设备发现 · 身份认证 · 能力声明 · 任务交接 · 权限与追溯</span></div>
       <div className="pa-hardware"><span>Compute</span><span>Sensors</span><span>Displays</span><span>Instruments</span><span>Robotics</span></div>
     </div>
   );

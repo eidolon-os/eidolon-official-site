@@ -6,13 +6,13 @@ import { VesselMark } from "../components/brand";
 
 export const metadata: Metadata = {
   title: "Eidolon OS | 个人 AI 操作系统",
-  description: "Eidolon OS 为个人 AI 提供身份、记忆、Agent、模型、场景、权限和设备协作能力，并通过 EID-X 运行于不同硬件产品。",
+  description: "Eidolon OS 为个人 AI 提供身份、记忆、Agent、模型、情境、权限和设备协作能力，并通过 EID-X 运行于不同硬件产品。",
 };
 
 const systemLayers = [
   ["01", "PERSONAL AI RUNTIME", "个人 AI 运行时", "维护身份、记忆、关系、任务与长期状态，让应用和硬件面对的是同一个个人 AI。"],
   ["02", "INTELLIGENCE FABRIC", "智能与 Agent 层", "组合本地模型、云模型、工具和专业 Agent；能力可以升级，用户状态无需重建。"],
-  ["03", "EXPERIENCE FRAMEWORK", "体验与场景框架", "统一语音、视觉、屏幕、空间和主动服务，让任务在不同界面间自然接续。"],
+  ["03", "EXPERIENCE FRAMEWORK", "体验与情境框架", "统一语音、视觉、屏幕、空间和主动服务，让任务在不同界面间自然接续。"],
   ["04", "TRUST & AUTHORITY", "主权与安全服务", "管理数据边界、设备身份、操作确认、权限租约、审计与恢复。"],
 ] as const;
 
@@ -38,11 +38,11 @@ export default function OSPage() {
     <main className="site-shell product-story os-detail-page">
       <SiteHeader />
       <section className="os-detail-hero">
-        <div><p className="story-kicker">EIDOLON OS · THE PLATFORM</p><h1>个人 AI 的<br /><em>操作系统。</em></h1><p>如果传统操作系统让应用运行在各种电脑与手机上，Eidolon OS 则让一个人的 AI 运行在不同模型、产品与生活场景中。</p><div className="story-actions"><a className="story-button" href="#architecture">查看系统架构</a><Link className="story-link" href="/one">认识旗舰 One <i>↗</i></Link></div></div>
-        <div className="os-analogy"><span>像 Android 定义移动设备的软件基础</span><i>但面向</i><b>个人 AI 的身份、智能、场景与设备协作</b><small>不是一个聊天 App，也不绑定某一台硬件。</small></div>
+        <div><p className="story-kicker">EIDOLON OS · THE PLATFORM</p><h1>个人 AI 的<br /><em>操作系统。</em></h1><p>如果传统操作系统让应用运行在各种电脑与手机上，Eidolon OS 则让一个人的 AI 运行在不同模型、产品与真实活动中。</p><div className="story-actions"><a className="story-button" href="#architecture">查看系统架构</a><Link className="story-link" href="/one">认识旗舰 One <i>↗</i></Link></div></div>
+        <div className="os-analogy"><span>像 Android 定义移动设备的软件基础</span><i>但面向</i><b>个人 AI 的身份、智能、情境与设备协作</b><small>不是一个聊天 App，也不绑定某一台硬件。</small></div>
       </section>
 
-      <section id="architecture" className="os-architecture-section"><header className="story-heading light"><span>01 · SYSTEM ARCHITECTURE</span><h2>产品在上面生长。<br />OS 与协议在下面提供共同基础。</h2><p>Eidolon One、官方外设和第三方产品可以拥有不同形态，但共享系统服务、场景模型与连接规则。</p></header><PlatformArchitecture /></section>
+      <section id="architecture" className="os-architecture-section"><header className="story-heading light"><span>01 · SYSTEM ARCHITECTURE</span><h2>产品在上面生长。<br />OS 与协议在下面提供共同基础。</h2><p>Eidolon One、官方外设和第三方产品可以拥有不同形态，但共享系统服务、情境模型与连接规则。</p></header><PlatformArchitecture /></section>
 
       <section className="os-services-section"><header className="story-heading"><span>02 · SYSTEM SERVICES</span><h2>不是罗列功能。<br />是把个人 AI 做成可复用的系统能力。</h2></header><div className="os-services-list">{systemLayers.map(([n,en,name,d])=><article key={n}><span>{n}</span><div><small>{en}</small><h3>{name}</h3></div><p>{d}</p></article>)}</div></section>
 

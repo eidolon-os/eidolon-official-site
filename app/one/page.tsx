@@ -21,7 +21,7 @@ const family = [
 
 const standards = [
   ["INTEGRATED", "软硬件一体", "系统、算力、传感、交互和本地服务共同设计，减少拼装式 AI 体验。"],
-  ["CONTINUOUS", "跨场景连续", "One 与官方外设共享任务状态，用户不需要在每台设备上重新说明。"],
+  ["CONTINUOUS", "跨设备连续", "One 与官方外设共享任务状态，用户不需要在每台设备上重新说明。"],
   ["SOVEREIGN", "主权默认开启", "身份、记忆、权限、恢复与行动记录是系统默认，而不是隐藏在设置深处的选项。"],
   ["EXTENSIBLE", "面向生态扩展", "官方外设和第三方设备都经由 Eidolon OS 与 EID-X 接入，不形成封闭孤岛。"],
 ] as const;
@@ -47,14 +47,14 @@ export default function OnePage() {
           <p className="story-kicker">EIDOLON ONE · OFFICIAL FLAGSHIP</p>
           <h1>把 Eidolon OS，<br /><em>完整地做成一台产品。</em></h1>
           <p>Eidolon One 是官方旗舰个人 AI 设备——就像一个操作系统需要旗舰产品定义体验上限，One 负责把 Eidolon OS 的系统能力、交互方式与主权原则变成用户真正可以拥有的整机。</p>
-          <div className="story-actions"><a className="story-button" href="#family">查看 One 产品家族</a><a className="story-link" href="#flagship-scenes">看多场景接力 <i>↓</i></a></div>
+          <div className="story-actions"><a className="story-button" href="#family">查看 One 产品家族</a><a className="story-link" href="#flagship-scenes">看体验如何接力 <i>↓</i></a></div>
           <div className="one-status-line"><span>PRODUCT DIRECTION</span><i />官方旗舰<i />完整 OS 体验<i />工业设计进行中</div>
         </div>
         <div className="one-v2-hero-art"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 官方旗舰与随身、空间、具身产品家族概念影像" /><div><span>FLAGSHIP</span><i /><span>FAMILY</span><i /><span>ECOSYSTEM</span></div><p>CONCEPT IMAGERY · NOT FINAL INDUSTRIAL DESIGN</p></div>
       </section>
 
       <section className="one-boundary-section flagship-boundary">
-        <header><span>THE CORRECT PRODUCT RELATION</span><h2>OS 定义共同能力。<br />One 定义旗舰体验。<br />外设把体验延展到更多场景。</h2></header>
+        <header><span>THE PRODUCT RELATION</span><h2>OS 定义共同能力。<br />One 定义旗舰体验。<br />外设把体验带到更多活动中。</h2></header>
         <div className="one-boundary-diagram">
           <article><span>PLATFORM</span><h3>Eidolon OS</h3><p>可运行于不同硬件的个人 AI 操作系统。</p></article><i>完整呈现于</i>
           <article className="boundary-host"><span>FLAGSHIP</span><h3>Eidolon One</h3><p>官方软硬件一体的旗舰个人 AI 设备。</p></article><i>协作于</i>
@@ -66,7 +66,7 @@ export default function OnePage() {
       <section className="flagship-standard-section"><header className="story-heading"><span>01 · THE FLAGSHIP STANDARD</span><h2>One 的价值不是“唯一能运行”。<br />而是“由官方做到最好”。</h2><p>它承担操作系统旗舰产品应承担的角色：建立体验标准、证明系统能力，并为整个生态提供清晰参考。</p></header><div className="flagship-standards">{standards.map(([en,name,d])=><article key={en}><span>{en}</span><h3>{name}</h3><p>{d}</p></article>)}</div></section>
 
       <section id="family" className="matrix-v2-section one-family-section">
-        <header className="story-heading light"><span>02 · THE ONE FAMILY</span><h2>一台旗舰，<br />一组围绕生活场景设计的官方外设。</h2><p>每件产品都建立在 Eidolon OS 与 EID-X 之上。它们可以拥有不同传感器、界面和空间角色，但共享系统状态、设备身份和权限规则。</p></header>
+        <header className="story-heading light"><span>02 · THE ONE FAMILY</span><h2>一台旗舰，<br />一组围绕人的感知与行动设计的官方外设。</h2><p>每件产品都建立在 Eidolon OS 与 EID-X 之上。它们可以拥有不同传感器、界面和现实能力，但共享系统状态、设备身份和权限规则。</p></header>
         <figure className="matrix-concept-figure"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 官方旗舰与外设产品家族科技概念影像" /><figcaption><span>01 · 随身感官</span><span>02 · 创作与共享</span><span>03 · 工具与具身</span><small>用于表达产品方向与能力关系，不代表最终工业设计</small></figcaption></figure>
         <div className="matrix-v2-list">{family.map(item=><article key={item.name}><span>{item.n}</span><div className="matrix-name"><small>{item.code}</small><h3>{item.name}</h3><b>{item.role}</b></div><p className="matrix-promise">{item.promise}</p><p>{item.detail}</p><em>{item.group}</em></article>)}</div>
       </section>
@@ -84,7 +84,7 @@ export default function OnePage() {
           <article><span>08:40 · VISUAL</span><b>随行眼镜</b><h3>快速确认结构</h3><p>眼镜只获得提纲和素材预览，不接触其他私人内容。</p><small>LEASE: VISUAL ONLY</small></article><i>HANDOFF</i>
           <article><span>09:03 · STUDIO</span><b>One + Dock</b><h3>展开完整作品</h3><p>屏幕、文档、Agent、相机素材和来源在创作台重新展开。</p><small>OS: FULL STUDIO</small></article>
         </div>
-        <div className="scene-role-key"><span><b>Eidolon OS</b>保存任务与场景状态</span><span><b>One Family</b>提供当下最合适的交互</span><span><b>EID-X</b>完成设备能力和权限交接</span></div>
+        <div className="scene-role-key"><span><b>Eidolon OS</b>保存任务、关系与边界</span><span><b>One Family</b>提供当下最合适的交互</span><span><b>EID-X</b>完成设备能力和权限交接</span></div>
       </section>
 
       <section className="one-ecosystem-section"><div><span>05 · BEYOND THE ONE FAMILY</span><h2>官方外设之外，<br />还有整个兼容设备生态。</h2><p>可穿戴、创作设备、空间终端、无障碍工具、专业仪器和机器人厂商不需要复制 Eidolon One。它们可以运行适合自己的 Eidolon OS 版本，或通过 EID-X 提供能力，在同一套主权与连续性规则下形成差异化产品。</p></div><div className="ecosystem-rings"><b>EID-X</b><span>ONE FAMILY</span><span>WEARABLE</span><span>INSTRUMENT</span><span>ROBOTICS</span><small>ONE OS · OPEN DEVICE NETWORK</small></div></section>

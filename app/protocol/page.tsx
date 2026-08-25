@@ -8,7 +8,7 @@ const contracts = [
   ["Identity", "设备是谁", "每台设备、服务与 Agent 以可验证身份进入系统，不能凭匿名连接取得长期权限。"],
   ["Capability", "它能做什么", "声音、视觉、位置、显示、支付、移动与机械动作被声明成边界清晰的能力。"],
   ["Context", "此刻可以知道什么", "OS 只提供当前任务需要且被允许的上下文，不把用户完整状态复制给每台设备。"],
-  ["Lease", "这次允许多久", "能力授权带有场景、范围、期限和确认方式；离开场景或完成任务后自动失效。"],
+  ["Lease", "这次允许多久", "能力授权带有情境、范围、期限和确认方式；活动结束或任务完成后自动失效。"],
   ["Handoff", "任务如何交接", "设备离开、界面变化或风险等级改变时，任务状态能交给下一台合适产品继续。"],
   ["Trace", "行动如何追溯", "来源、模型、工具、设备、确认和结果形成可核查的责任链。"],
 ] as const;
@@ -18,7 +18,7 @@ export default function Protocol() {
     <SiteHeader />
     <section className="subhero protocol-subhero"><p>EID-X · DEVICE &amp; CAPABILITY PROTOCOL</p><h1>让不同设备，<br /><em>进入同一个 OS。</em></h1><span>EID-X 是 Eidolon OS 的设备与能力协议。可穿戴、空间终端、创作工具、辅助设备和机器人通过它被发现、认证、授权，并在情境变化时完成任务交接。</span></section>
 
-    <section className="doc-section protocol-position-section"><div className="container"><header className="section-lead"><p>WHERE EID-X SITS</p><h2>OS 维护个人 AI。<br />EID-X 连接现实硬件。<br />产品在两者之上形成体验。</h2></header><div className="protocol-position-map"><div className="ppm-products"><span>EIDOLON ONE</span><span>ONE FAMILY</span><span>PARTNER DEVICES</span></div><div className="ppm-os"><b>Eidolon OS</b><small>RUNTIME · MEMORY · AGENT · SCENE · AUTHORITY</small></div><div className="ppm-eidx"><b>EID-X</b><small>DISCOVER · IDENTIFY · CAPABILITY · HANDOFF · TRACE</small></div><div className="ppm-hardware"><span>SENSORS</span><span>DISPLAYS</span><span>INSTRUMENTS</span><span>ROBOTS</span></div></div></div></section>
+    <section className="doc-section protocol-position-section"><div className="container"><header className="section-lead"><p>WHERE EID-X SITS</p><h2>OS 维护个人 AI。<br />EID-X 连接现实硬件。<br />产品在两者之上形成体验。</h2></header><div className="protocol-position-map"><div className="ppm-products"><span>EIDOLON ONE</span><span>ONE FAMILY</span><span>PARTNER DEVICES</span></div><div className="ppm-os"><b>Eidolon OS</b><small>RUNTIME · MEMORY · AGENT · CONTEXT · AUTHORITY</small></div><div className="ppm-eidx"><b>EID-X</b><small>DISCOVER · IDENTIFY · CAPABILITY · HANDOFF · TRACE</small></div><div className="ppm-hardware"><span>SENSORS</span><span>DISPLAYS</span><span>INSTRUMENTS</span><span>ROBOTS</span></div></div></div></section>
 
     <section className="doc-section protocol-diagram-section"><div className="container"><header className="section-lead"><p>THE COMMON LANGUAGE</p><h2>官方产品与第三方设备，<br />使用同一种方式说明自己并请求能力。</h2></header><div className="protocol-waist"><div className="protocol-side minds"><small>OS SERVICES</small><span>个人 AI 运行时</span><span>情境与任务状态</span><span>权限与安全</span><span>Agent 与模型</span></div><div className="protocol-core"><small>DEVICE INTERFACE</small><b>EID-X PROTOCOL</b><span>IDENTITY · CAPABILITY · CONTEXT · LEASE · HANDOFF · TRACE</span></div><div className="protocol-side bodies"><small>PRODUCTS</small><span>One 官方外设</span><span>可穿戴与辅助设备</span><span>创作与专业工具</span><span>空间终端与机器人</span></div></div></div></section>
 

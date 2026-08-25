@@ -1,8 +1,19 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
+const retiredNarrative = new RegExp([
+  "人\\s*[、/]\\s*车\\s*[、/]\\s*家",
+  ["接住", "你的一天"].join(""),
+  "三套\\s*AI",
+  ["生活", "场景"].join(""),
+  ["跨场景", "连续"].join(""),
+].join("|"));
+
+function assertNarrativeIsCurrent(text) {
+  assert.doesNotMatch(text, retiredNarrative);
+}
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -43,6 +54,7 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(html, /触觉手环/);
   assert.match(html, /Your AI\. Your memory\. Your authority\./);
   assert.match(html, /github\.com\/eidolon-os/);
+  assertNarrativeIsCurrent(html);
 });
 
 test("server-renders the Eidolon One product page", async () => {
@@ -61,6 +73,7 @@ test("server-renders the Eidolon One product page", async () => {
   assert.match(html, /实时字幕器/);
   assert.match(html, /音乐控制器/);
   assert.match(html, /工业设计进行中/);
+  assertNarrativeIsCurrent(html);
 });
 
 test("server-renders the Eidolon OS platform page", async () => {
@@ -75,6 +88,7 @@ test("server-renders the Eidolon OS platform page", async () => {
   assert.match(html, /独处与思考/);
   assert.match(html, /无障碍体验/);
   assert.match(html, /EID-X/);
+  assertNarrativeIsCurrent(html);
 });
 
 test("server-renders the EID-X protocol page", async () => {
@@ -85,6 +99,40 @@ test("server-renders the EID-X protocol page", async () => {
   assert.match(html, /让不同设备/);
   assert.match(html, /任务如何交接/);
   assert.match(html, /HANDOFF/);
+  assertNarrativeIsCurrent(html);
+});
+
+test("server-renders the sovereignty manifesto", async () => {
+  const response = await render("/manifesto");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /AI 时代真正稀缺的/);
+  assert.match(html, /人的主权位置/);
+  assert.match(html, /Eidolon OS 不等于 Eidolon One/);
+  assertNarrativeIsCurrent(html);
+});
+
+test("keeps retired spatial-category language out of project sources", async () => {
+  const roots = ["app", "README.md", "VISION.md", "SOVEREIGNTY-DESIGN.md"];
+  const files = [];
+
+  async function collect(relativePath) {
+    const url = new URL(`../${relativePath}`, import.meta.url);
+    const entries = await readdir(url, { withFileTypes: true }).catch(() => null);
+    if (!entries) {
+      files.push(url);
+      return;
+    }
+    for (const entry of entries) {
+      const child = `${relativePath}/${entry.name}`;
+      if (entry.isDirectory()) await collect(child);
+      else if (/\.(?:md|ts|tsx|css)$/.test(entry.name)) files.push(new URL(`../${child}`, import.meta.url));
+    }
+  }
+
+  for (const root of roots) await collect(root);
+  const sources = await Promise.all(files.map((file) => readFile(file, "utf8")));
+  for (const source of sources) assertNarrativeIsCurrent(source);
 });
 
 test("keeps starter preview code out of the finished site", async () => {

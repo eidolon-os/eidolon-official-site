@@ -2,33 +2,30 @@ import type { Metadata } from "next";
 import { site } from "../content";
 import { SiteHeader } from "../components/SiteHeader";
 
-export const metadata: Metadata = { title: "EID-* 主权身体协议 | Eidolon OS", description: "让模型、应用、汽车、家庭设备和机器人在 Owner 授权下接入同一个 Eidolon。" };
+export const metadata: Metadata = { title: "EID-X 设备与能力协议 | Eidolon OS", description: "EID-X 定义官方外设、汽车、家庭设备和机器人如何被 Eidolon OS 发现、授权并完成场景交接。" };
 
 const contracts = [
-  ["Identity", "你是谁，代表谁", "设备与 Agent 必须带着可验证身份进入，不能只凭一个匿名 API Key 获得长期权限。"],
-  ["Capability", "你能做什么", "声音、视觉、位置、支付、移动和机械动作被声明成边界清晰、风险可判断的能力。"],
-  ["Lease", "这次允许多久", "授权有范围、期限、场景和确认方式；离开场景、任务结束或 Owner 撤回后立即失效。"],
-  ["Context", "此刻可以知道什么", "每个世界只挂载必要记忆。家庭、工作、健康与公共空间不会被粗暴合并。"],
-  ["Trace", "行动为何发生", "输入来源、使用的模型、调用的工具、获得的确认和最终结果组成可追溯责任链。"],
-];
+  ["Identity", "设备是谁", "每台设备、服务与 Agent 以可验证身份进入系统，不能凭匿名连接取得长期权限。"],
+  ["Capability", "它能做什么", "声音、视觉、位置、显示、支付、移动与机械动作被声明成边界清晰的能力。"],
+  ["Context", "此刻可以知道什么", "OS 只提供当前任务需要且被允许的上下文，不把用户完整状态复制给每台设备。"],
+  ["Lease", "这次允许多久", "能力授权带有场景、范围、期限和确认方式；离开场景或完成任务后自动失效。"],
+  ["Handoff", "任务如何交接", "设备离开、界面变化或风险等级改变时，任务状态能交给下一台合适产品继续。"],
+  ["Trace", "行动如何追溯", "来源、模型、工具、设备、确认和结果形成可核查的责任链。"],
+] as const;
 
 export default function Protocol() {
-  return <main className="site-shell sovereign-site">
+  return <main className="site-shell sovereign-site protocol-v2">
     <SiteHeader />
-    <section className="subhero protocol-subhero"><p>EID-* · FOR BUILDERS</p><h1>接入的不是一个助手。<br /><em>是一个人的主权边界。</em></h1><span>EID-* 让模型、应用、车辆、家庭设备和机器人声明自己是谁、能做什么、需要知道什么，并在 Owner 授权后成为 Eidolon 的临时心智或身体。</span></section>
+    <section className="subhero protocol-subhero"><p>EID-X · DEVICE &amp; CAPABILITY PROTOCOL</p><h1>让不同设备，<br /><em>进入同一个 OS。</em></h1><span>EID-X 是 Eidolon OS 的设备与能力协议。官方外设、汽车、家庭设备和机器人通过它被发现、认证、授权，并在场景变化时完成任务交接。</span></section>
 
-    <section className="doc-section protocol-diagram-section"><div className="container"><header className="section-lead"><p>THE NARROW WAIST</p><h2>上面可以不断出现新智能，下面可以不断出现新身体。中间只保留一套稳定的主权契约。</h2></header>
-      <div className="protocol-waist">
-        <div className="protocol-side minds"><small>MINDS</small><span>本地模型</span><span>云端模型</span><span>专业 Agent</span><span>第三方服务</span></div>
-        <div className="protocol-core"><small>OWNER CONTROLLED</small><b>EID-* SOVEREIGN CONTRACT</b><span>IDENTITY · CAPABILITY · LEASE · CONTEXT · TRACE</span></div>
-        <div className="protocol-side bodies"><small>BODIES</small><span>随身设备</span><span>汽车与空间</span><span>工作工具</span><span>机器人</span></div>
-      </div>
-    </div></section>
+    <section className="doc-section protocol-position-section"><div className="container"><header className="section-lead"><p>WHERE EID-X SITS</p><h2>OS 维护个人 AI。<br />EID-X 连接现实硬件。<br />产品在两者之上形成体验。</h2></header><div className="protocol-position-map"><div className="ppm-products"><span>EIDOLON ONE</span><span>ONE FAMILY</span><span>PARTNER DEVICES</span></div><div className="ppm-os"><b>Eidolon OS</b><small>RUNTIME · MEMORY · AGENT · SCENE · AUTHORITY</small></div><div className="ppm-eidx"><b>EID-X</b><small>DISCOVER · IDENTIFY · CAPABILITY · HANDOFF · TRACE</small></div><div className="ppm-hardware"><span>SENSORS</span><span>DISPLAYS</span><span>VEHICLES</span><span>ROBOTS</span></div></div></div></section>
 
-    <section className="doc-section contract-section"><div className="container"><header className="section-lead"><p>FIVE CONTRACTS</p><h2>能力越接近现实，关系越需要被说清楚。</h2></header><div className="contract-list">{contracts.map(([name,q,d],i)=><article key={name}><span>0{i+1}</span><small>EID-{name.toUpperCase()}</small><h3>{q}</h3><b>{name}</b><p>{d}</p></article>)}</div></div></section>
+    <section className="doc-section protocol-diagram-section"><div className="container"><header className="section-lead"><p>THE COMMON LANGUAGE</p><h2>官方产品与第三方设备，<br />使用同一种方式说明自己并请求能力。</h2></header><div className="protocol-waist"><div className="protocol-side minds"><small>OS SERVICES</small><span>个人 AI 运行时</span><span>场景与任务状态</span><span>权限与安全</span><span>Agent 与模型</span></div><div className="protocol-core"><small>DEVICE INTERFACE</small><b>EID-X PROTOCOL</b><span>IDENTITY · CAPABILITY · CONTEXT · LEASE · HANDOFF · TRACE</span></div><div className="protocol-side bodies"><small>PRODUCTS</small><span>One 官方外设</span><span>汽车与空间</span><span>显示与工作设备</span><span>机器人</span></div></div></div></section>
 
-    <section className="doc-section builder-section"><div className="container split-prose"><div><p>WHAT BUILDERS GAIN</p><h2>硬件不必再从零制造一个失忆的 AI。</h2></div><div className="prose"><p>开发者提供一种更好的心智、一个新的感官、一项可执行能力或一具现实身体。Eidolon 提供长期身份、已有关系、受控上下文、授权流程和结果写回。</p><p>这让不同品牌可以共同服务一个人，而不必共享、复制或占有那个人的完整数据。集成的价值从“把用户锁进生态”转向“让产品成为可信身体”。</p><a className="text-link" href={site.github} target="_blank" rel="noreferrer">查看协议进展与代码 ↗</a></div></div></section>
+    <section className="doc-section contract-section"><div className="container"><header className="section-lead"><p>SIX CONTRACTS</p><h2>设备越靠近现实，<br />交接和边界越需要被说清楚。</h2></header><div className="contract-list">{contracts.map(([name,q,d],i)=><article key={name}><span>0{i+1}</span><small>EID-{name.toUpperCase()}</small><h3>{q}</h3><b>{name}</b><p>{d}</p></article>)}</div></div></section>
 
-    <section className="closing-section"><p>THE OPEN INVITATION</p><h2>为一个人的 Eidolon，<br />创造新的心智与身体。</h2><a className="button light" href={site.github} target="_blank" rel="noreferrer">在 GitHub 上共建 ↗</a></section>
+    <section className="doc-section builder-section"><div className="container split-prose"><div><p>WHAT BUILDERS GAIN</p><h2>设备不必复制 One，<br />也不必从零制造自己的 AI 孤岛。</h2></div><div className="prose"><p>厂商可以设计自己的产品形态、传感器、交互与行业能力。Eidolon OS 提供个人 AI 的共同系统服务，EID-X 提供安全连接、场景交接和能力调用规则。</p><p>完整设备可以运行 Eidolon OS；轻量设备可以作为 Companion；既有汽车、家电或机器人也可以只实现 EID-X。三种路径共同进入一个兼容生态。</p><a className="text-link" href={site.github} target="_blank" rel="noreferrer">查看协议进展与代码 ↗</a></div></div></section>
+
+    <section className="closing-section"><p>THE OPEN DEVICE NETWORK</p><h2>为 Eidolon OS，<br />创造新的产品与现实能力。</h2><a className="button light" href={site.github} target="_blank" rel="noreferrer">在 GitHub 上共建 ↗</a></section>
   </main>;
 }

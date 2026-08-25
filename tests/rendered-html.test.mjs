@@ -31,15 +31,14 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Eidolon OS \| 一个真正属于你的个人 AI/);
-  assert.match(html, /一个真正/);
-  assert.match(html, /属于你的 AI/);
-  assert.match(html, /Eidolon OS 是完整产品/);
-  assert.match(html, /SOVEREIGN CORE/);
-  assert.match(html, /EID CONNECT/);
+  assert.match(html, /Eidolon OS \| 个人 AI 操作系统/);
+  assert.match(html, /运行在你的世界/);
+  assert.match(html, /OS 是系统与生态的基础/);
+  assert.match(html, /PERSONAL AI RUNTIME/);
+  assert.match(html, /EID-X/);
   assert.match(html, /Eidolon One/);
-  assert.match(html, /睡前一句话/);
-  assert.match(html, /人拥有一个持续存在的 AI/);
+  assert.match(html, /官方旗舰/);
+  assert.match(html, /家 → 路上 → 车 → 工作/);
   assert.match(html, /Your AI\. Your memory\. Your authority\./);
   assert.match(html, /github\.com\/eidolon-os/);
 });
@@ -48,14 +47,37 @@ test("server-renders the Eidolon One product page", async () => {
   const response = await render("/one");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Eidolon One \| 个人 AI 主机与产品矩阵/);
-  assert.match(html, /一台主机/);
+  assert.match(html, /Eidolon One \| Eidolon OS 官方旗舰/);
+  assert.match(html, /完整地做成一台产品/);
+  assert.match(html, /官方旗舰个人 AI 设备/);
   assert.match(html, /One Go/);
   assert.match(html, /One Room/);
   assert.match(html, /One Dock/);
   assert.match(html, /One Link/);
-  assert.match(html, /OS 负责/);
+  assert.match(html, /OS 定义共同能力/);
   assert.match(html, /工业设计进行中/);
+});
+
+test("server-renders the Eidolon OS platform page", async () => {
+  const response = await render("/os");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Eidolon OS \| 个人 AI 操作系统/);
+  assert.match(html, /像 Android 定义移动设备的软件基础/);
+  assert.match(html, /完整设备/);
+  assert.match(html, /伴随设备/);
+  assert.match(html, /能力设备/);
+  assert.match(html, /EID-X/);
+});
+
+test("server-renders the EID-X protocol page", async () => {
+  const response = await render("/protocol");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /EID-X 设备与能力协议/);
+  assert.match(html, /让不同设备/);
+  assert.match(html, /任务如何交接/);
+  assert.match(html, /HANDOFF/);
 });
 
 test("keeps starter preview code out of the finished site", async () => {

@@ -1,7 +1,7 @@
 // Hero 双图（同一行）——重设计为「有层次、有关联、有流向」的示意，而非一列相同的横框。
 //
 // 图 A · 技术架构：按真正的 OS 视角分两个空间带（用户态 / 内核态），中间一道 syscall 膜；
-//   主权内核是主体块，内核服务嵌在内核里（包含关系）；EID-* 协议画成一条总线母线（bus），
+//   主权内核是主体块，内核服务嵌在内核里（包含关系）；EID-X 协议画成一条总线母线（bus），
 //   身体作为芯片挂在总线下方；算力/数据面是最底的基座。信号自上而下穿过内核。
 // 图 B · 能力与场景：一颗朱砂核向下分叉成两簇能力（关系内核 / 行动延伸），
 //   再顺流落进具体场景。核 → 能力 → 场景，成长与关联可见。
@@ -88,11 +88,11 @@ export function HubPanel() {
             </div>
           </div>
 
-          {/* EID-* 协议：一条总线母线，身体挂在其下 */}
+          {/* EID-X 协议：一条总线母线，身体挂在其下 */}
           <div className="os-bus">
             <span className="bus-arrow" aria-hidden="true" />
             <div className="bus-bar">
-              <span className="bus-h">EID-* 协议<i>PROTOCOL · ABI</i></span>
+              <span className="bus-h">EID-X 协议<i>PROTOCOL · ABI</i></span>
               <div className="bus-tags">{PROTOCOL.map((p) => <i key={p}>{p}</i>)}</div>
             </div>
             <div className="hal">

@@ -9,14 +9,14 @@ const shifts = [
   ["平台账号", "Owner Root", "身份不再是某个平台数据库里的一行，而是人可以持有、迁移和恢复的根。"],
   ["聊天记录", "可继续生活的记忆", "记忆有来源、关系、边界与遗忘权，并能在更换模型后继续工作。"],
   ["全知助手", "有边界的代表", "智能体只能在明确范围和期限内代表人行动，并对每个结果留下责任链。"],
-  ["设备生态", "可挂载的身体", "车、家、手机和机器人提供感官与行动，但不能占有 Eidolon 本身。"],
+  ["设备孤岛", "同一个 OS 生态", "One、官方外设和兼容设备共享系统能力与 EID-X 连接规则，又保留各自产品形态。"],
 ];
 
 const roadmap = [
   ["01", "个人主权中枢", "完成一位 Owner 的身份、记忆、模型、设备与授权闭环。"],
   ["02", "生活连续性", "在随身、家庭、工作和移动空间里实现按边界挂载的同一体验。"],
   ["03", "家庭与团队联邦", "每个人保有自己的 Eidolon，再建立可验证、可撤回的共同空间。"],
-  ["04", "身体与智能体网络", "让硬件、机器人和其他 Agent 以公开契约接入，而不是被单一平台吞并。"],
+  ["04", "EID-X 设备生态", "让官方外设、汽车、机器人和其他 Agent 以公开协议接入，而不是形成新的硬件孤岛。"],
 ];
 
 export default function Manifesto() {
@@ -25,11 +25,11 @@ export default function Manifesto() {
     <section className="subhero">
       <p>THE EIDOLON MANIFESTO</p>
       <h1>AI 时代真正稀缺的，<br />不是更强的模型。<br /><em>是人的主权位置。</em></h1>
-      <span>模型会快速商品化，设备会持续换代，平台会不断争夺入口。Eidolon 选择构建不随它们消失的那一层：一个人自己的身份、记忆、权限、关系与长期智能连续性。</span>
+      <span>模型会快速商品化，设备会持续换代，平台会不断争夺入口。Eidolon OS 选择成为个人 AI 的共同系统基础：让身份、记忆、权限与场景连续性不再依附某一个模型或某一台设备。</span>
     </section>
 
     <section className="doc-section light-doc">
-      <div className="container split-prose"><div><p>THE STRUCTURAL GAP</p><h2>今天的 AI 越强，<br />所有权问题越无法回避。</h2></div><div className="prose"><p>当 AI 只回答问题时，选择哪个模型是体验差异。当 AI 开始读取私人数据、理解关系、代表人发消息、付款、开门或控制机器人时，选择谁拥有它，就成为权力结构。</p><p>平台倾向于让身份、数据、模型和入口闭合在自己的生态里。Eidolon 的机会不是做另一个更完整的平台，而是成为人与所有平台之间的主权层：中立、可迁移、可验证。</p></div></div>
+      <div className="container split-prose"><div><p>THE STRUCTURAL GAP</p><h2>今天的 AI 越强，<br />越需要自己的操作系统。</h2></div><div className="prose"><p>当 AI 只回答问题时，一个 App 足以承载它。当 AI 开始维护长期记忆、调用 Agent、跨设备继续任务，并进入汽车、家庭和机器人时，就需要稳定的运行时、设备协议和权限体系。</p><p>Eidolon OS 不等于 Eidolon One。OS 是可复用的系统基础；One 是官方旗舰产品；EID-X 让官方外设和第三方设备进入同一生态。人的主权由系统保证，而不是依赖某一件硬件。</p></div></div>
     </section>
 
     <section className="doc-section shift-doc"><div className="container"><header className="section-lead"><p>FOUR CHANGES</p><h2>把 AI 从平台资产，重新变成人的能力。</h2></header>

@@ -1,102 +1,89 @@
+import Link from "next/link";
 import { SiteHeader } from "./components/SiteHeader";
 import { EidolonOne } from "./components/EidolonOne";
 import { LifeScenes } from "./components/LifeScenes";
 import { OSConstellation } from "./components/OSConstellation";
+import { PlatformArchitecture } from "./components/PlatformArchitecture";
 import { VesselMark } from "./components/brand";
 import { site } from "./content";
 
-const osLayers = [
-  ["01", "SOVEREIGN CORE", "主权内核", "保存身份、长期记忆、关系、权限、任务状态与行动记录。它是同一个 Eidolon 不会归零的原因。"],
-  ["02", "INTELLIGENCE FABRIC", "智能编织层", "按任务组合本地模型、云模型和专业 Agent。模型提供能力，却不成为长期关系的主人。"],
-  ["03", "PRESENCE RUNTIME", "场景运行时", "让同一件事在手机、耳机、桌面与空间之间继续，并为每个场景切换交互与边界。"],
-  ["04", "EID CONNECT", "现实连接层", "让主机、车辆、家庭设备和机器人声明能力，获得有范围、有期限、可撤回的授权。"],
+const osCapabilities = [
+  ["01", "PERSONAL AI RUNTIME", "个人 AI 运行时", "身份、记忆、关系、任务与长期状态，不再被某个模型或设备定义。"],
+  ["02", "AGENT & MODEL FABRIC", "智能与 Agent 系统", "本地模型、云模型、工具和 Agent 按任务协作，随时可以升级与替换。"],
+  ["03", "EXPERIENCE FRAMEWORK", "体验与场景框架", "语音、屏幕、空间与主动服务共享同一套状态，场景切换不重新开始。"],
+  ["04", "TRUST & AUTHORITY", "主权与安全服务", "设备身份、数据边界、操作确认、授权租约与行动追溯成为系统能力。"],
+] as const;
+
+const portfolio = [
+  ["FLAGSHIP", "Eidolon One", "官方旗舰设备", "由 Eidolon 完整定义软硬件体验，展示 Eidolon OS 最完整、最可信的个人 AI 体验。", "/one"],
+  ["ONE FAMILY", "One Peripherals", "官方外设家族", "Go、Room、Dock 与 Link 围绕 One 扩展随身、家庭、工作和移动体验。", "/one#matrix"],
+  ["ECOSYSTEM", "EID-X Devices", "兼容设备生态", "汽车、家电、机器人与新终端通过 EID-X 接入 Eidolon OS 的场景与能力体系。", "/protocol"],
 ] as const;
 
 export default function Home() {
   return (
-    <main className="site-shell product-story">
+    <main className="site-shell product-story platform-home">
       <SiteHeader />
 
       <section id="top" className="product-hero os-hero">
         <div className="product-hero-copy">
-          <p className="story-kicker">EIDOLON OS · YOUR PERSONAL AI</p>
-          <h1>一个真正<br /><em>属于你的 AI。</em></h1>
-          <p className="hero-deck">Eidolon OS 保存那个持续认识你、跟随你并向你负责的 AI。模型可以替换，设备可以更换，你们共同形成的记忆与关系不会因此归零。</p>
-          <div className="story-actions"><a className="story-button" href="#os">理解 Eidolon OS</a><a className="story-link" href="/one">认识 One 主机 <i>↗</i></a></div>
-          <div className="hero-promises" aria-label="Eidolon OS 的三个承诺"><span><b>认识你</b>共同经历不会归零</span><span><b>跟随你</b>事情在场景间继续</span><span><b>属于你</b>记忆与决定由你掌握</span></div>
+          <p className="story-kicker">EIDOLON OS · PERSONAL AI OPERATING SYSTEM</p>
+          <h1>让你的 AI，<br /><em>运行在你的世界。</em></h1>
+          <p className="hero-deck">Eidolon OS 是面向个人 AI 的操作系统。它为不同模型、设备与生活场景提供同一套身份、记忆、Agent、权限和连续体验。</p>
+          <div className="story-actions"><a className="story-button" href="#platform">理解产品架构</a><Link className="story-link" href="/one">认识旗舰 Eidolon One <i>↗</i></Link></div>
+          <div className="hero-promises" aria-label="Eidolon OS 的三个价值"><span><b>一个系统</b>承载个人 AI 核心能力</span><span><b>多种产品</b>官方与生态硬件共同运行</span><span><b>连续场景</b>任务和关系跨设备延续</span></div>
         </div>
         <OSConstellation />
       </section>
 
-      <section className="category-statement">
-        <p>今天的 AI 以模型、App 和设备为边界。一个人因此拥有很多彼此失忆的助手。</p>
-        <h2>Eidolon OS 改变的不是助手功能。<br />而是 AI <em>以谁为中心。</em></h2>
-        <div className="category-change" aria-label="产品范式变化"><span>平台拥有身份与记忆</span><i>→</i><b>人拥有一个持续存在的 AI</b></div>
+      <section id="platform" className="category-statement platform-statement">
+        <p>Eidolon OS 与 Eidolon One，不是同一个层级的产品。</p>
+        <h2>OS 是系统与生态的基础。<br />One 是把它做到极致的<em>官方旗舰。</em></h2>
+        <div className="category-change" aria-label="Eidolon 产品关系"><span>Eidolon OS + EID-X</span><i>→</i><b>One · 官方外设 · 第三方设备</b></div>
       </section>
 
-      <section id="os" className="os-logic-section">
-        <header className="story-heading"><span>01 · THE WHOLE PRODUCT</span><h2>Eidolon OS 是完整产品。<br />One 是它的第一台主机。</h2><p>先把层级说清楚：OS 负责连续性、智能编排、场景运行与现实连接；One 负责给这套系统一个由个人掌握、长期在线的物理家。</p></header>
-        <div className="os-logic-layout">
-          <aside className="os-logic-index"><p>THE OPERATING SYSTEM</p><h3>一个内核，<br />编织所有智能，<br />抵达所有场景。</h3><div><span>稳定</span><b>Owner · Core · Memory</b></div><div><span>变化</span><b>Models · Devices · Places</b></div></aside>
-          <div className="os-layer-flow">
-            {osLayers.map(([n,en,name,description]) => <article key={n}><span>{n}</span><div><small>{en}</small><h3>{name}</h3></div><p>{description}</p></article>)}
-          </div>
-        </div>
-        <div className="product-hierarchy" aria-label="Eidolon 产品层级">
-          <div className="hierarchy-os"><span>SOFTWARE SYSTEM</span><b>Eidolon OS</b><small>完整的个人 AI 操作系统</small></div>
-          <i>运行于</i>
-          <div className="hierarchy-one"><span>FIRST-PARTY HOST</span><b>Eidolon One</b><small>第一方个人 AI 主机</small></div>
-          <i>连接</i>
-          <div className="hierarchy-matrix"><span>PRESENCES & BODIES</span><b>One 产品矩阵 + EID-* 生态</b><small>随身、空间、汽车与机器人</small></div>
-        </div>
-        <div className="os-one-teaser">
-          <div><span>THE FIRST-PARTY HARDWARE</span><h3>Eidolon One</h3><p>One 不是 OS 的新名字。它是一台具体主机：在你掌握的设备里保存长期状态，再把必要的能力交给身边的外设与场景。</p><a className="story-link" href="/one">查看 One 产品矩阵与概念影像 <i>↗</i></a></div>
-          <EidolonOne />
+      <section className="platform-overview-section">
+        <header className="story-heading light"><span>01 · PRODUCT ARCHITECTURE</span><h2>先有共同的系统基础，<br />再有不同形态的产品。</h2><p>Eidolon OS 提供运行时与系统服务；EID-X 定义设备如何发现、授权和协作；One、官方外设和生态设备在其上形成产品体验。</p></header>
+        <PlatformArchitecture compact />
+      </section>
+
+      <section id="os" className="os-capability-section">
+        <header className="story-heading"><span>02 · EIDOLON OS</span><h2>像操作系统一样，<br />把个人 AI 的共同能力沉到系统层。</h2><p>它不是某一台主机的固件，也不是一个聊天 App。它可以运行在 Eidolon One，也可以服务未来的兼容设备与合作伙伴产品。</p></header>
+        <div className="os-capability-layout">
+          <aside><p>THE PLATFORM</p><h3>同一个 OS，<br />让产品共享能力，<br />又保留各自形态。</h3><Link className="story-link" href="/os">进入 Eidolon OS 页面 <i>↗</i></Link></aside>
+          <div className="os-capability-list">{osCapabilities.map(([n,en,name,d])=><article key={n}><span>{n}</span><div><small>{en}</small><h3>{name}</h3></div><p>{d}</p></article>)}</div>
         </div>
       </section>
 
-      <section id="philosophy" className="philosophy-section">
-        <header className="story-heading"><span>02 · THE EIDOLON PRINCIPLE</span><h2>产品的中心不是模型。<br />是一个真实的人。</h2><p>三条原则同时定义体验与边界。缺少其中任何一条，Eidolon 都会退化为另一个平台助手。</p></header>
-        <div className="principle-run">
-          <article><span>01</span><h3>认识你</h3><p>记得共同经历、你的偏好与正在进行的事。不是把所有数据塞进提示词，而是知道什么在此刻真正相关。</p><small>LONG-TERM MEMORY</small></article>
-          <article><span>02</span><h3>跟随你</h3><p>同一件事从手机到车、从耳机到桌面自然继续。设备只是入口，不会各自养出一个新的、失忆的你。</p><small>CONTINUITY ACROSS PLACES</small></article>
-          <article><span>03</span><h3>属于你</h3><p>你能带走记忆、换掉模型、撤回设备、看见行动依据。能力可以越来越强，权力不能越过你的允许。</p><small>USER SOVEREIGNTY</small></article>
-        </div>
+      <section className="portfolio-section">
+        <header className="story-heading"><span>03 · PRODUCT PORTFOLIO</span><h2>系统、旗舰、外设与生态，<br />各自回答不同问题。</h2></header>
+        <div className="portfolio-intro"><div><EidolonOne /></div><p><b>Eidolon One</b> 不是 OS 的别名，也不是所有个人状态唯一可能的住所。它是官方旗舰：用一台完整产品定义 Eidolon OS 应有的体验标准，并带动官方外设和兼容设备生态。</p></div>
+        <div className="portfolio-list">{portfolio.map(([tag,name,kind,d,href],index)=><article key={name}><span>0{index+1}</span><small>{tag}</small><h3>{name}</h3><b>{kind}</b><p>{d}</p><Link href={href}>了解更多 ↗</Link></article>)}</div>
       </section>
 
-      <section id="life" className="life-section">
-        <header className="story-heading light"><span>03 · ONE LIFE, ONE CONTINUITY</span><h2>不是“人、车、家”三套 AI。<br />是同一个 Eidolon，接住你的一天。</h2><p>OS 跟随事情的前因后果；One 与外设负责在不同地方让它出现。连续不等于把所有隐私复制到所有设备。</p></header>
+      <section id="life" className="life-section platform-life-section">
+        <header className="story-heading light"><span>04 · CONTINUITY IN REAL LIFE</span><h2>不是把同一界面搬到所有设备。<br />是让同一件事穿过多个场景。</h2><p>Eidolon OS 维护任务和关系的连续性；One 与其他产品呈现当下最合适的交互；EID-X 完成设备能力与权限的交接。</p></header>
         <LifeScenes />
       </section>
 
-      <section id="architecture" className="plain-architecture">
-        <header className="story-heading"><span>04 · THE SOVEREIGN RELATION</span><h2>主权不是一个设置项。<br />它是整套架构的方向。</h2><p>从人的根权出发，经过 Eidolon Core，再抵达模型与现实设备。越靠外越容易替换，越靠内越不能被平台带走。</p></header>
-        <div className="relation-map">
-          <div className="relation-owner"><span>OWNER ROOT</span><h3>你</h3><p>拥有、恢复、决定</p></div><i className="relation-arrow" />
-          <div className="relation-core"><VesselMark size={68} tone="bone" idSuffix="map" /><span>EIDOLON CORE</span><h3>记忆你，代表你，向你负责</h3><p>身份 · 长期记忆 · 关系 · 权限 · 任务 · 行动记录</p></div><i className="relation-arrow" />
-          <div className="relation-world"><div><span>MINDS</span><b>本地模型 / 云模型 / Agents</b></div><div><span>BODIES</span><b>One / 手机 / 家 / 车 / 机器人</b></div><p>它们提供智能与身体，但不拥有你。</p></div>
-        </div>
-        <p className="architecture-plain">每个模型与身体得到的不是你的全部数据，而是一份有范围、有期限、可随时收回的能力。Eidolon OS 知道信息从哪里来、为何被使用、结果去了哪里。</p>
+      <section className="sovereignty-platform-section">
+        <header className="story-heading"><span>05 · SOVEREIGN BY DESIGN</span><h2>个人主权不是 One 的硬件卖点。<br />是整个 OS 的系统规则。</h2><p>因此它会作用于每一台设备、每一个模型和每一次场景切换。</p></header>
+        <div className="sovereignty-run"><article><span>OWN</span><h3>属于你</h3><p>身份、长期记忆与恢复权由 Owner 掌握。</p></article><article><span>MOVE</span><h3>可迁移</h3><p>更换模型或兼容设备，不要求重新建立自己。</p></article><article><span>BOUND</span><h3>有边界</h3><p>每个场景只得到当下必要的上下文和能力。</p></article><article><span>TRACE</span><h3>可追溯</h3><p>重要读取、调用、交接和写回留下责任链。</p></article></div>
       </section>
 
-      <section id="company" className="company-section">
-        <header className="story-heading light"><span>05 · THE PRODUCT FLYWHEEL</span><h2>从个人 OS 建立关系，<br />由 One 与现实世界扩大价值。</h2><p>软件形成连续性，第一方主机建立可信锚点，外设与 EID-* 生态扩大场景。三者是一条增长路径，而不是三个互相竞争的产品。</p></header>
-        <div className="growth-path">
-          <article><span>OS</span><h3>个人关系</h3><p>记忆、任务接力与主权控制成为每天使用的软件入口。</p><b>Core 软件 / 可选智能服务</b></article><i>→</i>
-          <article><span>ONE</span><h3>可信主机</h3><p>第一方硬件承载长期状态，形成家庭与个人空间中的稳定锚点。</p><b>主机 / 外设 / 家庭方案</b></article><i>→</i>
-          <article><span>EID-*</span><h3>身体网络</h3><p>汽车、空间、机器人与第三方硬件接入用户已经拥有的关系。</p><b>协议认证 / OEM 授权 / 生态</b></article>
-        </div>
-        <div className="moat-statement"><p>大厂可以复刻某个功能，<br />却很难复制一个跨模型、跨品牌的个人主权位置。</p><div><h3>壁垒随使用共同生长</h3><span>个人语境</span><i>×</i><span>授权关系</span><i>×</i><span>第一方主机</span><i>×</i><span>现实身体网络</span><small>资产由用户拥有，产品因此获得长期托付；Eidolon 的中立性不是口号，而是进入不同品牌与生活场景的条件。</small></div></div>
+      <section className="eidx-home-section">
+        <div className="eidx-home-copy"><span>06 · EID-X PROTOCOL</span><h2>OS 让个人 AI 能运行。<br />EID-X 让现实设备能加入。</h2><p>协议定义设备是谁、能做什么、此刻可以知道什么、授权何时到期，以及任务如何从一台设备交给另一台。</p><Link className="story-link" href="/protocol">了解 EID-X 协议 <i>↗</i></Link></div>
+        <div className="eidx-signal"><b>EID-X</b><span>IDENTITY</span><i /><span>CAPABILITY</span><i /><span>CONTEXT</span><i /><span>HANDOFF</span><i /><span>TRACE</span></div>
       </section>
 
-      <section className="future-section">
-        <p>EIDOLON OS · EIDOLON ONE · EID-* ECOSYSTEM</p>
-        <div className="future-line"><span>个人 OS</span><i /><span>第一方主机</span><i /><span>生活外设</span><i /><span>开放身体网络</span></div>
-        <h2>未来不是每件设备都有一个 AI。<br />而是每个人，都真正拥有一个。</h2>
-        <div className="story-actions"><a className="story-button light" href="/one">进入 Eidolon One</a><a className="story-link on-dark" href="/protocol">了解 EID-* 协议 ↗</a></div>
+      <section className="platform-growth-section">
+        <header className="story-heading light"><span>07 · WHY THIS SCALES</span><h2>旗舰定义体验。<br />操作系统扩大产品边界。<br />协议连接现实世界。</h2></header>
+        <div className="growth-path"><article><span>ONE</span><h3>建立标杆</h3><p>官方旗舰让用户直接理解并体验个人 AI。</p><b>完整软硬件体验</b></article><i>→</i><article><span>OS</span><h3>复用能力</h3><p>共同系统服务进入更多官方与合作伙伴产品。</p><b>平台与开发生态</b></article><i>→</i><article><span>EID-X</span><h3>扩展场景</h3><p>不同品牌设备以统一规则加入用户生活。</p><b>兼容认证与能力网络</b></article></div>
       </section>
 
-      <footer className="story-footer"><VesselMark size={36} tone="bone" idSuffix="footer-new" /><p>{site.fullName}</p><span>Your AI. Your memory. Your authority.</span><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></footer>
+      <section className="future-section"><p>EIDOLON OS · EIDOLON ONE · EID-X ECOSYSTEM</p><div className="future-line"><span>操作系统</span><i /><span>官方旗舰</span><i /><span>外设家族</span><i /><span>兼容生态</span></div><h2>未来不是每件设备各自拥有一个 AI。<br />而是一个人的 AI，运行在整个世界。</h2><div className="story-actions"><Link className="story-button light" href="/os">进入 Eidolon OS</Link><Link className="story-link on-dark" href="/one">认识 Eidolon One ↗</Link></div></section>
+
+      <footer className="story-footer"><VesselMark size={36} tone="bone" idSuffix="footer-platform" /><p>{site.fullName}</p><span>Your AI. Your memory. Your authority.</span><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></footer>
     </main>
   );
 }

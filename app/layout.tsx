@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteTitle = "Eidolon OS | 一个真正属于你的个人 AI";
+const siteTitle = "Eidolon OS | 个人 AI 操作系统";
 const siteDescription =
-  "Eidolon 记得你的生活，接住没做完的事，并在手机、家、车与工作之间继续陪你。换模型、换设备，它都还是它。";
+  "Eidolon OS 为不同模型、设备与生活场景提供统一的个人 AI 运行时、系统服务与连续体验。";
 const siteDescriptionEn =
-  "A personal AI that remembers you, carries work across places, and remains yours as models and devices change.";
+  "The personal AI operating system across models, devices and real-world scenes.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eidolon.aimanthor.com"),
   title: siteTitle,
   description: siteDescription,
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
-  openGraph: { title: siteTitle, description: siteDescriptionEn, images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: "Eidolon OS — 一个真正属于你的 AI" }] },
+  openGraph: { title: siteTitle, description: siteDescriptionEn, images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: "Eidolon OS — 个人 AI 操作系统" }] },
   twitter: { card: "summary_large_image", title: siteTitle, description: siteDescriptionEn, images: ["/og-v2.png"] },
 };
 

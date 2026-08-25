@@ -1,11 +1,11 @@
 export const site = {
   name: "Eidolon",
   fullName: "Eidolon OS",
-  title: "Eidolon OS | 一个真正属于你的个人 AI",
-  positioningEn: "The Sovereign Personal AI OS",
-  positioningZh: "由你拥有的个人 AI 操作系统",
-  description: "Eidolon 记得你的生活，接住没做完的事，并在不同场景之间继续陪你；换模型、换设备，它都还是它。",
-  descriptionEn: "A sovereign personal AI operating system. Your identity, memory and authority remain yours while models and devices change.",
+  title: "Eidolon OS | 个人 AI 操作系统",
+  positioningEn: "The Personal AI Operating System",
+  positioningZh: "让个人 AI 运行在现实世界的操作系统",
+  description: "Eidolon OS 为不同模型、设备和生活场景提供统一的个人 AI 运行时、系统服务与连续体验。",
+  descriptionEn: "The operating system for personal AI across models, devices and real-world scenes.",
   github: "https://github.com/eidolon-os",
   githubLabel: "github.com/eidolon-os",
   mantraEn: "Your AI. Your memory. Your authority.",
@@ -13,11 +13,11 @@ export const site = {
 } as const;
 
 export const nav = [
-  { label: "Eidolon OS", href: "/#os" },
+  { label: "Eidolon OS", href: "/os" },
   { label: "生活场景", href: "/#life" },
   { label: "Eidolon One", href: "/one" },
   { label: "愿景", href: "/manifesto" },
-  { label: "开发者", href: "/protocol" },
+  { label: "EID-X", href: "/protocol" },
 ] as const;
 
 export const architecture = {
@@ -58,12 +58,12 @@ export const continuity = {
 export const product = {
   eyebrow: "ONE PRODUCT, MANY PRESENCES",
   heading: "不是一排助手产品，而是一套围绕人的个人 AI 系统。",
-  lead: "Eidolon Core 是事实源。Console 让主权可见，Presence 让它进入生活，EID-* 让第三方设备成为受治理的新身体。",
+  lead: "Eidolon OS 提供个人 AI 运行时与系统服务；Eidolon One 定义官方旗舰体验；EID-X 让官方外设与第三方设备进入同一个兼容生态。",
   core: { name: "Eidolon Core", kind: "SOVEREIGN HUB", d: "运行于个人设备、家庭主机或私有环境。保存长期身份、记忆、关系、策略与行动账本；本地优先，云端按需。" },
   surfaces: [
     { name: "Console", en: "CONTROL SURFACE", d: "查看记忆来源、切换模型、管理身体、设置授权并审计行动。" },
     { name: "Presence", en: "LIFE INTERFACES", d: "手机、耳机、桌面、车与家庭空间中的连续入口，不制造新的孤立身份。" },
-    { name: "EID-*", en: "BODY PROTOCOL", d: "让硬件、机器人和服务声明能力，并通过身份、租约与场景边界接入。" },
+    { name: "EID-X", en: "DEVICE PROTOCOL", d: "让硬件、机器人和服务声明能力，并通过身份、租约与场景边界接入。" },
   ],
 } as const;
 

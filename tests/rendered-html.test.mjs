@@ -163,3 +163,21 @@ test("keeps starter preview code out of the finished site", async () => {
   await access(new URL("public/og.png", projectRoot));
   await access(new URL("public/og-v2.png", projectRoot));
 });
+
+test("static deployment exports every public page", async () => {
+  const deployScript = await readFile(new URL("../deploy/render-static.mjs", import.meta.url), "utf8");
+  const expectedRoutes = [
+    ["/", "index.html"],
+    ["/os", "os/index.html"],
+    ["/one", "one/index.html"],
+    ["/protocol", "protocol/index.html"],
+    ["/manifesto", "manifesto/index.html"],
+  ];
+
+  for (const [pathname, output] of expectedRoutes) {
+    assert.match(
+      deployScript,
+      new RegExp(`\\{\\s*path:\\s*["']${pathname}["'],\\s*out:\\s*["']${output.replace(".", "\\.")}["']\\s*\\}`),
+    );
+  }
+});

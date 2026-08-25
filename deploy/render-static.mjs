@@ -15,6 +15,8 @@ const serverEntry = resolve(distDir, "server/index.js");
 // 所以子页必须写成 <route>/index.html 才能被 $uri/ 命中，否则会回退到首页。
 const routes = [
   { path: "/", out: "index.html" },
+  { path: "/os", out: "os/index.html" },
+  { path: "/one", out: "one/index.html" },
   { path: "/manifesto", out: "manifesto/index.html" },
   { path: "/protocol", out: "protocol/index.html" },
 ];

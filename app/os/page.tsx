@@ -19,7 +19,18 @@ const systemLayers = [
 const deviceModes = [
   ["FULL OS", "完整设备", "运行完整 Eidolon OS，可独立承载个人 AI 体验。Eidolon One 是官方旗舰参考。"],
   ["COMPANION", "伴随设备", "运行轻量系统能力，与主设备共同呈现连续体验，例如 One Go、Room 与 Dock。"],
-  ["EID-X", "能力设备", "无需成为完整 AI 终端，通过协议提供麦克风、屏幕、车辆或机械能力。"],
+  ["EID-X", "能力设备", "无需成为完整 AI 终端，通过协议提供听觉、视觉、显示、专业仪器或机械能力。"],
+] as const;
+
+const reach = [
+  ["REFLECT", "独处与思考", "日记、复盘、情绪表达、私人决定"],
+  ["CREATE", "创作与研究", "写作、影像、音乐、实验、知识整理"],
+  ["CONNECT", "沟通与协作", "会议、翻译、关系提醒、共同计划"],
+  ["CARE", "日常照护", "作息、陪伴、环境变化、温和提醒"],
+  ["EXPLORE", "旅行与探索", "陌生空间、语言、路线、户外信息"],
+  ["ACCESS", "无障碍体验", "字幕、触觉、语音、简化交互"],
+  ["MAKE", "现实制作", "工作台、摄影、手作、专业设备"],
+  ["ACT", "具身行动", "机械臂、移动机器人、无人机、智能工具"],
 ] as const;
 
 export default function OSPage() {
@@ -37,7 +48,9 @@ export default function OSPage() {
 
       <section className="device-modes-section"><header className="story-heading"><span>03 · DEVICE MODES</span><h2>不是所有设备都要成为 Eidolon One。<br />但都可以进入同一个系统。</h2></header><div className="device-modes">{deviceModes.map(([en,name,d])=><article key={en}><span>{en}</span><h3>{name}</h3><p>{d}</p></article>)}</div></section>
 
-      <section className="os-handoff-section"><div><span>04 · CONTINUITY</span><h2>场景切换时，<br />迁移的是任务状态，<br />不是整份私人数据。</h2></div><div className="handoff-rail"><article><small>HOME</small><b>One Room</b><p>晨间计划与家庭状态</p></article><i>OS handoff</i><article><small>MOVE</small><b>One Go</b><p>语音与当前任务</p></article><i>EID-X</i><article><small>DRIVE</small><b>Vehicle</b><p>导航与低风险动作</p></article><i>OS handoff</i><article><small>WORK</small><b>One + Dock</b><p>完整项目现场</p></article></div></section>
+      <section className="os-reach-section"><header className="story-heading light"><span>04 · WHERE THE OS CAN APPEAR</span><h2>OS 面向的不是几个设备类别。<br />而是人需要智能协助的各种活动。</h2></header><div className="os-reach-list">{reach.map(([en,name,examples],index)=><article key={en}><span>0{index+1}</span><small>{en}</small><h3>{name}</h3><p>{examples}</p></article>)}</div></section>
+
+      <section className="os-handoff-section"><div><span>05 · CONTINUITY</span><h2>情境变化时，<br />迁移的是任务状态，<br />不是整份私人数据。</h2></div><div className="handoff-rail"><article><small>CAPTURE</small><b>领夹终端</b><p>收下一句灵感和现场声音</p></article><i>OS handoff</i><article><small>SHAPE</small><b>One Go</b><p>用语音继续形成结构</p></article><i>EID-X</i><article><small>PREVIEW</small><b>墨水屏</b><p>只展示提纲与待确认问题</p></article><i>OS handoff</i><article><small>CREATE</small><b>One + Dock</b><p>展开完整素材与创作工具</p></article></div></section>
 
       <section className="one-future-section"><VesselMark size={60} tone="bone" idSuffix="os-detail-end" /><p>ONE OS · MANY PRODUCTS</p><h2>One 展示官方旗舰体验。<br />生态把 OS 带向更多设备。</h2><div className="story-actions"><Link className="story-button light" href="/one">进入 Eidolon One</Link><Link className="story-link on-dark" href="/protocol">了解 EID-X 协议 ↗</Link></div></section>
     </main>

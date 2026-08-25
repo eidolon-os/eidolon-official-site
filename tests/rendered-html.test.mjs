@@ -38,7 +38,9 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(html, /EID-X/);
   assert.match(html, /Eidolon One/);
   assert.match(html, /官方旗舰/);
-  assert.match(html, /家 → 路上 → 车 → 工作/);
+  assert.match(html, /连续创作的一天/);
+  assert.match(html, /无障碍/);
+  assert.match(html, /触觉手环/);
   assert.match(html, /Your AI\. Your memory\. Your authority\./);
   assert.match(html, /github\.com\/eidolon-os/);
 });
@@ -55,6 +57,9 @@ test("server-renders the Eidolon One product page", async () => {
   assert.match(html, /One Dock/);
   assert.match(html, /One Link/);
   assert.match(html, /OS 定义共同能力/);
+  assert.match(html, /WIDER ACCESSORY FIELD/);
+  assert.match(html, /实时字幕器/);
+  assert.match(html, /音乐控制器/);
   assert.match(html, /工业设计进行中/);
 });
 
@@ -67,6 +72,8 @@ test("server-renders the Eidolon OS platform page", async () => {
   assert.match(html, /完整设备/);
   assert.match(html, /伴随设备/);
   assert.match(html, /能力设备/);
+  assert.match(html, /独处与思考/);
+  assert.match(html, /无障碍体验/);
   assert.match(html, /EID-X/);
 });
 

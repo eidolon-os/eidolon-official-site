@@ -14,9 +14,9 @@ const shifts = [
 
 const roadmap = [
   ["01", "个人主权中枢", "完成一位 Owner 的身份、记忆、模型、设备与授权闭环。"],
-  ["02", "生活连续性", "在随身、家庭、工作和移动空间里实现按边界挂载的同一体验。"],
-  ["03", "家庭与团队联邦", "每个人保有自己的 Eidolon，再建立可验证、可撤回的共同空间。"],
-  ["04", "EID-X 设备生态", "让官方外设、汽车、机器人和其他 Agent 以公开协议接入，而不是形成新的硬件孤岛。"],
+  ["02", "活动连续性", "在创造、沟通、学习、照护、共享与现实行动中实现按边界接续的同一体验。"],
+  ["03", "多人协作空间", "每个人保有自己的 Eidolon，再建立可验证、可撤回的共同任务与关系。"],
+  ["04", "EID-X 设备生态", "让官方外设、可穿戴、专业工具、辅助设备和机器人以公开协议接入。"],
 ];
 
 export default function Manifesto() {
@@ -29,7 +29,7 @@ export default function Manifesto() {
     </section>
 
     <section className="doc-section light-doc">
-      <div className="container split-prose"><div><p>THE STRUCTURAL GAP</p><h2>今天的 AI 越强，<br />越需要自己的操作系统。</h2></div><div className="prose"><p>当 AI 只回答问题时，一个 App 足以承载它。当 AI 开始维护长期记忆、调用 Agent、跨设备继续任务，并进入汽车、家庭和机器人时，就需要稳定的运行时、设备协议和权限体系。</p><p>Eidolon OS 不等于 Eidolon One。OS 是可复用的系统基础；One 是官方旗舰产品；EID-X 让官方外设和第三方设备进入同一生态。人的主权由系统保证，而不是依赖某一件硬件。</p></div></div>
+      <div className="container split-prose"><div><p>THE STRUCTURAL GAP</p><h2>今天的 AI 越强，<br />越需要自己的操作系统。</h2></div><div className="prose"><p>当 AI 只回答问题时，一个 App 足以承载它。当 AI 开始维护长期记忆、调用 Agent、跨设备继续任务，并进入创作、学习、照护、共享空间和现实工具时，就需要稳定的运行时、设备协议和权限体系。</p><p>Eidolon OS 不等于 Eidolon One。OS 是可复用的系统基础；One 是官方旗舰产品；EID-X 让官方外设和第三方设备进入同一生态。人的主权由系统保证，而不是依赖某一件硬件。</p></div></div>
     </section>
 
     <section className="doc-section shift-doc"><div className="container"><header className="section-lead"><p>FOUR CHANGES</p><h2>把 AI 从平台资产，重新变成人的能力。</h2></header>

@@ -15,7 +15,7 @@ const USER = [
 const KERNEL_TAGS = ["身份", "权限 policy", "审计", "信任根 root"];
 const KERNEL_SVCS = ["活记忆 Living Memory", "场景图 Scene Graph"];
 const PROTOCOL = ["Pair", "Media", "Tools", "State", "Task", "Memory"];
-const BODIES = ["桌面", "手机", "音箱", "车机", "机器人"];
+const BODIES = ["可穿戴", "创作台", "共享屏", "辅助设备", "机器人"];
 
 // —— 图 B 数据 ——
 const CLUSTERS = [
@@ -36,7 +36,7 @@ const CLUSTERS = [
     ],
   },
 ];
-const SCENES = ["车机路上", "会议纪要", "书房创作", "儿童陪学", "居家看护", "机器人巡检"];
+const SCENES = ["连续创作", "多人沟通", "学习研究", "日常照护", "无障碍交互", "机器人巡检"];
 
 export function HubPanel() {
   return (

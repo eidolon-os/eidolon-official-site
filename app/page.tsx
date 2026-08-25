@@ -16,8 +16,19 @@ const osCapabilities = [
 
 const portfolio = [
   ["FLAGSHIP", "Eidolon One", "官方旗舰设备", "由 Eidolon 完整定义软硬件体验，展示 Eidolon OS 最完整、最可信的个人 AI 体验。", "/one"],
-  ["ONE FAMILY", "One Peripherals", "官方外设家族", "Go、Room、Dock 与 Link 围绕 One 扩展随身、家庭、工作和移动体验。", "/one#matrix"],
-  ["ECOSYSTEM", "EID-X Devices", "兼容设备生态", "汽车、家电、机器人与新终端通过 EID-X 接入 Eidolon OS 的场景与能力体系。", "/protocol"],
+  ["ONE FAMILY", "One Peripherals", "官方外设家族", "Go、Room、Dock 与 Link 围绕 One 扩展随身、共享、创作和现实行动。", "/one#matrix"],
+  ["ECOSYSTEM", "EID-X Devices", "兼容设备生态", "可穿戴、专业工具、空间终端、辅助设备与机器人通过 EID-X 接入系统。", "/protocol"],
+] as const;
+
+const moments = [
+  ["01", "创造", "从一句灵感到一件作品", "触控笔 · 相机 · 桌面扩展 · 音乐控制器"],
+  ["02", "沟通", "在对话前理解关系，在发送前保留决定", "耳夹 · 胸针 · 字幕眼镜 · 会议记录器"],
+  ["03", "学习", "把阅读、提问、练习与长期知识连成一条线", "墨水屏 · 阅读灯 · 录音笔 · 实验台终端"],
+  ["04", "照护", "在被允许的边界里察觉变化并提供陪伴", "睡眠传感器 · 手表 · 环境节点 · 提醒器"],
+  ["05", "共享", "共同完成一件事，又不混同每个人的私密空间", "桌面投影 · 空间音频 · 共享屏 · 氛围灯"],
+  ["06", "探索", "在陌生地点继续熟悉的任务、语言与判断", "随行眼镜 · 耳机 · 行李标签 · 户外终端"],
+  ["07", "无障碍", "让信息选择更适合一个人的感官形式", "触觉手环 · 实时字幕 · 语音界面 · 辅助开关"],
+  ["08", "行动", "把数字意图安全地交给现实工具完成", "机械臂 · 移动机器人 · 无人机 · 智能工具"],
 ] as const;
 
 export default function Home() {
@@ -61,27 +72,32 @@ export default function Home() {
         <div className="portfolio-list">{portfolio.map(([tag,name,kind,d,href],index)=><article key={name}><span>0{index+1}</span><small>{tag}</small><h3>{name}</h3><b>{kind}</b><p>{d}</p><Link href={href}>了解更多 ↗</Link></article>)}</div>
       </section>
 
+      <section className="experience-atlas-section">
+        <header className="story-heading light"><span>04 · A FIELD OF MOMENTS</span><h2>不是围绕几个固定空间。<br />而是进入一个人不断变化的活动。</h2><p>Eidolon OS 能触及的边界，不由某种硬件品类决定。只要一个时刻需要理解、表达、协作、感知或行动，就可能出现新的产品形态。</p></header>
+        <div className="moments-river">{moments.map(([n,title,line,devices])=><article key={n}><span>{n}</span><h3>{title}</h3><p>{line}</p><small>{devices}</small></article>)}</div>
+      </section>
+
       <section id="life" className="life-section platform-life-section">
-        <header className="story-heading light"><span>04 · CONTINUITY IN REAL LIFE</span><h2>不是把同一界面搬到所有设备。<br />是让同一件事穿过多个场景。</h2><p>Eidolon OS 维护任务和关系的连续性；One 与其他产品呈现当下最合适的交互；EID-X 完成设备能力与权限的交接。</p></header>
+        <header className="story-heading light"><span>05 · CONTINUITY IN REAL LIFE</span><h2>不是把同一界面搬到所有设备。<br />是让同一件事穿过多个时刻。</h2><p>Eidolon OS 维护任务和关系的连续性；One 与其他产品呈现当下最合适的交互；EID-X 完成设备能力与权限的交接。</p></header>
         <LifeScenes />
       </section>
 
       <section className="sovereignty-platform-section">
-        <header className="story-heading"><span>05 · SOVEREIGN BY DESIGN</span><h2>个人主权不是 One 的硬件卖点。<br />是整个 OS 的系统规则。</h2><p>因此它会作用于每一台设备、每一个模型和每一次场景切换。</p></header>
-        <div className="sovereignty-run"><article><span>OWN</span><h3>属于你</h3><p>身份、长期记忆与恢复权由 Owner 掌握。</p></article><article><span>MOVE</span><h3>可迁移</h3><p>更换模型或兼容设备，不要求重新建立自己。</p></article><article><span>BOUND</span><h3>有边界</h3><p>每个场景只得到当下必要的上下文和能力。</p></article><article><span>TRACE</span><h3>可追溯</h3><p>重要读取、调用、交接和写回留下责任链。</p></article></div>
+        <header className="story-heading"><span>06 · SOVEREIGN BY DESIGN</span><h2>个人主权不是 One 的硬件卖点。<br />是整个 OS 的系统规则。</h2><p>因此它会作用于每一台设备、每一个模型和每一次情境变化。</p></header>
+        <div className="sovereignty-run"><article><span>OWN</span><h3>属于你</h3><p>身份、长期记忆与恢复权由 Owner 掌握。</p></article><article><span>MOVE</span><h3>可迁移</h3><p>更换模型或兼容设备，不要求重新建立自己。</p></article><article><span>BOUND</span><h3>有边界</h3><p>每种情境只得到当下必要的上下文和能力。</p></article><article><span>TRACE</span><h3>可追溯</h3><p>重要读取、调用、交接和写回留下责任链。</p></article></div>
       </section>
 
       <section className="eidx-home-section">
-        <div className="eidx-home-copy"><span>06 · EID-X PROTOCOL</span><h2>OS 让个人 AI 能运行。<br />EID-X 让现实设备能加入。</h2><p>协议定义设备是谁、能做什么、此刻可以知道什么、授权何时到期，以及任务如何从一台设备交给另一台。</p><Link className="story-link" href="/protocol">了解 EID-X 协议 <i>↗</i></Link></div>
+        <div className="eidx-home-copy"><span>07 · EID-X PROTOCOL</span><h2>OS 让个人 AI 能运行。<br />EID-X 让现实设备能加入。</h2><p>协议定义设备是谁、能做什么、此刻可以知道什么、授权何时到期，以及任务如何从一台设备交给另一台。</p><Link className="story-link" href="/protocol">了解 EID-X 协议 <i>↗</i></Link></div>
         <div className="eidx-signal"><b>EID-X</b><span>IDENTITY</span><i /><span>CAPABILITY</span><i /><span>CONTEXT</span><i /><span>HANDOFF</span><i /><span>TRACE</span></div>
       </section>
 
       <section className="platform-growth-section">
-        <header className="story-heading light"><span>07 · WHY THIS SCALES</span><h2>旗舰定义体验。<br />操作系统扩大产品边界。<br />协议连接现实世界。</h2></header>
+        <header className="story-heading light"><span>08 · WHY THIS SCALES</span><h2>旗舰定义体验。<br />操作系统扩大产品边界。<br />协议连接现实世界。</h2></header>
         <div className="growth-path"><article><span>ONE</span><h3>建立标杆</h3><p>官方旗舰让用户直接理解并体验个人 AI。</p><b>完整软硬件体验</b></article><i>→</i><article><span>OS</span><h3>复用能力</h3><p>共同系统服务进入更多官方与合作伙伴产品。</p><b>平台与开发生态</b></article><i>→</i><article><span>EID-X</span><h3>扩展场景</h3><p>不同品牌设备以统一规则加入用户生活。</p><b>兼容认证与能力网络</b></article></div>
       </section>
 
-      <section className="future-section"><p>EIDOLON OS · EIDOLON ONE · EID-X ECOSYSTEM</p><div className="future-line"><span>操作系统</span><i /><span>官方旗舰</span><i /><span>外设家族</span><i /><span>兼容生态</span></div><h2>未来不是每件设备各自拥有一个 AI。<br />而是一个人的 AI，运行在整个世界。</h2><div className="story-actions"><Link className="story-button light" href="/os">进入 Eidolon OS</Link><Link className="story-link on-dark" href="/one">认识 Eidolon One ↗</Link></div></section>
+      <section className="future-section"><p>EIDOLON OS · EIDOLON ONE · EID-X ECOSYSTEM</p><div className="future-line"><span>创造</span><i /><span>交流</span><i /><span>学习</span><i /><span>照护</span><i /><span>行动</span></div><h2>未来不是每件设备各自拥有一个 AI。<br />而是一个人的 AI，出现在每个需要它的时刻。</h2><div className="story-actions"><Link className="story-button light" href="/os">进入 Eidolon OS</Link><Link className="story-link on-dark" href="/one">认识 Eidolon One ↗</Link></div></section>
 
       <footer className="story-footer"><VesselMark size={36} tone="bone" idSuffix="footer-platform" /><p>{site.fullName}</p><span>Your AI. Your memory. Your authority.</span><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></footer>
     </main>

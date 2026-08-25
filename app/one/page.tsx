@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 const family = [
   { n:"00", code:"OFFICIAL FLAGSHIP", name:"Eidolon One", role:"旗舰个人 AI 设备", promise:"完整呈现 Eidolon OS。", detail:"由官方共同定义硬件、系统、交互与安全体验。它是 Eidolon OS 的旗舰产品和体验标杆，而不是 OS 本身。", group:"旗舰" },
   { n:"01", code:"PERSONAL COMPANION", name:"One Go", role:"随身外设", promise:"把对话与当前任务带在身边。", detail:"面向可穿戴语音和轻量交互的官方产品方向，通过 Eidolon OS 与 EID-X 和 One 保持连续。", group:"随身" },
-  { n:"02", code:"SPATIAL COMPANION", name:"One Room", role:"空间外设", promise:"让家庭空间自然回应在场的人。", detail:"提供远场交互、空间状态和家庭场景能力，遵循 OS 中的成员关系与房间边界。", group:"家庭" },
+  { n:"02", code:"SPATIAL COMPANION", name:"One Room", role:"空间外设", promise:"让共享空间自然回应在场的人。", detail:"提供远场交互、空间状态和共同活动能力，遵循 OS 中的成员关系与空间边界。", group:"共享" },
   { n:"03", code:"WORK COMPANION", name:"One Dock", role:"桌面扩展", promise:"把 One 变成完整工作与创作中枢。", detail:"连接显示、输入、音频、存储和桌面设备，恢复 Eidolon OS 的完整工作体验。", group:"工作" },
-  { n:"04", code:"MOBILITY BRIDGE", name:"One Link", role:"汽车与设备桥接", promise:"让现有设备进入 One 的体验体系。", detail:"通过 EID-X 连接汽车、机器人或其他硬件能力，让场景可以交接，又不突破 OS 的权限边界。", group:"连接" },
+  { n:"04", code:"CAPABILITY BRIDGE", name:"One Link", role:"既有设备桥接", promise:"让现有工具进入 One 的体验体系。", detail:"通过 EID-X 连接显示器、专业仪器、空间设施、机器人或其他硬件能力，让任务可以交接，又不突破 OS 的权限边界。", group:"连接" },
 ] as const;
 
 const standards = [
@@ -24,6 +24,17 @@ const standards = [
   ["CONTINUOUS", "跨场景连续", "One 与官方外设共享任务状态，用户不需要在每台设备上重新说明。"],
   ["SOVEREIGN", "主权默认开启", "身份、记忆、权限、恢复与行动记录是系统默认，而不是隐藏在设置深处的选项。"],
   ["EXTENSIBLE", "面向生态扩展", "官方外设和第三方设备都经由 Eidolon OS 与 EID-X 接入，不形成封闭孤岛。"],
+] as const;
+
+const accessoryDirections = [
+  ["LISTEN & SPEAK", "听见与表达", "开放式耳机 · 领夹终端 · 定向麦克风 · 听觉辅助器"],
+  ["SEE & SHOW", "看见与呈现", "轻量眼镜 · 墨水屏 · 桌面光幕 · 微型投影"],
+  ["CREATE", "创作与操控", "触控笔 · 相机握柄 · 键盘旋钮 · 音乐控制器"],
+  ["SENSE", "身体与环境感知", "手表 · 睡眠传感器 · 空气节点 · 位置标签"],
+  ["SHARE", "共同空间", "桌面投影 · 空间音频 · 共享面板 · 氛围灯"],
+  ["EXPLORE", "探索与随行", "户外终端 · 翻译耳机 · 行李伴随器 · 头盔接口"],
+  ["ACCESS", "无障碍交互", "触觉手环 · 实时字幕器 · 辅助开关 · 语音控制面板"],
+  ["ACT", "现实行动", "机械臂 · 移动底盘 · 无人机 · 可编程工具"],
 ] as const;
 
 export default function OnePage() {
@@ -39,7 +50,7 @@ export default function OnePage() {
           <div className="story-actions"><a className="story-button" href="#family">查看 One 产品家族</a><a className="story-link" href="#flagship-scenes">看多场景接力 <i>↓</i></a></div>
           <div className="one-status-line"><span>PRODUCT DIRECTION</span><i />官方旗舰<i />完整 OS 体验<i />工业设计进行中</div>
         </div>
-        <div className="one-v2-hero-art"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 官方旗舰与随身、空间、汽车产品家族概念影像" /><div><span>FLAGSHIP</span><i /><span>FAMILY</span><i /><span>ECOSYSTEM</span></div><p>CONCEPT IMAGERY · NOT FINAL INDUSTRIAL DESIGN</p></div>
+        <div className="one-v2-hero-art"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 官方旗舰与随身、空间、具身产品家族概念影像" /><div><span>FLAGSHIP</span><i /><span>FAMILY</span><i /><span>ECOSYSTEM</span></div><p>CONCEPT IMAGERY · NOT FINAL INDUSTRIAL DESIGN</p></div>
       </section>
 
       <section className="one-boundary-section flagship-boundary">
@@ -56,22 +67,27 @@ export default function OnePage() {
 
       <section id="family" className="matrix-v2-section one-family-section">
         <header className="story-heading light"><span>02 · THE ONE FAMILY</span><h2>一台旗舰，<br />一组围绕生活场景设计的官方外设。</h2><p>每件产品都建立在 Eidolon OS 与 EID-X 之上。它们可以拥有不同传感器、界面和空间角色，但共享系统状态、设备身份和权限规则。</p></header>
-        <figure className="matrix-concept-figure"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 官方旗舰与外设产品家族科技概念影像" /><figcaption><span>01 · 随身</span><span>02 · 家庭与工作</span><span>03 · 移动与具身</span><small>用于表达产品方向与场景关系，不代表最终工业设计</small></figcaption></figure>
+        <figure className="matrix-concept-figure"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 官方旗舰与外设产品家族科技概念影像" /><figcaption><span>01 · 随身感官</span><span>02 · 创作与共享</span><span>03 · 工具与具身</span><small>用于表达产品方向与能力关系，不代表最终工业设计</small></figcaption></figure>
         <div className="matrix-v2-list">{family.map(item=><article key={item.name}><span>{item.n}</span><div className="matrix-name"><small>{item.code}</small><h3>{item.name}</h3><b>{item.role}</b></div><p className="matrix-promise">{item.promise}</p><p>{item.detail}</p><em>{item.group}</em></article>)}</div>
       </section>
 
+      <section className="accessory-spectrum-section">
+        <header className="story-heading"><span>03 · A WIDER ACCESSORY FIELD</span><h2>One Family 不会止于四个名字。<br />人的感官、表达与行动，都可能成为新的外设方向。</h2><p>以下是能力与产品形态的探索图谱，不代表已经发布的 SKU。它展示的是 Eidolon OS 与 EID-X 可以支撑多广的第一方和合作伙伴创新空间。</p></header>
+        <div className="accessory-spectrum"><aside><span>CONCEPT FIELD</span><b>8</b><p>类感官与行动方向</p><small>NOT ANNOUNCED PRODUCTS</small></aside><div>{accessoryDirections.map(([en,name,examples],index)=><article key={en}><span>0{index+1}</span><small>{en}</small><h3>{name}</h3><p>{examples}</p></article>)}</div></div>
+      </section>
+
       <section id="flagship-scenes" className="flagship-scenes-section">
-        <header className="story-heading"><span>03 · ONE FAMILY IN MOTION</span><h2>多场景不是多套 AI。<br />是 OS 状态在产品家族中连续交接。</h2></header>
+        <header className="story-heading"><span>04 · ONE FAMILY IN MOTION</span><h2>连续体验不是一条固定动线。<br />是 OS 状态在需要的设备间自然交接。</h2></header>
         <div className="flagship-scene-rail">
-          <article><span>07:20 · HOME</span><b>One Room</b><h3>唤醒家庭场景</h3><p>共享日程和晨间计划进入空间，私人工作状态保持封存。</p><small>OS: FAMILY CONTEXT</small></article><i>HANDOFF</i>
-          <article><span>08:10 · PERSONAL</span><b>One Go</b><h3>接走当前任务</h3><p>离家后继续讨论，只携带正在处理的内容和语音能力。</p><small>OS: MOBILE CONTEXT</small></article><i>EID-X</i>
-          <article><span>08:26 · DRIVE</span><b>One Link + Car</b><h3>切换驾驶体验</h3><p>汽车提供麦克风、音响与导航；高风险操作自动锁定。</p><small>LEASE: DRIVE ONLY</small></article><i>HANDOFF</i>
-          <article><span>09:03 · WORK</span><b>One + Dock</b><h3>恢复完整现场</h3><p>屏幕、文档、Agent 和来源在桌面重新展开。</p><small>OS: FULL WORKSPACE</small></article>
+          <article><span>07:20 · GLANCE</span><b>床边光幕</b><h3>看见今日线索</h3><p>只呈现日程与昨晚留下的创作提示，其他空间仍封存。</p><small>OS: MORNING GLANCE</small></article><i>HANDOFF</i>
+          <article><span>08:10 · VOICE</span><b>One Go</b><h3>用声音继续</h3><p>走动时继续推敲当前想法，不需要打开完整工作界面。</p><small>OS: FOCUSED THREAD</small></article><i>EID-X</i>
+          <article><span>08:40 · VISUAL</span><b>随行眼镜</b><h3>快速确认结构</h3><p>眼镜只获得提纲和素材预览，不接触其他私人内容。</p><small>LEASE: VISUAL ONLY</small></article><i>HANDOFF</i>
+          <article><span>09:03 · STUDIO</span><b>One + Dock</b><h3>展开完整作品</h3><p>屏幕、文档、Agent、相机素材和来源在创作台重新展开。</p><small>OS: FULL STUDIO</small></article>
         </div>
         <div className="scene-role-key"><span><b>Eidolon OS</b>保存任务与场景状态</span><span><b>One Family</b>提供当下最合适的交互</span><span><b>EID-X</b>完成设备能力和权限交接</span></div>
       </section>
 
-      <section className="one-ecosystem-section"><div><span>04 · BEYOND THE ONE FAMILY</span><h2>官方外设之外，<br />还有整个兼容设备生态。</h2><p>车企、家电和机器人厂商不需要复制 Eidolon One。它们可以运行适合自己的 Eidolon OS 版本，或通过 EID-X 提供能力，在同一套主权与连续性规则下形成差异化产品。</p></div><div className="ecosystem-rings"><b>EID-X</b><span>ONE FAMILY</span><span>VEHICLE</span><span>HOME</span><span>ROBOT</span><small>ONE OS · OPEN DEVICE NETWORK</small></div></section>
+      <section className="one-ecosystem-section"><div><span>05 · BEYOND THE ONE FAMILY</span><h2>官方外设之外，<br />还有整个兼容设备生态。</h2><p>可穿戴、创作设备、空间终端、无障碍工具、专业仪器和机器人厂商不需要复制 Eidolon One。它们可以运行适合自己的 Eidolon OS 版本，或通过 EID-X 提供能力，在同一套主权与连续性规则下形成差异化产品。</p></div><div className="ecosystem-rings"><b>EID-X</b><span>ONE FAMILY</span><span>WEARABLE</span><span>INSTRUMENT</span><span>ROBOTICS</span><small>ONE OS · OPEN DEVICE NETWORK</small></div></section>
 
       <section className="one-future-section"><VesselMark size={62} tone="bone" idSuffix="one-v3-future" /><p>EIDOLON ONE · THE OFFICIAL FLAGSHIP</p><h2>One 定义今天最完整的体验。<br />Eidolon OS 定义更广阔的未来。</h2><div className="story-actions"><Link className="story-button light" href="/os">了解 Eidolon OS</Link><Link className="story-link on-dark" href="/protocol">进入 EID-X 协议 ↗</Link></div></section>
     </main>

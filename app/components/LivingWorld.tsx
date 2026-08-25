@@ -1,4 +1,4 @@
-const bodies = ["耳边", "桌面", "房间", "车里", "机器人"];
+const bodies = ["耳边", "创作台", "共享屏", "触觉设备", "机器人"];
 const worlds = ["家", "工作", "旅途", "创作"];
 
 export function LivingWorld() {

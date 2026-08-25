@@ -5,7 +5,7 @@ const siteTitle = "Eidolon OS | 个人 AI 操作系统";
 const siteDescription =
   "Eidolon OS 为不同模型、产品与真实活动提供统一的个人 AI 运行时、系统服务与连续体验。";
 const siteDescriptionEn =
-  "The personal AI operating system across models, devices and real-world scenes.";
+  "The personal AI operating system across models, products and real-world environments.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eidolon.aimanthor.com"),

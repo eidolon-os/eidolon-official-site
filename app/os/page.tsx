@@ -6,53 +6,50 @@ import { VesselMark } from "../components/brand";
 
 export const metadata: Metadata = {
   title: "Eidolon OS | 个人 AI 操作系统",
-  description: "Eidolon OS 为个人 AI 提供身份、记忆、Agent、模型、情境、权限和设备协作能力，并通过 EID-X 运行于不同硬件产品。",
+  description: "Eidolon OS 保存个人 AI 的身份、记忆、Agent、任务与权限，并让它在不同产品和真实环境中持续运行。",
 };
 
-const systemLayers = [
-  ["01", "PERSONAL AI RUNTIME", "个人 AI 运行时", "维护身份、记忆、关系、任务与长期状态，让应用和硬件面对的是同一个个人 AI。"],
-  ["02", "INTELLIGENCE FABRIC", "智能与 Agent 层", "组合本地模型、云模型、工具和专业 Agent；能力可以升级，用户状态无需重建。"],
-  ["03", "EXPERIENCE FRAMEWORK", "体验与情境框架", "统一语音、视觉、屏幕、空间和主动服务，让任务在不同界面间自然接续。"],
-  ["04", "TRUST & AUTHORITY", "主权与安全服务", "管理数据边界、设备身份、操作确认、权限租约、审计与恢复。"],
+const services = [
+  ["IDENTITY", "身份与关系", "知道正在代表谁，也知道不同关系之间不能互相越界。"],
+  ["MEMORY", "长期记忆", "保存来源、时间、关系与遗忘规则；换模型不必重新认识自己。"],
+  ["AGENTS", "Agent 与模型", "本地模型、云模型和专业 Agent 按任务组合，能力可换，个人状态不换。"],
+  ["AUTHORITY", "权限与责任", "决定设备能知道什么、能做什么、允许多久，并记录重要行动的责任链。"],
 ] as const;
 
-const deviceModes = [
-  ["FULL OS", "完整设备", "运行完整 Eidolon OS，可独立承载个人 AI 体验。Eidolon One 是官方旗舰参考。"],
-  ["COMPANION", "伴随设备", "运行轻量系统能力，与主设备共同呈现连续体验，例如 One Go、Room 与 Dock。"],
-  ["EID-X", "能力设备", "无需成为完整 AI 终端，通过协议提供听觉、视觉、显示、专业仪器或机械能力。"],
+const environmentMatrix = [
+  ["家庭", "成员关系、共同任务、环境变化", "传感器原始流、其他成员私密记忆"],
+  ["办公", "当前项目、会议身份、可公开材料", "私人关系、其他项目、长期账户凭证"],
+  ["车载", "本次行程、路线、驾驶中可用交互", "完整记忆、私人对话、无关日程"],
+  ["创作", "当前作品、素材来源、工具状态", "未授权作品、发布权、危险机械动作"],
+  ["照护", "本人允许的趋势与提醒规则", "持续监视、无条件共享、无限期保留"],
 ] as const;
 
-const reach = [
-  ["REFLECT", "独处与思考", "日记、复盘、情绪表达、私人决定"],
-  ["CREATE", "创作与研究", "写作、影像、音乐、实验、知识整理"],
-  ["CONNECT", "沟通与协作", "会议、翻译、关系提醒、共同计划"],
-  ["CARE", "日常照护", "作息、陪伴、环境变化、温和提醒"],
-  ["EXPLORE", "旅行与探索", "陌生空间、语言、路线、户外信息"],
-  ["ACCESS", "无障碍体验", "字幕、触觉、语音、简化交互"],
-  ["MAKE", "现实制作", "工作台、摄影、手作、专业设备"],
-  ["ACT", "具身行动", "机械臂、移动机器人、无人机、智能工具"],
+const modes = [
+  ["FULL OS", "完整主机", "运行完整 Eidolon OS，承载长期状态与本地服务。Eidolon One 是官方旗舰。"],
+  ["COMPANION", "伴随设备", "运行轻量系统能力，与主机共同完成一次连续交互。"],
+  ["EID-X", "能力设备", "只声明传感、显示、音频、车辆或机械能力，不复制完整个人 AI。"],
 ] as const;
 
 export default function OSPage() {
   return (
-    <main className="site-shell product-story os-detail-page">
+    <main className="site-shell site-light">
       <SiteHeader />
-      <section className="os-detail-hero">
-        <div><p className="story-kicker">EIDOLON OS · THE PLATFORM</p><h1>个人 AI 的<br /><em>操作系统。</em></h1><p>如果传统操作系统让应用运行在各种电脑与手机上，Eidolon OS 则让一个人的 AI 运行在不同模型、产品与真实活动中。</p><div className="story-actions"><a className="story-button" href="#architecture">查看系统架构</a><Link className="story-link" href="/one">认识旗舰 One <i>↗</i></Link></div></div>
-        <div className="os-analogy"><span>像 Android 定义移动设备的软件基础</span><i>但面向</i><b>个人 AI 的身份、智能、情境与设备协作</b><small>不是一个聊天 App，也不绑定某一台硬件。</small></div>
+      <section className="subpage-hero page-frame os-page-hero">
+        <div><p className="eyebrow">EIDOLON OS · THE PLATFORM</p><h1>让个人 AI 拥有<br /><em>自己的系统基础。</em></h1><p>传统操作系统管理应用和硬件。Eidolon OS 管理一个长期存在的个人 AI：它是谁、记得什么、可以调用哪些智能，以及何时能代表你行动。</p><div className="actions"><a className="primary-action" href="#architecture">查看系统架构</a><Link className="text-action" href="/one">认识旗舰 One <i>↗</i></Link></div></div>
+        <aside className="definition-panel"><span>不是</span><del>一个聊天 App</del><del>某台主机的固件</del><del>一个模型的账户层</del><i>而是</i><b>个人 AI 的运行时、状态层与主权边界。</b></aside>
       </section>
 
-      <section id="architecture" className="os-architecture-section"><header className="story-heading light"><span>01 · SYSTEM ARCHITECTURE</span><h2>产品在上面生长。<br />OS 与协议在下面提供共同基础。</h2><p>Eidolon One、官方外设和第三方产品可以拥有不同形态，但共享系统服务、情境模型与连接规则。</p></header><PlatformArchitecture /></section>
+      <section id="architecture" className="dark-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">01 · SYSTEM ARCHITECTURE</p><h2>产品可以变化，<br />个人状态不必重建。</h2></div><p>One、官方外设与合作伙伴设备拥有不同形态，但都在同一套 OS 服务和 EID-X 规则上工作。</p></header><PlatformArchitecture /></div></section>
 
-      <section className="os-services-section"><header className="story-heading"><span>02 · SYSTEM SERVICES</span><h2>不是罗列功能。<br />是把个人 AI 做成可复用的系统能力。</h2></header><div className="os-services-list">{systemLayers.map(([n,en,name,d])=><article key={n}><span>{n}</span><div><small>{en}</small><h3>{name}</h3></div><p>{d}</p></article>)}</div></section>
+      <section className="services-section section-pad page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">02 · WHAT THE OS KEEPS</p><h2>OS 保存的不是功能清单，<br />而是“同一个你”的连续条件。</h2></div><p>模型越强、设备越多，越需要一层不被任何单一供应商占有的长期基础。</p></header><div className="services-grid">{services.map(([code,title,detail])=><article key={code}><span>{code}</span><h3>{title}</h3><p>{detail}</p></article>)}</div></section>
 
-      <section className="device-modes-section"><header className="story-heading"><span>03 · DEVICE MODES</span><h2>不是所有设备都要成为 Eidolon One。<br />但都可以进入同一个系统。</h2></header><div className="device-modes">{deviceModes.map(([en,name,d])=><article key={en}><span>{en}</span><h3>{name}</h3><p>{d}</p></article>)}</div></section>
+      <section className="context-section section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">03 · SAME OS, DIFFERENT CONTEXT</p><h2>在不同环境中，<br />开放不同部分。</h2></div><p>连续性不是全量同步。OS 根据活动、设备身份和风险，只交接当前需要的任务状态与能力。</p></header><div className="context-matrix"><div className="matrix-head"><span>环境例子</span><b>OS 提供</b><b>继续封存</b></div>{environmentMatrix.map(([place,provide,withhold])=><article key={place}><h3>{place}</h3><p>{provide}</p><p>{withhold}</p></article>)}</div></div></section>
 
-      <section className="os-reach-section"><header className="story-heading light"><span>04 · WHERE THE OS CAN APPEAR</span><h2>OS 面向的不是几个设备类别。<br />而是人需要智能协助的各种活动。</h2></header><div className="os-reach-list">{reach.map(([en,name,examples],index)=><article key={en}><span>0{index+1}</span><small>{en}</small><h3>{name}</h3><p>{examples}</p></article>)}</div></section>
+      <section className="modes-section section-pad page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">04 · DEVICE MODES</p><h2>不是每台设备<br />都要变成 Eidolon One。</h2></div><p>完整主机、伴随设备和能力设备是三条不同接入路径。产品自由设计，主权规则保持一致。</p></header><div className="modes-grid">{modes.map(([code,title,detail])=><article key={code}><span>{code}</span><h3>{title}</h3><p>{detail}</p></article>)}</div></section>
 
-      <section className="os-handoff-section"><div><span>05 · CONTINUITY</span><h2>情境变化时，<br />迁移的是任务状态，<br />不是整份私人数据。</h2></div><div className="handoff-rail"><article><small>CAPTURE</small><b>领夹终端</b><p>收下一句灵感和现场声音</p></article><i>OS handoff</i><article><small>SHAPE</small><b>One Go</b><p>用语音继续形成结构</p></article><i>EID-X</i><article><small>PREVIEW</small><b>墨水屏</b><p>只展示提纲与待确认问题</p></article><i>OS handoff</i><article><small>CREATE</small><b>One + Dock</b><p>展开完整素材与创作工具</p></article></div></section>
+      <section className="handoff-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">05 · A SINGLE HANDOFF</p><h2>离开办公室，进入车辆，<br />任务继续，权限重算。</h2></div><p>迁移的不是整份私人数据，而是一段可验证、可到期的任务状态。</p></header><div className="handoff-flow"><article><small>OFFICE</small><b>One + Dock</b><p>保存当前提案与下一步</p></article><i>OS packages context</i><article><small>VEHICLE</small><b>车载界面</b><p>只接收路线与待确认事项</p></article><i>EID-X lease expires</i><article><small>ARRIVAL</small><b>Eidolon One</b><p>合并结果并收回车机权限</p></article></div></div></section>
 
-      <section className="one-future-section"><VesselMark size={60} tone="bone" idSuffix="os-detail-end" /><p>ONE OS · MANY PRODUCTS</p><h2>One 展示官方旗舰体验。<br />生态把 OS 带向更多设备。</h2><div className="story-actions"><Link className="story-button light" href="/one">进入 Eidolon One</Link><Link className="story-link on-dark" href="/protocol">了解 EID-X 协议 ↗</Link></div></section>
+      <section className="closing-section compact-closing"><VesselMark size={50} tone="bone" idSuffix="os-end" /><p>THE PLATFORM FOR PERSONAL AI</p><h2>One 定义旗舰体验。<br />OS 定义它可以走多远。</h2><div className="actions"><Link className="primary-action light" href="/one">进入 Eidolon One</Link><Link className="text-action on-dark" href="/protocol">了解 EID-X ↗</Link></div></section>
     </main>
   );
 }

@@ -2,30 +2,36 @@ import type { Metadata } from "next";
 import { site } from "../content";
 import { SiteHeader } from "../components/SiteHeader";
 
-export const metadata: Metadata = { title: "EID-X 设备与能力协议 | Eidolon OS", description: "EID-X 定义官方外设、可穿戴、空间终端、专业工具和机器人如何被 Eidolon OS 发现、授权并完成情境交接。" };
+export const metadata: Metadata = { title: "EID-X 设备与能力协议 | Eidolon OS", description: "EID-X 定义传感器、屏幕、车载界面、专业工具和机器人如何被 Eidolon OS 发现、授权、调用与收回。" };
 
 const contracts = [
-  ["Identity", "设备是谁", "每台设备、服务与 Agent 以可验证身份进入系统，不能凭匿名连接取得长期权限。"],
-  ["Capability", "它能做什么", "声音、视觉、位置、显示、支付、移动与机械动作被声明成边界清晰的能力。"],
-  ["Context", "此刻可以知道什么", "OS 只提供当前任务需要且被允许的上下文，不把用户完整状态复制给每台设备。"],
-  ["Lease", "这次允许多久", "能力授权带有情境、范围、期限和确认方式；活动结束或任务完成后自动失效。"],
-  ["Handoff", "任务如何交接", "设备离开、界面变化或风险等级改变时，任务状态能交给下一台合适产品继续。"],
-  ["Trace", "行动如何追溯", "来源、模型、工具、设备、确认和结果形成可核查的责任链。"],
+  ["01", "IDENTITY", "设备是谁", "可验证的设备身份先于任何数据和能力访问。"],
+  ["02", "CAPABILITY", "它能做什么", "传感、显示、音频、车辆和机械动作被声明成边界清晰的能力。"],
+  ["03", "CONTEXT", "此刻可以知道什么", "OS 只提供当前任务需要且被允许的最小上下文。"],
+  ["04", "LEASE", "允许多久", "每次授权都有范围、期限、确认方式和自动结束条件。"],
+  ["05", "HANDOFF", "任务如何交接", "环境或风险变化时，把必要状态交给下一台合适设备。"],
+  ["06", "TRACE", "行动如何追溯", "来源、模型、工具、设备、确认和结果形成责任链。"],
+] as const;
+
+const paths = [
+  ["FULL OS", "兼容主机", "运行完整 Eidolon OS，形成独立个人 AI 产品。"],
+  ["COMPANION", "伴随产品", "运行轻量系统能力，与 One 或其他主机共同呈现体验。"],
+  ["EID-X", "能力设备", "只提供传感、界面、车辆、仪器或机械能力。"],
 ] as const;
 
 export default function Protocol() {
-  return <main className="site-shell sovereign-site protocol-v2">
+  return <main className="site-shell site-dark">
     <SiteHeader />
-    <section className="subhero protocol-subhero"><p>EID-X · DEVICE &amp; CAPABILITY PROTOCOL</p><h1>让不同设备，<br /><em>进入同一个 OS。</em></h1><span>EID-X 是 Eidolon OS 的设备与能力协议。可穿戴、空间终端、创作工具、辅助设备和机器人通过它被发现、认证、授权，并在情境变化时完成任务交接。</span></section>
+    <section className="protocol-hero page-frame"><p className="eyebrow">EID-X · DEVICE &amp; CAPABILITY PROTOCOL</p><h1>让现实设备加入，<br /><em>但不拿走你的 AI。</em></h1><p>EID-X 是 Eidolon OS 的设备与能力协议。传感器、屏幕、车载界面、专业工具与机器人通过它被发现、验证、授权，并在任务结束后归还权限。</p></section>
 
-    <section className="doc-section protocol-position-section"><div className="container"><header className="section-lead"><p>WHERE EID-X SITS</p><h2>OS 维护个人 AI。<br />EID-X 连接现实硬件。<br />产品在两者之上形成体验。</h2></header><div className="protocol-position-map"><div className="ppm-products"><span>EIDOLON ONE</span><span>ONE FAMILY</span><span>PARTNER DEVICES</span></div><div className="ppm-os"><b>Eidolon OS</b><small>RUNTIME · MEMORY · AGENT · CONTEXT · AUTHORITY</small></div><div className="ppm-eidx"><b>EID-X</b><small>DISCOVER · IDENTIFY · CAPABILITY · HANDOFF · TRACE</small></div><div className="ppm-hardware"><span>SENSORS</span><span>DISPLAYS</span><span>INSTRUMENTS</span><span>ROBOTS</span></div></div></div></section>
+    <section className="protocol-position section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">01 · WHERE EID-X SITS</p><h2>OS 维护个人 AI，<br />协议连接现实能力。</h2></div><p>产品可以由 Eidolon 或合作伙伴设计，但任何设备都不能绕过 OS 直接占有用户的长期状态。</p></header><div className="protocol-stack"><div><span>PRODUCTS</span><b>Eidolon One · One Family · Partner Devices</b></div><div className="stack-os"><span>SYSTEM</span><b>Eidolon OS</b><small>IDENTITY · MEMORY · AGENTS · CONTEXT · AUTHORITY</small></div><div className="stack-eidx"><span>PROTOCOL</span><b>EID-X</b><small>DISCOVER · VERIFY · LEASE · HANDOFF · TRACE</small></div><div><span>CAPABILITIES</span><b>SENSORS · DISPLAYS · VEHICLES · INSTRUMENTS · ROBOTS</b></div></div></div></section>
 
-    <section className="doc-section protocol-diagram-section"><div className="container"><header className="section-lead"><p>THE COMMON LANGUAGE</p><h2>官方产品与第三方设备，<br />使用同一种方式说明自己并请求能力。</h2></header><div className="protocol-waist"><div className="protocol-side minds"><small>OS SERVICES</small><span>个人 AI 运行时</span><span>情境与任务状态</span><span>权限与安全</span><span>Agent 与模型</span></div><div className="protocol-core"><small>DEVICE INTERFACE</small><b>EID-X PROTOCOL</b><span>IDENTITY · CAPABILITY · CONTEXT · LEASE · HANDOFF · TRACE</span></div><div className="protocol-side bodies"><small>PRODUCTS</small><span>One 官方外设</span><span>可穿戴与辅助设备</span><span>创作与专业工具</span><span>空间终端与机器人</span></div></div></div></section>
+    <section className="contract-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">02 · SIX CONTRACTS</p><h2>设备越接近现实，<br />边界越需要被说清楚。</h2></div><p>EID-X 不只解决连接，更回答身份、最小披露、授权期限、任务交接与行动责任。</p></header><div className="contract-grid">{contracts.map(([n,code,title,detail])=><article key={code}><span>{n}</span><small>{code}</small><h3>{title}</h3><p>{detail}</p></article>)}</div></div></section>
 
-    <section className="doc-section contract-section"><div className="container"><header className="section-lead"><p>SIX CONTRACTS</p><h2>设备越靠近现实，<br />交接和边界越需要被说清楚。</h2></header><div className="contract-list">{contracts.map(([name,q,d],i)=><article key={name}><span>0{i+1}</span><small>EID-{name.toUpperCase()}</small><h3>{q}</h3><b>{name}</b><p>{d}</p></article>)}</div></div></section>
+    <section className="lease-example section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">03 · EXAMPLE: A VEHICLE LEASE</p><h2>进入车辆时，<br />只交接这段行程。</h2></div><p>车载是一个具体例子：Eidolon OS 继续维护完整个人状态，车辆只获得本次行程所需的显示、音频与状态能力。</p></header><div className="lease-flow"><article><span>01 · REQUEST</span><b>车辆声明能力</b><p>屏幕 · 音频 · 电量 · 位置</p></article><i>→</i><article><span>02 · GRANT</span><b>OS 发放行程租约</b><p>路线 · 到达时间 · 驾驶中提醒</p></article><i>→</i><article><span>03 · USE</span><b>低干扰交互</b><p>需要确认的工作留到停车后</p></article><i>→</i><article><span>04 · REVOKE</span><b>到达后自动收回</b><p>结果写回，私人状态不留车端</p></article></div></div></section>
 
-    <section className="doc-section builder-section"><div className="container split-prose"><div><p>WHAT BUILDERS GAIN</p><h2>设备不必复制 One，<br />也不必从零制造自己的 AI 孤岛。</h2></div><div className="prose"><p>厂商可以设计自己的产品形态、传感器、交互与行业能力。Eidolon OS 提供个人 AI 的共同系统服务，EID-X 提供安全连接、情境交接和能力调用规则。</p><p>完整设备可以运行 Eidolon OS；轻量设备可以作为 Companion；既有可穿戴、显示器、创作工具、空间设施和机器人也可以只实现 EID-X。三种路径共同进入一个兼容生态。</p><a className="text-link" href={site.github} target="_blank" rel="noreferrer">查看协议进展与代码 ↗</a></div></div></section>
+    <section className="builder-paths section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">04 · FOR BUILDERS</p><h2>不必复制 One，<br />也不必再造一个 AI 孤岛。</h2></div><p>合作伙伴保留自己的硬件、交互和行业能力，通过三种路径进入同一个可治理生态。</p></header><div className="paths-grid">{paths.map(([code,title,detail])=><article key={code}><span>{code}</span><h3>{title}</h3><p>{detail}</p></article>)}</div><a className="text-action" href={site.github} target="_blank" rel="noreferrer">查看协议进展与代码 ↗</a></div></section>
 
-    <section className="closing-section"><p>THE OPEN DEVICE NETWORK</p><h2>为 Eidolon OS，<br />创造新的产品与现实能力。</h2><a className="button light" href={site.github} target="_blank" rel="noreferrer">在 GitHub 上共建 ↗</a></section>
+    <section className="closing-section compact-closing"><p>THE OPEN DEVICE NETWORK</p><h2>让设备贡献能力，<br />让主权始终回到人。</h2><a className="primary-action light" href={site.github} target="_blank" rel="noreferrer">在 GitHub 上共建 ↗</a></section>
   </main>;
 }

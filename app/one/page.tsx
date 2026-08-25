@@ -2,64 +2,71 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
+import { OneSceneMatrix } from "../components/OneSceneMatrix";
 import { VesselMark } from "../components/brand";
 
 export const metadata: Metadata = {
   title: "Eidolon One | Eidolon OS 官方旗舰主机",
-  description: "Eidolon One 是完整呈现 Eidolon OS 的官方旗舰个人 AI 主机，并通过 EID-X 与官方外设和兼容设备协作。",
-  openGraph: { title: "Eidolon One | 官方旗舰主机", description: "把 Eidolon OS 做成一台真正可以拥有的个人 AI 主机。概念影像不代表最终工业设计。", images: [{ url: "/one-matrix-concept-v2.png", width: 1774, height: 887, alt: "Eidolon One 与外设产品方向概念影像" }] },
+  description: "Eidolon One 是完整运行 Eidolon OS 的官方旗舰个人 AI 主机，与 One Go、Room、Dock、Link 及兼容设备共同组成产品矩阵。",
+  openGraph: { title: "Eidolon One | 官方旗舰主机与产品矩阵", description: "一台可信主机，连接随身、空间、工作和现实行动设备。概念影像不代表最终工业设计。", images: [{ url: "/one-family-concept-v3.png", width: 1536, height: 864, alt: "Eidolon One 主机与外设产品矩阵概念图" }] },
 };
 
 const family = [
-  ["00", "Eidolon One", "OFFICIAL FLAGSHIP HOST", "完整运行 OS，保存长期状态，管理设备信任与关键行动确认。"],
-  ["01", "One Go", "MOBILE COMPANION", "随身语音、轻量感知与低干扰提醒。"],
-  ["02", "One Room", "SPATIAL COMPANION", "远场对话、共同空间与环境设备协调。"],
-  ["03", "One Dock", "WORK COMPANION", "显示、输入、存储和专业工具扩展。"],
-  ["04", "One Link", "CAPABILITY BRIDGE", "连接车辆、仪器、机器人与既有硬件。"],
+  {
+    n: "00", code: "OFFICIAL FLAGSHIP HOST", name: "Eidolon One", role: "个人 AI 主机",
+    promise: "完整运行 Eidolon OS，保存长期状态，管理设备信任与关键行动确认。",
+    forms: [["HOST", "桌面主机", "本地运行与可信锚点"], ["RECOVERY", "个人恢复钥匙", "迁移与灾难恢复"], ["CONSOLE", "主权控制台", "查看记忆、设备与权限"]],
+  },
+  {
+    n: "01", code: "MOBILE COMPANIONS", name: "One Go", role: "随身交互",
+    promise: "让听见、表达和即时确认跟随你，但不在穿戴设备里复制完整记忆。",
+    forms: [["AUDIO", "开放式耳机", "对话、翻译、低干扰提醒"], ["CAPTURE", "领夹终端", "语音、灵感与现场声音"], ["VISION", "轻量眼镜", "字幕、导航与视觉确认"]],
+  },
+  {
+    n: "02", code: "SPATIAL COMPANIONS", name: "One Room", role: "空间交互",
+    promise: "让房间理解在场的人和当前活动，共同空间只获得共同上下文。",
+    forms: [["VOICE", "房间语音终端", "远场对话与物理静音"], ["SENSE", "存在 / 空气节点", "人数、区域与环境趋势"], ["ROBOT", "桌面对话机器人", "移动回应与轻量行动"]],
+  },
+  {
+    n: "03", code: "WORK COMPANIONS", name: "One Dock", role: "工作与创作",
+    promise: "把 One 展开成桌面、会议室或工作室中的完整生产力环境。",
+    forms: [["READ", "电子纸副屏", "提纲、批注与安静提醒"], ["CONTROL", "可编程旋钮台", "Agent、时间线与工具操作"], ["MEETING", "音视频条", "会议采集与身份提示"]],
+  },
+  {
+    n: "04", code: "CAPABILITY BRIDGES", name: "One Link", role: "现实能力桥接",
+    promise: "让车辆、专业仪器和机器人贡献能力，而不必各自再造一个个人 AI。",
+    forms: [["AUTO", "车载桥接盒", "行程租约与车端身份"], ["INSTRUMENT", "仪器适配器", "读取与受控操作"], ["ROBOTICS", "机器人网关", "动作授权与结果回传"]],
+  },
 ] as const;
 
 const principles = [
   ["LOCAL", "本地优先", "长期状态与高信任判断优先在主机完成。"],
   ["VISIBLE", "边界可见", "正在参与的设备、能力与授权期限始终可查。"],
   ["PORTABLE", "状态可迁移", "One 是旗舰主机，不是绑住个人 AI 的唯一容器。"],
-  ["OPEN", "外设开放", "第一方与合作伙伴设备使用同一套 EID-X 规则。"],
-] as const;
-
-const accessoryGroups = [
-  ["感知", "开放式耳机 · 领夹终端 · 睡眠传感器 · 空气节点 · 相机握柄"],
-  ["呈现", "轻量眼镜 · 墨水屏 · 桌面光幕 · 共享屏 · 微型投影"],
-  ["操控", "触控笔 · 键盘旋钮 · 音乐控制器 · 触觉手环 · 辅助开关"],
-  ["行动", "车辆接口 · 专业仪器 · 机械臂 · 移动机器人 · 无人机"],
-] as const;
-
-const hostEnvironments = [
-  ["HOME", "家庭", "环境传感器 · One Room · 对话机器人 · 灯光 / 屏幕", "只开放当前家庭任务，私人记忆不进入共同空间。"],
-  ["WORK", "办公", "One Dock · 会议音视频 · 办公屏 · 打印与门禁", "只带入本次项目和会议上下文，离场即结束授权。"],
-  ["MOVE", "车载", "车载屏幕 · 车内音频 · 车辆状态 · 方向盘按键", "只交接本次行程，到达后收回车端租约。"],
-  ["MAKE", "创作", "相机握柄 · 音乐控制器 · 专业软件 · 工作室机器人", "素材与工具按项目开放，发布动作仍需本人确认。"],
-  ["CARE", "照护", "睡眠传感器 · 辅助开关 · 家庭屏 · 陪护设备", "健康信息按对象和期限共享，不默认扩散给所有设备。"],
+  ["OPEN", "设备开放", "第一方外设与合作伙伴产品遵循同一套 EID-X 规则。"],
 ] as const;
 
 export default function OnePage() {
   return (
-    <main className="site-shell site-light">
+    <main className="site-shell site-light one-v4-page">
       <SiteHeader />
-      <section className="one-hero page-frame">
-        <div className="one-hero-copy"><p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h1>把 Eidolon OS，<br /><em>做成一台可信主机。</em></h1><p>Eidolon One 是官方旗舰个人 AI 主机。它把本地运行、长期状态、设备信任和关键行动确认装进一台完整产品，并为整个 Eidolon OS 生态建立体验标准。</p><div className="actions"><a className="primary-action" href="#one-in-use">看 One 如何工作</a><a className="text-action" href="#family">查看产品家族 <i>↓</i></a></div><div className="concept-note"><span>PRODUCT DIRECTION</span><i />概念形态<i />工业设计进行中<i />非最终 SKU</div></div>
-        <figure className="one-hero-figure"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 旗舰主机与外部设备的概念影像" /><figcaption><span>FLAGSHIP HOST</span><b>CONCEPT IMAGERY · NOT FINAL INDUSTRIAL DESIGN</b></figcaption></figure>
+
+      <section className="one-hero page-frame one-v4-hero">
+        <div className="one-hero-copy"><p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h1>把 Eidolon OS，<br /><em>完整地做成<br />一台产品。</em></h1><p>Eidolon One 是官方旗舰个人 AI 主机。它把本地运行、长期记忆、设备信任与关键行动确认放进一台真正可以拥有的整机，并为整个生态建立体验标准。</p><div className="actions"><a className="primary-action" href="#family">查看产品矩阵</a><a className="text-action" href="#scenes">看不同环境如何组合 <i>↓</i></a></div><div className="concept-note"><span>PRODUCT DIRECTION</span><i />主机概念形态<i />工业设计进行中<i />非最终 SKU</div></div>
+        <figure className="one-hero-figure one-v4-hero-figure"><img src="/eidolon-one-product.png" alt="Eidolon One 官方旗舰个人 AI 主机概念形态" /><figcaption><span>EIDOLON ONE</span><b>CONCEPT FORM · NOT FINAL INDUSTRIAL DESIGN</b></figcaption></figure>
       </section>
 
-      <section className="one-role-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">01 · WHAT ONE IS</p><h2>One 不是 OS 的别名，<br />也不是所有设备的总称。</h2></div><p>它是一台具体主机：完整呈现 Eidolon OS，持续维护个人状态，并在外部设备请求感知、显示或行动能力时成为可信锚点。</p></header><div className="one-role-flow"><article><span>PLATFORM</span><b>Eidolon OS</b><p>定义共同系统能力</p></article><i>完整运行于</i><article className="host-role"><span>FLAGSHIP HOST</span><b>Eidolon One</b><p>定义官方完整体验</p></article><i>通过 EID-X 协作</i><article><span>CAPABILITIES</span><b>外设与生态设备</b><p>提供感知、界面与行动</p></article></div></div></section>
+      <section className="one-role-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">01 · THE PRODUCT RELATION</p><h2>OS 定义共同能力。<br />One 定义旗舰体验。</h2></div><p>One 是一台具体主机，不是 OS 的别名，也不是所有设备的总称。外设通过 EID-X 为它提供当下需要的感知、界面和行动。</p></header><div className="one-role-flow"><article><span>PLATFORM</span><b>Eidolon OS</b><p>身份 · 记忆 · Agent · 情境 · 权限</p></article><i>完整运行于</i><article className="host-role"><span>FLAGSHIP HOST</span><b>Eidolon One</b><p>本地运行 · 可信锚点 · 完整体验</p></article><i>通过 EID-X 协作</i><article><span>PRODUCT MATRIX</span><b>One Family + 兼容设备</b><p>随身 · 空间 · 工作 · 车辆 · 机器人</p></article></div></div></section>
 
-      <section id="one-in-use" className="one-use-section section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">02 · ONE IN USE</p><h2>One 留在中心，<br />设备带来现实能力。</h2></div><p>主机不需要出现在每个房间、屏幕和界面里。它持续运行 Eidolon OS；当环境变化时，合适的外设通过 EID-X 获得一段有边界的能力租约。</p></header><div className="host-scene-layout"><div className="host-scene-map" aria-label="Eidolon One 通过 EID-X 调度感知、对话、呈现与行动设备"><span className="host-ring-label">EID-X · VERIFIED CAPABILITY LEASES</span><div className="host-scene-core"><small>TRUSTED HOST</small><b>Eidolon One</b><span>RUNNING EIDOLON OS</span></div><div className="host-spoke host-spoke-a"><small>SENSE</small><b>传感器</b></div><div className="host-spoke host-spoke-b"><small>TALK</small><b>对话设备</b></div><div className="host-spoke host-spoke-c"><small>SHOW</small><b>屏幕 / 音频</b></div><div className="host-spoke host-spoke-d"><small>ACT</small><b>工具 / 机器人</b></div></div><div className="host-environment-index">{hostEnvironments.map(([code,name,devices,boundary],index)=><article key={code}><span>0{index+1}</span><div><small>{code}</small><h3>{name}</h3></div><p><b>{devices}</b><em>{boundary}</em></p></article>)}</div></div></div></section>
+      <section id="family" className="one-family-v4 section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">02 · THE PRODUCT MATRIX</p><h2>一台主机，四条产品线。<br />每条都对应真实的设备形态。</h2></div><p>下面是产品方向而不是已发布清单。它回答 One 生态会由什么组成、放在哪里、承担什么角色。</p></header><figure className="one-family-concept"><img src="/one-family-concept-v3.png" alt="Eidolon One 主机、可穿戴、房间终端、桌面设备与桥接模块概念产品板" /><figcaption><span>ONE FAMILY · INDUSTRIAL DESIGN STUDY</span><b>概念视觉用于说明产品关系，不代表最终外观与 SKU</b></figcaption></figure><div className="one-family-catalog">{family.map(item=><article key={item.name}><header><span>{item.n}</span><div><small>{item.code}</small><h3>{item.name}</h3><b>{item.role}</b></div><p>{item.promise}</p></header><div>{item.forms.map(([code,name,use])=><section key={name}><small>{code}</small><h4>{name}</h4><p>{use}</p></section>)}</div></article>)}</div></div></section>
 
-      <section id="family" className="family-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">03 · THE ONE FAMILY</p><h2>一台主机，<br />四条官方外设方向。</h2></div><p>Go、Room、Dock、Link 是产品家族骨架。它们都运行 Eidolon OS 的适配能力，并通过 EID-X 与 One 保持状态和权限一致。</p></header><div className="family-ledger">{family.map(([n,name,code,detail])=><article key={name}><span>{n}</span><div><small>{code}</small><h3>{name}</h3></div><p>{detail}</p></article>)}</div></div></section>
+      <section id="scenes" className="one-scenes-v4 section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">03 · MATRIX IN USE</p><h2>产品矩阵不是摆满设备。<br />是每个环境选择恰当的组合。</h2></div><p>切换家庭、办公、车载、创作和照护，查看 One、官方外设与现实设备如何组成一次完整服务。</p></header><OneSceneMatrix /></div></section>
 
-      <section className="accessory-section section-pad page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">04 · PRODUCT DIRECTIONS</p><h2>外设的边界，<br />是人的感知与行动。</h2></div><p>这些是未来产品与合作伙伴方向，不代表已发布 SKU。重点不是堆硬件，而是让每种设备贡献独特能力。</p></header><div className="accessory-groups">{accessoryGroups.map(([title,items],index)=><article key={title}><span>0{index+1}</span><h3>{title}</h3><p>{items}</p></article>)}</div><div className="concept-wide"><img src="/one-matrix-concept-v2.png" alt="Eidolon One 产品方向科技概念图" /><p>CONCEPT FIELD · SENSING / INTERFACE / CONTROL / ACTION</p></div></section>
+      <section className="one-ecosystem-v4 section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">04 · BEYOND FIRST-PARTY HARDWARE</p><h2>产品矩阵会继续生长。<br />但不要求所有产品长得像 One。</h2></div><p>第一方产品负责定义体验，合作伙伴保留自己的工业设计和行业能力；系统只要求身份清晰、权限最小、任务可交接、行动可追溯。</p></header><div className="ecosystem-paths"><article><span>FULL OS</span><h3>兼容主机</h3><p>面向 NAS、个人服务器或行业终端，完整运行 Eidolon OS。</p></article><article><span>COMPANION</span><h3>体验设备</h3><p>面向穿戴、桌面、空间与无障碍产品，运行轻量系统能力。</p></article><article><span>EID-X</span><h3>能力设备</h3><p>传感器、车辆、仪器与机器人只贡献自己的现场能力。</p></article></div></div></section>
 
-      <section className="principles-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">05 · THE FLAGSHIP STANDARD</p><h2>官方旗舰建立体验上限，<br />主权规则不因此封闭。</h2></div><p>One 的价值是把软硬件做到最好；Eidolon 的价值是即使未来更换主机、模型或设备，你仍然拥有自己。</p></header><div className="principles-grid">{principles.map(([code,title,detail])=><article key={code}><span>{code}</span><h3>{title}</h3><p>{detail}</p></article>)}</div></div></section>
+      <section className="principles-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">05 · THE FLAGSHIP STANDARD</p><h2>官方旗舰建立体验上限。<br />主权规则不因此封闭。</h2></div><p>One 的价值是把软硬件做到最好；Eidolon OS 的价值是即使未来更换主机、模型或设备，你仍然拥有自己。</p></header><div className="principles-grid">{principles.map(([code,title,detail])=><article key={code}><span>{code}</span><h3>{title}</h3><p>{detail}</p></article>)}</div></div></section>
 
-      <section className="closing-section compact-closing"><VesselMark size={50} tone="bone" idSuffix="one-end" /><p>EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h2>主机定义今天的完整体验。<br />OS 保留明天的选择权。</h2><div className="actions"><Link className="primary-action light" href="/os">了解 Eidolon OS</Link><Link className="text-action on-dark" href="/protocol">进入 EID-X ↗</Link></div></section>
+      <section className="closing-section compact-closing"><VesselMark size={50} tone="bone" idSuffix="one-v4-end" /><p>EIDOLON ONE · THE OFFICIAL FLAGSHIP</p><h2>一台主机建立信任。<br />一组设备把能力带进现实。</h2><div className="actions"><Link className="primary-action light" href="/os">了解 Eidolon OS</Link><Link className="text-action on-dark" href="/protocol">进入 EID-X ↗</Link></div></section>
     </main>
   );
 }

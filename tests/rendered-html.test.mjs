@@ -170,6 +170,7 @@ test("static deployment exports every public page", async () => {
     ["/", "index.html"],
     ["/os", "os/index.html"],
     ["/one", "one/index.html"],
+    ["/companions", "companions/index.html"],
     ["/protocol", "protocol/index.html"],
     ["/manifesto", "manifesto/index.html"],
   ];
@@ -180,4 +181,20 @@ test("static deployment exports every public page", async () => {
       new RegExp(`\\{\\s*path:\\s*["']${pathname}["'],\\s*out:\\s*["']${output.replace(".", "\\.")}["']\\s*\\}`),
     );
   }
+});
+
+test("companion page presents characters and a truthful device journey", async () => {
+  const response = await render("/companions");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const name of ["小铮", "青芽", "澄澄", "烁烁", "团团"]) assert.ok(html.includes(name));
+  assert.match(html, /产品预览/);
+  assert.match(html, /非最终设备外观/);
+  assert.match(html, /尚未公布价格与上市时间/);
+  assert.match(html, /href="\/one"/);
+  assert.match(html, /id="companion-introduction"/);
+  assert.match(html, /不提供角色专属音色/);
+  assert.doesNotMatch(html, /box-3|livekit|esp32|genome_hash/i);
+  assertNarrativeIsCurrent(html);
+  await access(new URL("public/companions/five-companions.png", projectRoot));
 });

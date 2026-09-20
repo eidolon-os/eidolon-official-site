@@ -19,3 +19,11 @@ npm install
 npm run dev
 npm test
 ```
+
+## 角色陪伴产品页
+
+`/companions` 介绍主机联动、五位原创伙伴和从选择角色到设备表达配置的产品路径；当前为产品预览，不是已发售 SKU 清单。主导航与 `/one` 提供入口，静态部署脚本包含该页面。
+
+官方人格内容由相邻 `eidolon_data` 仓库的 `resources/companion_presets` 管理。修改后运行 `npm run companions:sync` 更新本站公开字段快照，`npm run companions:check` 检查漂移。独立网站构建使用提交的 JSON，不要求 Data 服务在线或相邻仓库存在。
+
+`public/companions/ASSET-PROVENANCE.md` 记录角色概念图的生成方式和提示词。图像不是设备外观承诺；当前不宣称角色专属音色。

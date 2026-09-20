@@ -13,7 +13,9 @@
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "deploy": "bash deploy/deploy.sh",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "companions:sync": "node scripts/sync-companions.mjs",
+    "companions:check": "node scripts/sync-companions.mjs --check"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

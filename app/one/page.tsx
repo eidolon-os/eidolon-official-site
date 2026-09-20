@@ -52,7 +52,7 @@ export default function OnePage() {
       <SiteHeader />
 
       <section className="one-hero page-frame one-v4-hero">
-        <div className="one-hero-copy"><p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h1>把 Eidolon OS，<br /><em>完整地做成<br />一台产品。</em></h1><p>Eidolon One 是官方旗舰个人 AI 主机。它把本地运行、长期记忆、设备信任与关键行动确认放进一台真正可以拥有的整机，并为整个生态建立体验标准。</p><div className="actions"><a className="primary-action" href="#family">查看产品矩阵</a><a className="text-action" href="#scenes">看不同环境如何组合 <i>↓</i></a></div><div className="concept-note"><span>PRODUCT DIRECTION</span><i />主机概念形态<i />工业设计进行中<i />非最终 SKU</div></div>
+        <div className="one-hero-copy"><p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h1>把 Eidolon OS，<br /><em>完整地做成<br />一台产品。</em></h1><p>Eidolon One 是官方旗舰个人 AI 主机。它把本地运行、长期记忆、设备信任与关键行动确认放进一台真正可以拥有的整机，并为整个生态建立体验标准。</p><div className="actions"><a className="primary-action" href="#family">查看产品矩阵</a><a className="text-action" href="#scenes">看不同环境如何组合 <i>↓</i></a></div><p className="one-companions-link"><Link href="/companions">认识五位角色伙伴 · 从桌面陪伴开始 ↗</Link></p><div className="concept-note"><span>PRODUCT DIRECTION</span><i />主机概念形态<i />工业设计进行中<i />非最终 SKU</div></div>
         <figure className="one-hero-figure one-v4-hero-figure"><img src="/eidolon-one-product.png" alt="Eidolon One 官方旗舰个人 AI 主机概念形态" /><figcaption><span>EIDOLON ONE</span><b>CONCEPT FORM · NOT FINAL INDUSTRIAL DESIGN</b></figcaption></figure>
       </section>
 

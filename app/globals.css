@@ -95,3 +95,6 @@
 
 @media(min-width:1001px){.one-v4-hero{grid-template-columns:1fr 1fr;gap:52px}.one-v4-hero h1{font-size:clamp(50px,5vw,64px)}}
 @media(min-width:431px) and (max-width:760px){.one-family-catalog>article>div{grid-template-columns:repeat(3,1fr)}.one-family-catalog section{padding:16px 12px;border-top:1px solid var(--line);border-left:1px solid var(--line)}.one-family-catalog section:first-child{border-left:0}}
+
+/* Companion product discovery on the flagship page. */
+.one-hero-copy .one-companions-link{margin-top:22px;font-size:13px;color:var(--red)}

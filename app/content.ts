@@ -15,6 +15,7 @@ export const site = {
 export const nav = [
   { label: "Eidolon OS", href: "/os" },
   { label: "Eidolon One", href: "/one" },
+  { label: "角色陪伴", href: "/companions" },
   { label: "使用示例", href: "/#environments" },
   { label: "EID-X", href: "/protocol" },
   { label: "主权愿景", href: "/manifesto" },

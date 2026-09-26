@@ -5,7 +5,8 @@ import { EnvironmentScenes } from "./components/EnvironmentScenes";
 import { OSConstellation } from "./components/OSConstellation";
 import { PlatformArchitecture } from "./components/PlatformArchitecture";
 import { VesselMark } from "./components/brand";
-import { site } from "./content";
+import { SceneCards } from "./components/SceneCards";
+import { oneScenes, site } from "./content";
 
 const oneFamily = [
   ["GO", "随身交互", "耳机 · 领夹终端 · 轻量眼镜"],
@@ -54,8 +55,16 @@ export default function Home() {
         <div className="one-intro-copy"><p className="eyebrow">03 · EIDOLON ONE</p><h2>主机是可信锚点，<br />不是新的数据孤岛。</h2><p>Eidolon One 负责把 OS 的本地运行、长期状态、设备信任和关键行动确认放进一台完整产品。它定义官方体验上限，但不会垄断你的个人 AI。</p><Link className="text-action" href="/one">查看 One 与官方外设 <i>↗</i></Link><div className="family-strip">{oneFamily.map(([code,name,items])=><article key={code}><span>{code}</span><b>{name}</b><small>{items}</small></article>)}</div></div>
       </section>
 
+      <section id="scenes" className="home-scenes section-pad">
+        <div className="page-frame">
+          <header className="section-heading split-heading"><div><p className="eyebrow">04 · SCENES ON EIDOLON ONE</p><h2>同一台 One，<br />走进不同的场景。</h2></div><p>陪伴、IP 角色团、智能家居，每个场景都只是在 One 上多加一台设备、多开一项能力，不必再买一套新系统。</p></header>
+          <SceneCards scenes={oneScenes} className="is-three" />
+          <Link className="text-action" href="/one#one-host">看一台 One 如何长出每一个场景 <i>↗</i></Link>
+        </div>
+      </section>
+
       <section className="sovereignty-section section-pad page-frame">
-        <header className="section-heading split-heading"><div><p className="eyebrow">04 · SOVEREIGN BY DESIGN</p><h2>主权不是一句隐私口号，<br />而是系统每天执行的规则。</h2></div><p>我们不把“更懂你”建立在平台永久占有数据之上。Eidolon 的信任来自你能看见、迁移、限制并撤销它。</p></header>
+        <header className="section-heading split-heading"><div><p className="eyebrow">05 · SOVEREIGN BY DESIGN</p><h2>主权不是一句隐私口号，<br />而是系统每天执行的规则。</h2></div><p>我们不把“更懂你”建立在平台永久占有数据之上。Eidolon 的信任来自你能看见、迁移、限制并撤销它。</p></header>
         <div className="sovereignty-ledger">{sovereignty.map(([code,title,detail])=><article key={code}><span>{code}</span><h3>{title}</h3><p>{detail}</p></article>)}</div>
       </section>
 

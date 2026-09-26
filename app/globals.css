@@ -149,6 +149,9 @@
 .one-hub-scenes dt{color:var(--muted)}
 .one-hub-scenes dd{margin:0}
 .one-hub-scenes a>b{margin-top:auto;padding-top:18px;color:var(--red);font-size:12px;font-weight:600}
+.one-hub-scenes.is-three{grid-template-columns:repeat(3,1fr)}
+.home-scenes{background:var(--paper-2)}
+.home-scenes .one-hub-scenes{margin-top:52px}
 .one-hub-cross{margin-top:56px;display:grid;grid-template-columns:1.1fr repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
 .one-hub-cross header{padding:24px 24px 24px 0}
 .one-hub-cross header h3{margin-top:12px;font:550 26px/1.25 var(--serif)}
@@ -158,3 +161,5 @@
 @media(max-width:1000px){.one-hub-compare{grid-template-columns:1fr}.one-hub-scenes{grid-template-columns:repeat(2,1fr)}.one-hub-cross{grid-template-columns:1fr 1fr 1fr}.one-hub-cross header{grid-column:1/-1;padding-right:0}.one-hub-cross article:nth-child(2){border-left:0;padding-left:0}.one-family-catalog>article>div.has-four{grid-template-columns:repeat(2,1fr)}.one-family-catalog>article>div.has-four section:nth-child(3){border-left:0}.one-family-catalog>article>div.has-four section:nth-child(n+3){border-top:1px solid var(--line)}}
 @media(max-width:760px){.one-hub-compare>article{padding:22px 18px}.one-hub-silo-cols{gap:5px}.one-hub-silo-cols>div{padding:10px 4px;gap:5px}.one-hub-silo-cols b{font-size:11px}.one-hub-silo-cols i{padding:6px 2px;font-size:10px}.one-hub-layer{grid-template-columns:1fr;gap:8px}.one-hub-add{grid-template-columns:1fr}.one-hub-add>div,.one-hub-add>div+div{padding:20px 0;border-left:0}.one-hub-add>div+div{border-top:1px solid var(--line)}.one-hub-scenes{grid-template-columns:1fr}.one-hub-scenes a{min-height:auto}.one-hub-cross{grid-template-columns:1fr}.one-hub-cross article,.one-hub-cross article:nth-child(2){padding:20px 0;border-left:0;border-top:1px solid var(--line)}.one-family-catalog>article>div.has-four{grid-template-columns:1fr}.one-family-catalog>article>div.has-four section{border-left:0}}
 @media(min-width:431px) and (max-width:760px){.one-family-catalog>article>div.has-four{grid-template-columns:repeat(2,1fr)}.one-family-catalog>article>div.has-four section:nth-child(3){border-left:0}}
+@media(max-width:1000px) and (min-width:761px){.one-hub-scenes.is-three a{min-height:300px;padding:22px 18px}}
+@media(max-width:760px){.one-hub-scenes.is-three{grid-template-columns:1fr}}

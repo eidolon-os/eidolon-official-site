@@ -55,6 +55,9 @@ test("server-renders the Eidolon official site", async () => {
   assert.match(html, /对话机器人/);
   assert.match(html, /Your AI\. Your memory\. Your authority\./);
   assert.match(html, /github\.com\/eidolon-os/);
+  assert.match(html, /SCENES ON EIDOLON ONE/);
+  assert.match(html, /多角色调度与轮流发声/);
+  assert.match(html, /家的目录、指令理解与执行/);
   assertNarrativeIsCurrent(html);
 });
 

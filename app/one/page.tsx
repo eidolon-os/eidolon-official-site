@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 import { OneSceneMatrix } from "../components/OneSceneMatrix";
+import { SceneCards } from "../components/SceneCards";
 import { VesselMark } from "../components/brand";
+import { oneScenes } from "../content";
 
 export const metadata: Metadata = {
   title: "Eidolon One | Eidolon OS 官方旗舰主机",
@@ -52,12 +54,7 @@ const hubScenes = ["角色陪伴", "IP 角色团", "智能家居", "办公", "�
 const hubDevices = ["桌面伙伴", "按键说话器", "家居面板", "开放式耳机", "电子纸副屏", "车载桥接盒"] as const;
 const hubShared = ["一份身份", "一份长期记忆", "一组伙伴", "一份家的目录", "一套设备信任", "一套权限"] as const;
 
-const sceneEntries = [
-  { n: "01", code: "COMPANIONS", name: "角色陪伴", desc: "五种性格的桌面伙伴，陪你聊天，也能安静待着。", adds: "桌面陪伴设备", host: "伙伴设定与各自的记忆", href: "/companions" },
-  { n: "02", code: "IP ENSEMBLE", name: "IP 角色团", desc: "一个故事的角色住进多台设备，单聊、同台、传话都可以。", adds: "多台桌面设备 · 按键说话器", host: "多角色调度与轮流发声", href: "/ensemble" },
-  { n: "03", code: "SMART HOME", name: "智能家居", desc: "一块面板按房间看全家，一句话控制家里的设备。", adds: "家居中控面板", host: "家的目录、指令理解与执行", href: "/smart-home" },
-  { n: "04", code: "MORE ENVIRONMENTS", name: "更多环境", desc: "办公、车载、创作与照护：同一台主机，组合不同外设进入更多环境。", adds: "Dock · Link · Room 系列外设", host: "同一份状态与权限边界", href: "#scenes" },
-] as const;
+const moreEnvironments = { n: "04", code: "MORE ENVIRONMENTS", name: "更多环境", desc: "办公、车载、创作与照护：同一台主机，组合不同外设进入更多环境。", adds: "Dock · Link · Room 系列外设", host: "同一份状态与权限边界", href: "#scenes" } as const;
 
 const crossovers = [
   ["在书房对伙伴说「把客厅空调关了」", "伙伴和家居面板在同一台主机上，共用一条执行路径。伙伴用声音答复，客厅面板上的空调同时变为关闭。"],
@@ -71,7 +68,7 @@ export default function OnePage() {
       <SiteHeader />
 
       <section className="one-hero page-frame one-v4-hero">
-        <div className="one-hero-copy"><p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h1>把 Eidolon OS，<br /><em>完整地做成<br />一台产品。</em></h1><p>Eidolon One 是官方旗舰个人 AI 主机。它把本地运行、长期记忆、设备信任与关键行动确认放进一台真正可以拥有的整机。陪伴、IP 角色团、智能家居，都只是在这台主机上多加一台设备、多开一项能力。</p><div className="actions"><a className="primary-action" href="#one-host">一台主机，如何长出场景</a><a className="text-action" href="#family">查看产品矩阵 <i>↓</i></a></div><nav className="one-scene-links" aria-label="Eidolon One 的场景">{sceneEntries.slice(0, 3).map((scene) => <Link key={scene.href} href={scene.href}><small>{scene.code}</small>{scene.name} ↗</Link>)}</nav><div className="concept-note"><span>EIDOLON ONE</span><i />本地运行<i />长期记忆<i />设备信任</div></div>
+        <div className="one-hero-copy"><p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h1>把 Eidolon OS，<br /><em>完整地做成<br />一台产品。</em></h1><p>Eidolon One 是官方旗舰个人 AI 主机。它把本地运行、长期记忆、设备信任与关键行动确认放进一台真正可以拥有的整机。陪伴、IP 角色团、智能家居，都只是在这台主机上多加一台设备、多开一项能力。</p><div className="actions"><a className="primary-action" href="#one-host">一台主机，如何长出场景</a><a className="text-action" href="#family">查看产品矩阵 <i>↓</i></a></div><nav className="one-scene-links" aria-label="Eidolon One 的场景">{oneScenes.map((scene) => <Link key={scene.href} href={scene.href}><small>{scene.code}</small>{scene.name} ↗</Link>)}</nav><div className="concept-note"><span>EIDOLON ONE</span><i />本地运行<i />长期记忆<i />设备信任</div></div>
         <figure className="one-hero-figure one-v4-hero-figure"><img src="/eidolon-one-product.png" alt="Eidolon One 官方旗舰个人 AI 主机" /><figcaption><span>EIDOLON ONE</span><b>OFFICIAL FLAGSHIP PERSONAL AI HOST</b></figcaption></figure>
       </section>
 
@@ -90,7 +87,7 @@ export default function OnePage() {
           </article>
         </div>
         <div className="one-hub-add"><div><span>ADD A SCENE</span><h3>加一个场景，只需要</h3><ul><li>一台对应的设备</li><li>在同一个 App 里打开这项能力</li></ul></div><div><span>NO NEED FOR</span><h3>不需要再来一遍</h3><ul><li><del>新账号</del></li><li><del>新网关、新云端</del></li><li><del>新 App</del></li><li><del>从零开始的记忆</del></li></ul></div></div>
-        <div className="one-hub-scenes">{sceneEntries.map((scene) => <Link key={scene.href} href={scene.href}><span>{scene.n}</span><small>{scene.code}</small><h3>{scene.name}</h3><p>{scene.desc}</p><dl><div><dt>新增</dt><dd>{scene.adds}</dd></div><div><dt>One 提供</dt><dd>{scene.host}</dd></div></dl><b>{scene.href.startsWith("#") ? "看环境组合 ↓" : "查看场景 ↗"}</b></Link>)}</div>
+        <SceneCards scenes={[...oneScenes, moreEnvironments]} />
         <div className="one-hub-cross"><header><p className="eyebrow">SCENES THAT TALK TO EACH OTHER</p><h3>场景之间，<br />本来就相通。</h3></header>{crossovers.map(([title, detail]) => <article key={title}><h4>{title}</h4><p>{detail}</p></article>)}</div>
       </div></section>
 

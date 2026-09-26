@@ -178,6 +178,30 @@ test("keeps in-progress and preview language off customer-facing pages", async (
   }
 });
 
+// 线上是纯静态 nginx，没有 RSC 数据文件：框架的客户端导航会请求 *.rsc，拿到 HTML 后
+// 反复硬跳转（页内锚点下会形成 popstate 循环，把滚动位置一再拉回）。
+test("keeps navigation working on static hosting without RSC payloads", async () => {
+  const sources = [];
+  async function collect(relativePath) {
+    const entries = await readdir(new URL(`../${relativePath}`, import.meta.url), { withFileTypes: true });
+    for (const entry of entries) {
+      const child = `${relativePath}/${entry.name}`;
+      if (entry.isDirectory()) await collect(child);
+      else if (/\.tsx?$/.test(entry.name)) sources.push([child, await readFile(new URL(`../${child}`, import.meta.url), "utf8")]);
+    }
+  }
+  await collect("app");
+  for (const [file, source] of sources) assert.doesNotMatch(source, /from "next\/link"/, file);
+
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.doesNotMatch(css, /scroll-behavior:\s*smooth/);
+
+  const html = await (await render("/one")).text();
+  assert.match(html, /addEventListener\("popstate"/);
+  assert.match(html, /stopImmediatePropagation/);
+  assert.match(html, /history\.replaceState/);
+});
+
 test("keeps starter preview code out of the finished site", async () => {
   const [page, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),

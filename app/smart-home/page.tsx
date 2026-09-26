@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 import { HomePanelDemo } from "./HomePanelDemo";
 import "./smart-home.css";
@@ -61,7 +60,7 @@ export default function SmartHomePage() {
           <p className="sh-label">EIDOLON ONE · SCENE <span>智能家居</span></p>
           <h1>一块面板看全家，<br /><em>一句话就办好。</em></h1>
           <p className="sh-lead">在手机里把房间和设备整理一次，保存在你的 Eidolon One 上。墙上的家居中控面板按房间显示、点按控制；对它说一句「打开空调」，它知道你在客厅。</p>
-          <div className="sh-actions"><a className="sh-button" href="#flow">看一句话如何执行 <span>↓</span></a><Link className="sh-text-link" href="/one">不是再买一套系统，是给 One 加一块面板 ↗</Link></div>
+          <div className="sh-actions"><a className="sh-button" href="#flow">看一句话如何执行 <span>↓</span></a><a className="sh-text-link" href="/one">不是再买一套系统，是给 One 加一块面板 ↗</a></div>
         </div>
         <div className="page-frame"><HomePanelDemo /></div>
       </section>
@@ -175,7 +174,7 @@ export default function SmartHomePage() {
           <p className="sh-label">GET STARTED</p>
           <h2>四步，<br />把家连进 One。</h2>
           <ol className="sh-start">
-            <li><span>01</span><b>准备一台 Eidolon One</b><p>家的目录、设备状态与指令理解，都在这台主机上完成。</p><Link href="/one">了解 Eidolon One ↗</Link></li>
+            <li><span>01</span><b>准备一台 Eidolon One</b><p>家的目录、设备状态与指令理解，都在这台主机上完成。</p><a href="/one">了解 Eidolon One ↗</a></li>
             <li><span>02</span><b>在手机里整理你的家</b><p>建好房间、添加设备；也可以一键载入示例户型，先上手体验。</p></li>
             <li><span>03</span><b>装上家居面板</b><p>连上主机，在手机里标好它所在的房间。</p></li>
             <li><span>04</span><b>点一下，或说一句</b><p>面板、桌面伙伴和手机，控制的是同一个家。</p></li>
@@ -186,7 +185,7 @@ export default function SmartHomePage() {
       <section className="closing-section compact-closing">
         <p>ONE HOST · ONE HOME · EVERY ROOM</p>
         <h2>一台 One，<br />把家也连进来。</h2>
-        <div className="actions"><Link className="primary-action light" href="/one">认识 Eidolon One</Link><Link className="text-action on-dark" href="/ensemble">再看看 IP 角色团 ↗</Link></div>
+        <div className="actions"><a className="primary-action light" href="/one">认识 Eidolon One</a><a className="text-action on-dark" href="/ensemble">再看看 IP 角色团 ↗</a></div>
       </section>
     </main>
   );

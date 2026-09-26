@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 import { SceneCards } from "../components/SceneCards";
 import { VesselMark } from "../components/brand";
@@ -94,7 +93,7 @@ export default function OnePage() {
 
       <section id="family" className="one-family-v4 section-pad"><div className="page-frame"><header className="section-heading split-heading"><div><p className="eyebrow">03 · THE ONE FAMILY</p><h2>按场景，<br />挑一台设备。</h2></div><p>One 家族的每条产品线都对应一类场景。同一台设备换个场景也能用：桌面陪伴设备既陪你单聊，也在角色团里同台。</p></header><figure className="one-family-concept"><img src="/one-family-concept-v3.png" alt="Eidolon One 主机、可穿戴、房间终端、桌面设备与桥接模块产品家族" /><figcaption><span>ONE FAMILY</span><b>一台主机 · 四条外设产品线</b></figcaption></figure><div className="one-family-catalog">{family.map(item=><article key={item.name}><header><span>{item.n}</span><div><small>{item.code}</small><h3>{item.name}</h3><b>{item.role}</b></div><p>{item.promise}<em>用在：{item.scenes}</em></p></header><div className={item.forms.length > 3 ? "has-four" : undefined}>{item.forms.map(([code,name,use])=><section key={name}><small>{code}</small><h4>{name}</h4><p>{use}</p></section>)}</div></article>)}</div></div></section>
 
-      <section className="closing-section compact-closing"><VesselMark size={50} tone="bone" idSuffix="one-v4-end" /><p>EIDOLON ONE · THE OFFICIAL FLAGSHIP</p><h2>一台主机建立信任。<br />每多一个场景，只是多一台设备。</h2><div className="actions"><Link className="primary-action light" href="/os">了解 Eidolon OS</Link><Link className="text-action on-dark" href="/protocol">进入 EID-X ↗</Link></div></section>
+      <section className="closing-section compact-closing"><VesselMark size={50} tone="bone" idSuffix="one-v4-end" /><p>EIDOLON ONE · THE OFFICIAL FLAGSHIP</p><h2>一台主机建立信任。<br />每多一个场景，只是多一台设备。</h2><div className="actions"><a className="primary-action light" href="/os">了解 Eidolon OS</a><a className="text-action on-dark" href="/protocol">进入 EID-X ↗</a></div></section>
     </main>
   );
 }

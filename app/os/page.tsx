@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 import { PlatformArchitecture } from "../components/PlatformArchitecture";
 import { VesselMark } from "../components/brand";
@@ -39,7 +38,7 @@ export default function OSPage() {
       <SiteHeader />
 
       <section className="subpage-hero page-frame os-page-hero">
-        <div><p className="eyebrow">EIDOLON OS · THE PLATFORM</p><h1>个人 AI 的<br /><em>操作系统。</em></h1><p>传统操作系统让应用运行在不同电脑和手机上。Eidolon OS 让一个人的 AI 运行在不同模型、产品和现实活动中，同时保留身份、记忆与决定权。</p><div className="actions"><a className="primary-action" href="#architecture">理解系统架构</a><Link className="text-action" href="/one">认识旗舰 One <i>↗</i></Link></div></div>
+        <div><p className="eyebrow">EIDOLON OS · THE PLATFORM</p><h1>个人 AI 的<br /><em>操作系统。</em></h1><p>传统操作系统让应用运行在不同电脑和手机上。Eidolon OS 让一个人的 AI 运行在不同模型、产品和现实活动中，同时保留身份、记忆与决定权。</p><div className="actions"><a className="primary-action" href="#architecture">理解系统架构</a><a className="text-action" href="/one">认识旗舰 One <i>↗</i></a></div></div>
         <aside className="os-analogy-panel"><span>OPERATING SYSTEM LOGIC</span><div><small>传统 OS</small><b>协调应用、硬件与文件</b></div><i>→</i><div className="analogy-focus"><small>Eidolon OS</small><b>协调身份、记忆、智能、情境与现实能力</b></div><p>模型可以替换，产品可以换代。你的个人 AI 不必从零开始。</p></aside>
       </section>
 
@@ -53,7 +52,7 @@ export default function OSPage() {
 
       <section className="os-continuity-section section-pad"><div className="page-frame"><header className="section-heading on-dark split-heading"><div><p className="eyebrow">05 · CONTINUITY</p><h2>情境变化时，迁移任务状态。<br />不是复制整份私人数据。</h2></div><p>一次创作可以经过随身采集、快速整理、轻量预览和完整制作；每个设备只获得当下所需的一段。</p></header><div className="os-continuity-rail"><article><small>CAPTURE</small><b>领夹终端</b><p>收下一句灵感与现场声音</p></article><i>OS handoff</i><article><small>SHAPE</small><b>One Go</b><p>用语音继续形成结构</p></article><i>EID-X lease</i><article><small>PREVIEW</small><b>电子纸</b><p>只展示提纲与待确认问题</p></article><i>OS handoff</i><article><small>CREATE</small><b>One + Dock</b><p>展开素材、Agent 与创作工具</p></article></div></div></section>
 
-      <section className="closing-section compact-closing"><VesselMark size={50} tone="bone" idSuffix="os-v2-end" /><p>ONE OS · MANY PRODUCTS · ONE OWNER</p><h2>One 定义旗舰体验。<br />OS 让个人 AI 拥有更长的生命。</h2><div className="actions"><Link className="primary-action light" href="/one">进入 Eidolon One</Link><Link className="text-action on-dark" href="/protocol">了解 EID-X ↗</Link></div></section>
+      <section className="closing-section compact-closing"><VesselMark size={50} tone="bone" idSuffix="os-v2-end" /><p>ONE OS · MANY PRODUCTS · ONE OWNER</p><h2>One 定义旗舰体验。<br />OS 让个人 AI 拥有更长的生命。</h2><div className="actions"><a className="primary-action light" href="/one">进入 Eidolon One</a><a className="text-action on-dark" href="/protocol">了解 EID-X ↗</a></div></section>
     </main>
   );
 }

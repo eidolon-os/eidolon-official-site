@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteHeader } from "../components/SiteHeader";
 import { EnsembleStage } from "./EnsembleStage";
 import { IpSwitcher } from "./IpSwitcher";
@@ -32,7 +31,7 @@ export default function EnsemblePage() {
           <p className="en-label">EIDOLON ONE · SCENE <span>IP 角色团</span></p>
           <h1>一个故事里的角色，<br /><em>住进你的每一台设备。</em></h1>
           <p className="en-lead">把一整组角色请到桌面上，每位住在自己的设备里，各有性格与说话方式。按住手边的说话键开口，合适的那位就在自己的设备上回应；想插话，按下就行。换一套 IP，同样的设备就换了一班角色、一种气氛。</p>
-          <div className="en-actions"><a className="en-button" href="#stories">换一套 IP 试试 <span>↓</span></a><Link className="en-text-link" href="/one">这一切背后，只有一台 One ↗</Link></div>
+          <div className="en-actions"><a className="en-button" href="#stories">换一套 IP 试试 <span>↓</span></a><a className="en-text-link" href="/one">这一切背后，只有一台 One ↗</a></div>
         </div>
         <div className="en-lineup page-frame" aria-label="示例角色团：唐僧、悟空、八戒、沙僧，各自一台桌面设备，由一台 Eidolon One 托起">
           <div className="en-lineup-cast">
@@ -58,7 +57,7 @@ export default function EnsemblePage() {
             <article><span>换一套 IP，换掉的是</span><ul><li>角色与性格</li><li>说话方式</li><li>角色之间的关系</li><li>谁先开口、怎么接话</li><li>屏幕上的形象与表情</li></ul></article>
             <article><span>一直不变的是</span><ul><li>同一台 Eidolon One</li><li>同一套桌面设备</li><li>同一个说话键和手机 App</li><li>你的数据，留在你自己的主机上</li></ul></article>
           </div>
-          <p className="en-stories-more">不止名著。你自己的伙伴——小铮、青芽、澄澄、烁烁、团团——也能组团；遇到一个问题，也可以临时拉两位来讨论。<Link href="/companions">认识五位伙伴 ↗</Link></p>
+          <p className="en-stories-more">不止名著。你自己的伙伴——小铮、青芽、澄澄、烁烁、团团——也能组团；遇到一个问题，也可以临时拉两位来讨论。<a href="/companions">认识五位伙伴 ↗</a></p>
           <p className="en-stories-note">示例角色取材自古典名著《西游记》《三国演义》《红楼梦》</p>
         </div>
       </section>
@@ -141,7 +140,7 @@ export default function EnsemblePage() {
           <p className="en-label">GET STARTED</p>
           <h2>四步，<br />把角色团请到桌面上。</h2>
           <ol className="en-start">
-            <li><span>01</span><b>准备一台 Eidolon One</b><p>角色、记忆和所有设备，都由这台主机统一托起。</p><Link href="/one">了解 Eidolon One ↗</Link></li>
+            <li><span>01</span><b>准备一台 Eidolon One</b><p>角色、记忆和所有设备，都由这台主机统一托起。</p><a href="/one">了解 Eidolon One ↗</a></li>
             <li><span>02</span><b>请来一组角色</b><p>选一套 IP 角色团，想换就换；也可以用你自己的伙伴组队。</p></li>
             <li><span>03</span><b>给每位一台设备</b><p>每位角色在自己的桌面设备上回应，再备一个按键说话器用来开口。</p></li>
             <li><span>04</span><b>在手机上开始</b><p>选好参与的伙伴，选「你来提问」或「允许讨论」，按住说话键就能聊。</p></li>
@@ -152,7 +151,7 @@ export default function EnsemblePage() {
       <section className="closing-section compact-closing en-closing">
         <p>ONE HOST · ONE CAST · MANY DEVICES</p>
         <h2>一台 One，<br />托起整个角色团。</h2>
-        <div className="actions"><Link className="primary-action light" href="/one">认识 Eidolon One</Link><Link className="text-action on-dark" href="/smart-home">再看看智能家居 ↗</Link></div>
+        <div className="actions"><a className="primary-action light" href="/one">认识 Eidolon One</a><a className="text-action on-dark" href="/smart-home">再看看智能家居 ↗</a></div>
       </section>
     </main>
   );

@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element */
+/* eslint-disable @next/next/no-img-element */
 import { site, nav } from "../content";
 
 export function SiteHeader() {

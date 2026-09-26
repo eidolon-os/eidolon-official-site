@@ -78,6 +78,13 @@ test("server-renders the Eidolon One product page", async () => {
   assert.match(html, /轻量眼镜/);
   assert.match(html, /可编程旋钮台/);
   assert.match(html, /工业设计进行中/);
+  assert.match(html, /ONE HOST, EVERY SCENE/);
+  assert.match(html, /长出每一个场景/);
+  assert.match(html, /不必每个场景再买一套系统/);
+  assert.match(html, /家居中控面板/);
+  assert.match(html, /href="\/companions"/);
+  assert.match(html, /href="\/ensemble"/);
+  assert.match(html, /href="\/smart-home"/);
   assertNarrativeIsCurrent(html);
 });
 
@@ -171,6 +178,8 @@ test("static deployment exports every public page", async () => {
     ["/os", "os/index.html"],
     ["/one", "one/index.html"],
     ["/companions", "companions/index.html"],
+    ["/ensemble", "ensemble/index.html"],
+    ["/smart-home", "smart-home/index.html"],
     ["/protocol", "protocol/index.html"],
     ["/manifesto", "manifesto/index.html"],
   ];
@@ -197,4 +206,43 @@ test("companion page presents characters and a truthful device journey", async (
   assert.doesNotMatch(html, /box-3|livekit|esp32|genome_hash/i);
   assertNarrativeIsCurrent(html);
   await access(new URL("public/companions/five-companions.png", projectRoot));
+});
+
+const internalNames = /korvo|esp32|livekit|laya|box-3|stackchan|opi5|waveshare|rk3588/i;
+
+test("IP ensemble page presents multi-device cast conversations truthfully", async () => {
+  const response = await render("/ensemble");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /IP 角色团 \| 一台 Eidolon One，托起一整组角色/);
+  for (const name of ["唐僧", "悟空", "八戒", "沙僧"]) assert.ok(html.includes(name));
+  for (const mode of ["单独聊", "换处回应", "一起聊", "接着讨论", "传一句话", "安静陪伴"]) assert.ok(html.includes(mode));
+  assert.match(html, /角色是角色/);
+  assert.match(html, /一次只有一台设备/);
+  assert.match(html, /公版名著《西游记》/);
+  assert.match(html, /产品预览/);
+  assert.match(html, /尚未公布价格与上市时间/);
+  assert.match(html, /href="\/one"/);
+  assert.doesNotMatch(html, internalNames);
+  assertNarrativeIsCurrent(html);
+});
+
+test("smart home page presents the panel, host and phone roles truthfully", async () => {
+  const response = await render("/smart-home");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /智能家居 \| 一台 Eidolon One，把家也连进来/);
+  assert.match(html, /手机整理，One 保存/);
+  assert.match(html, /家居中控面板/);
+  assert.match(html, /快速识别/);
+  assert.match(html, /它知道/);
+  assert.match(html, /只听，不说/);
+  assert.match(html, /Matter/);
+  assert.match(html, /尚未实测/);
+  assert.match(html, /敏感动作/);
+  assert.match(html, /产品预览/);
+  assert.match(html, /尚未公布价格与上市时间/);
+  assert.match(html, /href="\/one"/);
+  assert.doesNotMatch(html, internalNames);
+  assertNarrativeIsCurrent(html);
 });

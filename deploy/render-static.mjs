@@ -18,6 +18,8 @@ const routes = [
   { path: "/os", out: "os/index.html" },
   { path: "/one", out: "one/index.html" },
   { path: "/companions", out: "companions/index.html" },
+  { path: "/ensemble", out: "ensemble/index.html" },
+  { path: "/smart-home", out: "smart-home/index.html" },
   { path: "/manifesto", out: "manifesto/index.html" },
   { path: "/protocol", out: "protocol/index.html" },
 ];

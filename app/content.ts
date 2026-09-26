@@ -16,7 +16,8 @@ export const nav = [
   { label: "Eidolon OS", href: "/os" },
   { label: "Eidolon One", href: "/one" },
   { label: "角色陪伴", href: "/companions" },
-  { label: "使用示例", href: "/#environments" },
+  { label: "IP 角色团", href: "/ensemble" },
+  { label: "智能家居", href: "/smart-home" },
   { label: "EID-X", href: "/protocol" },
   { label: "主权愿景", href: "/manifesto" },
 ] as const;

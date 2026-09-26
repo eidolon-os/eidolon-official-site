@@ -51,7 +51,7 @@ export default function Home() {
 
       <section className="one-intro-section section-pad page-frame">
         <div className="one-intro-art"><EidolonOne /></div>
-        <div className="one-intro-copy"><p className="eyebrow">03 · EIDOLON ONE</p><h2>主机是可信锚点，<br />不是新的数据孤岛。</h2><p>Eidolon One 负责把 OS 的本地运行、长期状态、设备信任和关键行动确认放进一台完整产品。它定义官方体验上限，但不会垄断你的个人 AI。</p><Link className="text-action" href="/one">查看 One 与官方外设设想 <i>↗</i></Link><div className="family-strip">{oneFamily.map(([code,name,items])=><article key={code}><span>{code}</span><b>{name}</b><small>{items}</small></article>)}</div></div>
+        <div className="one-intro-copy"><p className="eyebrow">03 · EIDOLON ONE</p><h2>主机是可信锚点，<br />不是新的数据孤岛。</h2><p>Eidolon One 负责把 OS 的本地运行、长期状态、设备信任和关键行动确认放进一台完整产品。它定义官方体验上限，但不会垄断你的个人 AI。</p><Link className="text-action" href="/one">查看 One 与官方外设 <i>↗</i></Link><div className="family-strip">{oneFamily.map(([code,name,items])=><article key={code}><span>{code}</span><b>{name}</b><small>{items}</small></article>)}</div></div>
       </section>
 
       <section className="sovereignty-section section-pad page-frame">

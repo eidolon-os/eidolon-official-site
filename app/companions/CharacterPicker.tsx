@@ -16,7 +16,7 @@ export function CharacterPicker() {
     </div>
     <div id="companion-introduction" className={`cp-introduction cp-${character.id}`} aria-live="polite" aria-atomic="true">
       <div><span className="cp-label">一种合拍的相处方式</span><h3>{character.name}<small>{character.title}</small></h3><p>{character.description}</p><p className="cp-note">这些设定是相识的起点。你可以改名字，也可以慢慢调整 TA 的性格和表达。</p></div>
-      <div className="cp-dialogue"><span className="cp-label">同一句话，五种回应</span><p className="cp-you">今天有点累。</p><blockquote>{character.examples[0].split("TA：")[1]}</blockquote><span className="cp-note">角色对话示例，实际回应随交流而变化。</span></div>
+      <div className="cp-dialogue"><span className="cp-label">同一句话，五种回应</span><p className="cp-you">今天有点累。</p><blockquote>{character.examples[0].split("TA：")[1]}</blockquote><span className="cp-note">每一次回应，都会随你们的交流而变化。</span></div>
     </div>
   </div>;
 }

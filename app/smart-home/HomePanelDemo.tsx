@@ -207,7 +207,7 @@ export function HomePanelDemo() {
   return (
     <div className="sh-demo">
       <div className="sh-bezel" ref={bezel}>
-        <div className={`sh-screen${offline ? " is-offline" : ""}`} role="group" aria-label="家居中控面板界面示意">
+        <div className={`sh-screen${offline ? " is-offline" : ""}`} role="group" aria-label="家居中控面板界面">
           <header className="sh-top">
             <b>我的家<span> · {panelRoom ? `面板在${roomName(panelRoom)}` : "未设置房间"}</span></b>
             <time>20:31</time>
@@ -270,7 +270,6 @@ export function HomePanelDemo() {
           </div>
           <label><input type="checkbox" checked={offline} onChange={(e) => setOffline(e.target.checked)} />模拟主机断开</label>
         </div>
-        <p>界面为设计示意，设备与状态均为演示数据；时间与动画节奏不代表实际时延。</p>
       </div>
     </div>
   );

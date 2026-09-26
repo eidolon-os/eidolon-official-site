@@ -6,8 +6,8 @@ import "./smart-home.css";
 
 export const metadata: Metadata = {
   title: "智能家居 | 一台 Eidolon One，把家也连进来",
-  description: "在手机里整理一次房间和设备，保存在 Eidolon One 上；家居中控面板按房间显示、点按控制，一句话就能执行。产品预览。",
-  openGraph: { title: "智能家居 | 一台 Eidolon One，把家也连进来", description: "手机整理，One 保存与执行，面板显示与输入。常见指令快速识别，复杂说法再交给大模型。产品预览。", images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: "Eidolon OS — 个人 AI 操作系统" }] },
+  description: "在手机里整理一次房间和设备，保存在 Eidolon One 上；家居中控面板按房间显示、点按控制，一句话就能执行。",
+  openGraph: { title: "智能家居 | 一台 Eidolon One，把家也连进来", description: "手机整理，One 保存与执行，面板显示与输入。常见指令快速识别，复杂说法再交给大模型。", images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: "Eidolon OS — 个人 AI 操作系统" }] },
 };
 
 const roles = [
@@ -58,7 +58,7 @@ export default function SmartHomePage() {
 
       <section className="sh-hero" id="top">
         <div className="page-frame sh-hero-copy">
-          <p className="sh-label">EIDOLON ONE · SCENE <span>智能家居 · 产品预览</span></p>
+          <p className="sh-label">EIDOLON ONE · SCENE <span>智能家居</span></p>
           <h1>一块面板看全家，<br /><em>一句话就办好。</em></h1>
           <p className="sh-lead">在手机里把房间和设备整理一次，保存在你的 Eidolon One 上。墙上的家居中控面板按房间显示、点按控制；对它说一句「打开空调」，它知道你在客厅。</p>
           <div className="sh-actions"><a className="sh-button" href="#flow">看一句话如何执行 <span>↓</span></a><Link className="sh-text-link" href="/one">不是再买一套系统，是给 One 加一块面板 ↗</Link></div>
@@ -90,14 +90,14 @@ export default function SmartHomePage() {
           </ol>
           <div className="sh-latency">
             <article>
-              <span>完整大模型对话</span>
+              <span>每句话都交给大模型</span>
               <div className="sh-bar"><i style={{ width: "100%" }} /></div>
-              <p><b>约 2.6–3.0 秒</b>在我们的桌面伙伴上实测：从说完到听到回复，完整走一遍大模型对话。</p>
+              <p><b>开个灯，也要等一等</b>先等模型理解、组织语言，再把回复念出来。</p>
             </article>
             <article className="is-fast">
-              <span>快速识别 · 常见指令</span>
+              <span>Eidolon One · 快速识别</span>
               <div className="sh-bar"><i style={{ width: "17%" }} /></div>
-              <p><b>目标 ≤ 0.5 秒</b>从说完到磁贴变化的设计目标。开发中，尚未实测。</p>
+              <p><b>说完，磁贴就变了</b>常见指令在主机本地完成理解和执行，面板上立刻看到结果。</p>
             </article>
           </div>
         </div>
@@ -146,17 +146,17 @@ export default function SmartHomePage() {
           <div>
             <p className="sh-label">06 / BUILT ON OPEN STANDARDS</p>
             <h2>按 Matter 的语言，<br />描述每一台设备。</h2>
-            <p className="sh-prose">每类设备的能力都对齐 Matter 设备类型的定义。以后接入真实设备时，面板、伙伴和手机的体验不需要改变。</p>
+            <p className="sh-prose">每类设备的能力都对齐 Matter 设备类型的定义。无论设备从哪里接入，面板、伙伴和手机上的体验都保持一致。</p>
           </div>
           <div className="sh-standard-body">
             <div><span>设备类型</span><p>{deviceTypes.map((t) => <i key={t}>{t}</i>)}</p></div>
             <div><span>能力</span><p>{capabilities.map((t) => <i key={t}>{t}</i>)}</p></div>
             <ol className="sh-sources">
-              <li><small>首个版本</small><b>主机上的示例户型</b><p>先把「手机整理 → 面板显示 → 语音与触控执行 → 多端同步」完整跑通。</p></li>
-              <li><small>之后</small><b>接入 Home Assistant</b><p>把你家已有的设备，作为新的设备来源接进来。</p></li>
-              <li><small>远期方向</small><b>面板兼任 Matter 控制器</b><p>让面板通过 Thread / Zigbee 直接连接设备；它连着的设备，主机不在线时也能本地控制。</p></li>
+              <li><small>APP</small><b>在手机里添加</b><p>选好设备类型、分好房间，由 One 统一保存和管理。</p></li>
+              <li><small>HOME ASSISTANT</small><b>接入已有设备</b><p>家里已经在用的设备，通过 Home Assistant 接进同一块面板。</p></li>
+              <li><small>THREAD · ZIGBEE</small><b>面板直连</b><p>面板直接连接 Thread / Zigbee 设备，主机不在线时也能本地控制。</p></li>
             </ol>
-            <p className="sh-standard-note">门锁等敏感动作，首个版本暂不开放。</p>
+            <p className="sh-standard-note">安全优先：门锁等涉及安全的设备，不接受语音直接开启。</p>
           </div>
         </div>
       </section>
@@ -172,14 +172,14 @@ export default function SmartHomePage() {
 
       <section className="sh-section sh-status">
         <div className="page-frame">
-          <p className="sh-label">WHERE WE ARE</p>
-          <h2>先把一个家跑通，<br />再接进你已有的设备。</h2>
-          <div className="sh-status-grid">
-            <article><b>设计中</b><p>手机端「智能家居」分区、家居中控面板界面，以及面板语音指令。</p></article>
-            <article><b>首个版本</b><p>以主机上的示例户型，验证整理、显示、执行与多端同步的完整体验。</p></article>
-            <article><b>之后</b><p>接入真实设备来源，并用真实的家庭说法持续提升快速识别的准确率。</p></article>
-          </div>
-          <p className="sh-note">本页为产品预览，介绍计划中的体验，不表示以上能力已经可用。面板界面为设计示意，时延目标尚未实测；设备外观、支持的设备类型与上市形式仍在设计中，尚未公布价格与上市时间。</p>
+          <p className="sh-label">GET STARTED</p>
+          <h2>四步，<br />把家连进 One。</h2>
+          <ol className="sh-start">
+            <li><span>01</span><b>准备一台 Eidolon One</b><p>家的目录、设备状态与指令理解，都在这台主机上完成。</p><Link href="/one">了解 Eidolon One ↗</Link></li>
+            <li><span>02</span><b>在手机里整理你的家</b><p>建好房间、添加设备；也可以一键载入示例户型，先上手体验。</p></li>
+            <li><span>03</span><b>装上家居面板</b><p>连上主机，在手机里标好它所在的房间。</p></li>
+            <li><span>04</span><b>点一下，或说一句</b><p>面板、桌面伙伴和手机，控制的是同一个家。</p></li>
+          </ol>
         </div>
       </section>
 

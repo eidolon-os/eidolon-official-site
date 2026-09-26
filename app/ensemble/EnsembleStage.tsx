@@ -80,7 +80,7 @@ const scenes: Scene[] = [
       { who: "wukong", to: ["wukong"], mode: "voice", host: "悟空发言", text: "爬山痛快！出一身汗，回来睡得香。" },
       { who: "sha", to: ["sha"], mode: "voice", host: "沙僧接着悟空的观点", text: "大师兄说得是。不过要是下雨，博物馆更稳妥些。" },
       { who: "you", from: "phone", stop: true, host: "讨论已停止", text: "按下「停止」" },
-      { who: "note", host: "只停这一次讨论", text: "尚未开始的发言全部取消，另一段单聊不受影响。想继续时，再由你主动开始。" },
+      { who: "note", host: "只停这一次讨论", text: "还没开始的发言全部取消，另一段单聊不受影响。想继续时，再由你主动开始。" },
     ],
   },
   {
@@ -206,7 +206,7 @@ export function EnsembleStage() {
       </div>
 
       <div className="en-stage-body" id="en-stage-panel" role="tabpanel">
-        <div className="en-stage-floor" aria-label={`${scene.label}：设备状态示意`}>
+        <div className="en-stage-floor" aria-label={`${scene.label}：设备状态`}>
           <div className="en-cast-row">
             {cast.map((member) => {
               const state = stateOf(member.id);
@@ -274,8 +274,8 @@ export function EnsembleStage() {
             })}
           </ol>
           <footer>
-            <button type="button" onClick={replay} disabled={animating}>{animating ? "演示中…" : "重播这一幕 ↺"}</button>
-            <span>示例对话用于说明体验，不是固定台词</span>
+            <button type="button" onClick={replay} disabled={animating}>{animating ? "播放中…" : "重播这一幕 ↺"}</button>
+            <span>点选上方，切换六种交流方式</span>
           </footer>
         </div>
       </div>

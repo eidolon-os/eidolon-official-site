@@ -7,8 +7,8 @@ import "./ensemble.css";
 
 export const metadata: Metadata = {
   title: "IP 角色团 | 一台 Eidolon One，托起一整组角色",
-  description: "把一个故事里的角色请到你的多台设备上：单独聊、一起聊、换处回应、传话和安静陪伴，都由同一台 Eidolon One 托起。产品预览。",
-  openGraph: { title: "IP 角色团 | 一台 Eidolon One，托起一整组角色", description: "一组角色，多台设备，一台主机。从任何一台设备开口，由合适的那位在它自己的设备上回应。产品预览。", images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: "Eidolon OS — 个人 AI 操作系统" }] },
+  description: "把一个故事里的角色请到你的多台设备上：单独聊、一起聊、换处回应、传话和安静陪伴，都由同一台 Eidolon One 托起。",
+  openGraph: { title: "IP 角色团 | 一台 Eidolon One，托起一整组角色", description: "一组角色，多台设备，一台主机。从任何一台设备开口，由合适的那位在它自己的设备上回应。", images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: "Eidolon OS — 个人 AI 操作系统" }] },
 };
 
 const controls = [
@@ -28,7 +28,7 @@ export default function EnsemblePage() {
 
       <section className="en-hero" id="top">
         <div className="en-hero-copy page-frame">
-          <p className="en-label">EIDOLON ONE · SCENE <span>IP 角色团 · 产品预览</span></p>
+          <p className="en-label">EIDOLON ONE · SCENE <span>IP 角色团</span></p>
           <h1>一个故事里的角色，<br /><em>住进你的每一台设备。</em></h1>
           <p className="en-lead">把一整组角色请到桌面上，每位住在自己的设备里，各有性格与说话方式。你可以单独找一位聊天，也可以让大家一起出主意——从手边任何一台设备开口，由合适的那位在它自己的设备上回应。</p>
           <div className="en-actions"><a className="en-button" href="#modes">看六种交流方式 <span>↓</span></a><Link className="en-text-link" href="/one">这一切背后，只有一台 One ↗</Link></div>
@@ -44,7 +44,7 @@ export default function EnsemblePage() {
             ))}
           </div>
           <div className="en-lineup-host"><i /><b>Eidolon One</b><span>角色 · 记忆 · 调度 · 权限</span><i /></div>
-          <p className="en-lineup-note">示例角色取自公版名著《西游记》，不代表任何影视、动画形象或授权产品；设备形态为示意。</p>
+          <p className="en-lineup-note">示例角色取材自古典名著《西游记》</p>
         </div>
       </section>
 
@@ -129,14 +129,14 @@ export default function EnsemblePage() {
 
       <section className="en-section en-status">
         <div className="page-frame">
-          <p className="en-label">WHERE WE ARE</p>
-          <h2>先把一问一答做扎实，<br />再让整个团热闹起来。</h2>
-          <div className="en-status-grid">
-            <article><b>已经可以</b><p>多台设备连接同一台主机，各自与自己的伙伴单独对话。</p></article>
-            <article><b>正在验证</b><p>从一台设备说话，由另一台设备上的伙伴回应；换人、停止与断线恢复。</p></article>
-            <article><b>接下来</b><p>多位伙伴按顺序接续、团队公开上下文、传话，以及听说与表达的分别设置。</p></article>
-          </div>
-          <p className="en-note">本页为产品预览，介绍计划中的体验，不表示以上能力已经全部可用。示例对话用于说明体验，不是固定台词或效果保证；角色、设备外观与组合形式仍在设计中，尚未公布价格与上市时间。</p>
+          <p className="en-label">GET STARTED</p>
+          <h2>四步，<br />把角色团请到桌面上。</h2>
+          <ol className="en-start">
+            <li><span>01</span><b>准备一台 Eidolon One</b><p>角色、记忆和所有设备，都由这台主机统一托起。</p><Link href="/one">了解 Eidolon One ↗</Link></li>
+            <li><span>02</span><b>请来一组角色</b><p>选一套 IP 角色团，或者用你自己的伙伴组队。</p></li>
+            <li><span>03</span><b>给每位一台设备</b><p>桌面设备负责回应，手边的按键说话器或手机负责开口。</p></li>
+            <li><span>04</span><b>开始聊</b><p>单独聊、一起聊、传一句话，随时切换，随时叫停。</p></li>
+          </ol>
         </div>
       </section>
 

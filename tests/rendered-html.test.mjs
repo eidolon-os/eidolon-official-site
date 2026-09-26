@@ -77,7 +77,6 @@ test("server-renders the Eidolon One product page", async () => {
   assert.match(html, /车载桥接盒/);
   assert.match(html, /轻量眼镜/);
   assert.match(html, /可编程旋钮台/);
-  assert.match(html, /工业设计进行中/);
   assert.match(html, /ONE HOST, EVERY SCENE/);
   assert.match(html, /长出每一个场景/);
   assert.match(html, /不必每个场景再买一套系统/);
@@ -154,6 +153,26 @@ test("keeps retired spatial-category language out of project sources", async () 
   for (const source of sources) assertNarrativeIsCurrent(source);
 });
 
+// 官网面向客户与用户：用现在时讲产品体验，不写研发进度、预览或免责口吻。
+const inProgressLanguage = /产品预览|预览版|尚未|开发中|进行中|正在(?:打磨|验证|设计|开发)|非最终|待(?:实测|验证|测试)|首个版本|第一期|暂不开放|设计示意|演示数据|概念(?:形态|图|设计|产品|视觉|影像)|设想|WHERE WE ARE|NOT FINAL|CONCEPT FORM|DESIGN STUDY|PRODUCT DIRECTION/;
+
+test("keeps in-progress and preview language off customer-facing pages", async () => {
+  const files = [];
+  async function collect(relativePath) {
+    const entries = await readdir(new URL(`../${relativePath}`, import.meta.url), { withFileTypes: true });
+    for (const entry of entries) {
+      const child = `${relativePath}/${entry.name}`;
+      if (entry.isDirectory()) await collect(child);
+      else if (/\.(?:tsx?|json)$/.test(entry.name)) files.push(child);
+    }
+  }
+  await collect("app");
+  for (const file of files) {
+    const source = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
+    assert.doesNotMatch(source, inProgressLanguage, file);
+  }
+});
+
 test("keeps starter preview code out of the finished site", async () => {
   const [page, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
@@ -197,12 +216,10 @@ test("companion page presents characters and a truthful device journey", async (
   assert.equal(response.status, 200);
   const html = await response.text();
   for (const name of ["小铮", "青芽", "澄澄", "烁烁", "团团"]) assert.ok(html.includes(name));
-  assert.match(html, /产品预览/);
-  assert.match(html, /非最终设备外观/);
-  assert.match(html, /尚未公布价格与上市时间/);
   assert.match(html, /href="\/one"/);
+  assert.match(html, /href="\/ensemble"/);
+  assert.match(html, /href="\/smart-home"/);
   assert.match(html, /id="companion-introduction"/);
-  assert.match(html, /不提供角色专属音色/);
   assert.doesNotMatch(html, /box-3|livekit|esp32|genome_hash/i);
   assertNarrativeIsCurrent(html);
   await access(new URL("public/companions/five-companions.png", projectRoot));
@@ -219,9 +236,8 @@ test("IP ensemble page presents multi-device cast conversations truthfully", asy
   for (const mode of ["单独聊", "换处回应", "一起聊", "接着讨论", "传一句话", "安静陪伴"]) assert.ok(html.includes(mode));
   assert.match(html, /角色是角色/);
   assert.match(html, /一次只有一台设备/);
-  assert.match(html, /公版名著《西游记》/);
-  assert.match(html, /产品预览/);
-  assert.match(html, /尚未公布价格与上市时间/);
+  assert.match(html, /古典名著《西游记》/);
+  assert.match(html, /GET STARTED/);
   assert.match(html, /href="\/one"/);
   assert.doesNotMatch(html, internalNames);
   assertNarrativeIsCurrent(html);
@@ -238,10 +254,9 @@ test("smart home page presents the panel, host and phone roles truthfully", asyn
   assert.match(html, /它知道/);
   assert.match(html, /只听，不说/);
   assert.match(html, /Matter/);
-  assert.match(html, /尚未实测/);
-  assert.match(html, /敏感动作/);
-  assert.match(html, /产品预览/);
-  assert.match(html, /尚未公布价格与上市时间/);
+  assert.match(html, /Home Assistant/);
+  assert.match(html, /涉及安全的设备/);
+  assert.match(html, /GET STARTED/);
   assert.match(html, /href="\/one"/);
   assert.doesNotMatch(html, internalNames);
   assertNarrativeIsCurrent(html);

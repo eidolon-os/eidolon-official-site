@@ -13,6 +13,9 @@ type Step = {
   from?: DeviceId;
   to?: CastId[];
   mode?: Mode;
+  thinking?: CastId[];
+  waiting?: CastId[];
+  halt?: boolean;
   stop?: boolean;
   host?: string;
   text: string;
@@ -23,13 +26,15 @@ type Scene = {
   label: string;
   title: string;
   summary: string;
+  // 一起聊时只有说话键收音，桌面设备的麦克风全部关闭。
+  together?: boolean;
   devices?: Partial<Record<CastId, { status?: "listen" | "offline"; caps?: Partial<Caps> }>>;
   steps: Step[];
 };
 
 const inputs: { id: InputId; name: string; role: string }[] = [
-  { id: "ptt", name: "按键说话器", role: "按住说话" },
-  { id: "phone", name: "手机", role: "打字 · 选人 · 看状态" },
+  { id: "ptt", name: "按键说话器", role: "按住开口 · 按下即停" },
+  { id: "phone", name: "手机", role: "选伙伴 · 开始结束 · 看状态" },
 ];
 
 const scenes: Scene[] = [
@@ -45,15 +50,16 @@ const scenes: Scene[] = [
     ],
   },
   {
-    id: "relay",
-    label: "换处回应",
-    title: "在这里说话，由那里回应",
-    summary: "说话的位置和回答的位置可以不同。本次换个交流对象，不会改动设备原来的伙伴。",
+    id: "named",
+    label: "点名回应",
+    title: "在手边开口，被点名的那位回应",
+    summary: "说话的位置和回答的位置可以不同。点到谁，谁就在自己的设备上回应，其他几位不插嘴。",
+    together: true,
     steps: [
-      { who: "note", from: "phone", host: "本次对象：悟空", text: "在手机上把这次交流的对象选为悟空。" },
-      { who: "you", from: "ptt", host: "按键说话器 → 悟空", text: "悟空，帮我想想周末可以做点什么。" },
+      { who: "you", from: "ptt", host: "按住说话键 · 桌面设备都不收音", text: "悟空，帮我想想周末可以做点什么。" },
+      { who: "note", thinking: ["wukong"], host: "点名悟空 · 只有他回应", text: "只有被点名的悟空开始思考，另外三位不生成回答。" },
       { who: "wukong", to: ["wukong"], mode: "voice", host: "按键说话器 → 悟空", text: "去城外爬座小山！上午出发，下午回来，不耽误晚上歇着。" },
-      { who: "note", host: "说话器只负责传话", text: "手里的说话器不用扮演悟空；回应从悟空自己的桌面设备发出。" },
+      { who: "note", host: "说话键只负责开口", text: "手里的说话键不用扮演悟空；回应从悟空自己的桌面设备发出。" },
     ],
   },
   {
@@ -61,56 +67,63 @@ const scenes: Scene[] = [
     label: "一起聊",
     title: "把几位叫到一起，听听不同想法",
     summary: "谁先说、谁补充，由话题决定；不必每句手工点名，也不是每位每轮都要开口。",
+    together: true,
     devices: { sha: { status: "listen" } },
     steps: [
-      { who: "you", from: "ptt", host: "一起聊 · 四位成员", text: "明天只有半天，又不想太累，你们帮我想想怎么安排。" },
-      { who: "wukong", to: ["wukong"], mode: "voice", host: "悟空先说", text: "上午去近郊走一圈，腿脚活动开，中午前就回来！" },
-      { who: "bajie", to: ["bajie"], mode: "voice", host: "悟空说完 → 八戒接着补充", text: "猴哥这主意行，就是别走太远。走完吃顿好的，下午睡一觉，这半天才叫舒坦。" },
+      { who: "note", from: "phone", host: "一起聊 · 四位成员", text: "在手机上选好四位伙伴，开始一起聊。" },
+      { who: "you", from: "ptt", host: "按住说话键 · 桌面设备都不收音", text: "明天只有半天，又不想太累，你们帮我想想怎么安排。" },
+      { who: "note", thinking: ["wukong"], waiting: ["bajie", "tang"], host: "悟空先说 → 八戒补充 → 唐僧收尾", text: "悟空开始思考，八戒和唐僧排队等待；沙僧这轮旁听，不发言。" },
+      { who: "wukong", to: ["wukong"], mode: "voice", waiting: ["bajie", "tang"], host: "悟空发言 · 两位等待中", text: "上午去近郊走一圈，腿脚活动开，中午前就回来！" },
+      { who: "bajie", to: ["bajie"], mode: "voice", waiting: ["tang"], host: "悟空说完 → 八戒接着补充", text: "猴哥这主意行，就是别走太远。走完吃顿好的，下午睡一觉，这半天才叫舒坦。" },
       { who: "tang", to: ["tang"], mode: "voice", host: "八戒说完 → 唐僧收个尾", text: "不必贪多。挑一处真正想去的地方，慢慢走就好。" },
-      { who: "note", host: "一次只有一台设备出声", text: "沙僧这轮在旁听，没有发言。四台设备按顺序说话，不会同时抢答。" },
     ],
   },
   {
     id: "discuss",
-    label: "接着讨论",
-    title: "让伙伴接着讨论，你随时加入或叫停",
-    summary: "伙伴能接着彼此的观点说下去，但不会无限接龙。你可以插话改方向，也可以一键停止。",
+    label: "放手讨论",
+    title: "让伙伴们接着讨论，你在一旁听",
+    summary: "伙伴会接着彼此的观点说下去，讨论几轮就停下来等你，不会没完没了。",
+    together: true,
     steps: [
-      { who: "you", from: "ptt", host: "一起聊 · 讨论模式", text: "你们先讨论一下：爬山和逛博物馆，各有什么好处？我听听。" },
-      { who: "wukong", to: ["wukong"], mode: "voice", host: "悟空发言", text: "爬山痛快！出一身汗，回来睡得香。" },
-      { who: "sha", to: ["sha"], mode: "voice", host: "沙僧接着悟空的观点", text: "大师兄说得是。不过要是下雨，博物馆更稳妥些。" },
-      { who: "you", from: "phone", stop: true, host: "讨论已停止", text: "按下「停止」" },
-      { who: "note", host: "只停这一次讨论", text: "还没开始的发言全部取消，另一段单聊不受影响。想继续时，再由你主动开始。" },
+      { who: "note", from: "phone", host: "允许讨论 · 有轮数上限", text: "在手机上选择「允许讨论」。" },
+      { who: "you", from: "ptt", host: "按住说话键 · 桌面设备都不收音", text: "你们先讨论一下：爬山和逛博物馆，各有什么好处？我听听。" },
+      { who: "wukong", to: ["wukong"], mode: "voice", waiting: ["sha"], host: "悟空先开个头", text: "爬山痛快！出一身汗，回来睡得香。" },
+      { who: "sha", to: ["sha"], mode: "voice", waiting: ["bajie"], host: "沙僧接着悟空的话", text: "大师兄说得是。不过要是下雨，博物馆更稳妥些。" },
+      { who: "bajie", to: ["bajie"], mode: "voice", host: "讨论到位 → 停下来等你", text: "那就看天气：晴天爬山，下雨逛馆，两头都不耽误。" },
+      { who: "note", host: "等你开口", text: "伙伴之间用文字接话，不靠互相「听」；讨论告一段落，就安静下来等你。" },
     ],
   },
   {
-    id: "broadcast",
-    label: "传一句话",
-    title: "只想传一句话，不需要再聊一轮",
-    summary: "一段内容送到一台或多台设备，原样呈现，不改写、不展开讨论。",
-    devices: { sha: { caps: { voice: false } }, bajie: { status: "offline" } },
+    id: "interrupt",
+    label: "随时打断",
+    title: "想插话？按下说话键就行",
+    summary: "按下的那一刻，所有设备同时停下来听你。正在说的停下，排队的取消，刚才的话题不会再冒出来。",
+    together: true,
     steps: [
-      { who: "you", from: "phone", host: "传话 · 选择 3 台设备", text: "休息一下，喝口水。" },
-      { who: "note", to: ["tang", "sha"], host: "已送达 2 台 · 1 台未完成", text: "唐僧的设备播出声音，沙僧的设备只显示文字；两处内容一字不改。" },
-      { who: "note", host: "如实告诉你结果", text: "八戒的设备离线，手机上标为「未送达」，而不是声称全部送达。" },
+      { who: "bajie", to: ["bajie"], mode: "voice", waiting: ["tang"], host: "八戒正在说 · 唐僧排队", text: "要说吃的，那可多了：城东有家面馆，汤头熬了一整夜，还有……" },
+      { who: "you", from: "ptt", stop: true, halt: true, host: "所有设备立刻停下", text: "按下说话键" },
+      { who: "you", from: "ptt", host: "新的问题 · 旧话题作废", text: "先不说吃的，说说几点出发。" },
+      { who: "tang", to: ["tang"], mode: "voice", host: "唐僧回答新问题", text: "早上八点出发，路上不赶，中午前就能到。" },
+      { who: "note", host: "一按就停", text: "打断不用等任何设备回话；即使松开时什么也没说，旧的一轮也不会自己接着说下去。" },
     ],
   },
   {
     id: "quiet",
     label: "安静陪伴",
     title: "需要陪伴，但现在不适合出声",
-    summary: "收音、声音、文字、表情分别开关。不用在「全部打开」和「完全关掉」之间二选一。",
+    summary: "声音、文字、表情分别开关。不用在「全部打开」和「完全关掉」之间二选一。",
+    together: true,
     devices: {
-      tang: { caps: { mic: false, voice: false } },
-      wukong: { caps: { mic: false, voice: false, text: false } },
-      bajie: { caps: { mic: false, voice: false } },
-      sha: { caps: { mic: false, voice: false } },
+      tang: { caps: { voice: false } },
+      wukong: { caps: { voice: false, text: false } },
+      bajie: { caps: { voice: false } },
+      sha: { caps: { voice: false } },
     },
     steps: [
-      { who: "you", from: "phone", host: "夜间 · 桌面设备不收音", text: "睡不着，陪我待一会儿。" },
-      { who: "sha", to: ["sha"], mode: "text", host: "沙僧 · 只显示文字", text: "我在。不说话也没关系，想说的时候打几个字就好。" },
+      { who: "you", from: "ptt", host: "夜间 · 声音关闭，只留文字和表情", text: "睡不着，陪我待一会儿。" },
+      { who: "sha", to: ["sha"], mode: "text", host: "沙僧 · 只显示文字", text: "我在。不说话也没关系，想说的时候按住键，小声说就好。" },
       { who: "wukong", to: ["wukong"], mode: "face", host: "悟空 · 只保留表情", text: "安静地眨了眨眼" },
-      { who: "note", host: "表情不冒充详细回答", text: "只有表情时，设备用表情回应；需要完整内容，就选择能显示文字或播放声音的设备。" },
+      { who: "note", host: "表情不冒充详细回答", text: "只有表情时，设备用表情回应；需要完整内容，就选择能显示文字的设备。" },
     ],
   },
 ];
@@ -125,8 +138,8 @@ function nameOf(id: DeviceId) {
 
 function viaOf(step: Step) {
   if (step.who === "you" && step.from) {
-    if (step.stop) return "手机";
-    return step.from === "phone" ? "手机 · 文字" : step.from === "ptt" ? "按键说话器 · 语音" : `${nameOf(step.from)}的设备 · 语音`;
+    if (step.stop) return nameOf(step.from);
+    return step.from === "phone" ? "手机" : step.from === "ptt" ? "按键说话器 · 语音" : `${nameOf(step.from)}的设备 · 语音`;
   }
   if (step.who !== "note" && step.who !== "you" && step.mode) return `${nameOf(step.who)}的设备 · ${modeLabel[step.mode]}`;
   return "";
@@ -184,13 +197,13 @@ export function EnsembleStage() {
 
   function stateOf(id: CastId) {
     const config = scene.devices?.[id];
-    const caps = { ...allOn, ...config?.caps };
+    const caps = { ...allOn, ...(scene.together ? { mic: false } : null), ...config?.caps };
     if (config?.status === "offline") return { caps, tone: "offline", label: "离线" };
-    if (current.to?.includes(id)) {
-      if (current.who === "note") return { caps, tone: "speaking", label: caps.voice ? "播出原话" : "显示原话" };
-      return { caps, tone: "speaking", label: current.mode === "text" ? "显示文字" : current.mode === "face" ? "表情回应" : "正在说" };
-    }
+    if (current.halt) return { caps, tone: "halted", label: "已停下" };
+    if (current.to?.includes(id)) return { caps, tone: "speaking", label: current.mode === "text" ? "显示文字" : current.mode === "face" ? "表情回应" : "正在说" };
     if (current.from === id) return { caps, tone: "input", label: "收音中" };
+    if (current.thinking?.includes(id)) return { caps, tone: "thinking", label: "思考中" };
+    if (current.waiting?.includes(id)) return { caps, tone: "waiting", label: "等待中" };
     if (config?.status === "listen") return { caps, tone: "listen", label: "旁听" };
     return { caps, tone: "idle", label: "待命" };
   }
@@ -215,6 +228,7 @@ export function EnsembleStage() {
                   <div className="en-device-screen">
                     <span className="en-glyph">{member.glyph}</span>
                     {state.tone === "speaking" && <span className="en-wave" aria-hidden="true"><i /><i /><i /><i /></span>}
+                    {state.tone === "thinking" && <span className="en-dots" aria-hidden="true"><i /><i /><i /></span>}
                   </div>
                   <b>{member.name}</b>
                   <small>{state.label}</small>
@@ -239,7 +253,7 @@ export function EnsembleStage() {
                 <article key={device.id} className={`en-input en-input-${device.id}${active ? " is-input" : ""}`}>
                   <i className="en-wire" aria-hidden="true" />
                   <span className="en-input-icon" aria-hidden="true" />
-                  <div><b>{device.name}</b><small>{active ? (current.stop ? "已按下停止" : current.who === "note" ? "设置中" : device.id === "phone" ? "发送中" : "收音中") : device.role}</small></div>
+                  <div><b>{device.name}</b><small>{active ? (current.stop ? "已按下 · 全部停下" : current.who === "note" ? "设置中" : "收音中") : device.role}</small></div>
                 </article>
               );
             })}

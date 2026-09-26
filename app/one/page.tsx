@@ -39,6 +39,8 @@ const family = [
   },
 ] as const;
 
+const heroDevices: Record<string, string> = { "/companions": "桌面陪伴设备", "/ensemble": "桌面设备 · 说话键", "/smart-home": "家居中控面板" };
+
 const moreEnvironments = [
   ["随身", "One Go", "耳机 · 眼镜 · 领夹终端"],
   ["办公", "One Dock", "电子纸副屏 · 旋钮台 · 音视频条"],
@@ -69,8 +71,20 @@ export default function OnePage() {
       <SiteHeader />
 
       <section className="one-hero page-frame one-v4-hero">
-        <div className="one-hero-copy"><p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p><h1>一台 Eidolon One，<br /><em>长出每一个场景。</em></h1><p>Eidolon One 是官方旗舰个人 AI 主机，在你家里本地运行你的身份、长期记忆和设备信任。想要陪伴、角色团或智能家居，就给它加一台对应的设备——主机始终只有一台。</p><div className="actions"><a className="primary-action" href="#scenes">从场景开始</a><a className="text-action" href="#family">按场景挑设备 <i>↓</i></a></div><div className="concept-note"><span>EIDOLON ONE</span><i />本地运行<i />长期记忆<i />设备信任</div></div>
-        <figure className="one-hero-figure one-v4-hero-figure"><img src="/eidolon-one-product.png" alt="Eidolon One 官方旗舰个人 AI 主机" /><figcaption><span>EIDOLON ONE</span><b>OFFICIAL FLAGSHIP PERSONAL AI HOST</b></figcaption></figure>
+        <div className="one-hero-copy">
+          <p className="eyebrow">EIDOLON ONE · OFFICIAL FLAGSHIP HOST</p>
+          <h1>一台 Eidolon One，<br /><em>长出每一个场景。</em></h1>
+          <p>官方旗舰个人 AI 主机。你的身份、记忆和设备信任都放在这一台里；想要陪伴、角色团或智能家居，给它加一台设备就行。</p>
+          <div className="actions"><a className="primary-action" href="#scenes">从场景开始</a><a className="text-action" href="#family">按场景挑设备 <i>↓</i></a></div>
+          <div className="hero-proof"><span><b>一台主机</b>身份与记忆在你家里本地运行</span><span><b>一个 App</b>管理所有场景和设备</span><span><b>按需加设备</b>不必为新场景再买一套系统</span></div>
+        </div>
+        <figure className="one-hero-figure one-v4-hero-figure">
+          <img src="/eidolon-one-product.png" alt="Eidolon One 官方旗舰个人 AI 主机" />
+          <nav className="one-hero-scenes" aria-label="从 Eidolon One 长出的场景">
+            {oneScenes.map((scene, index) => <a key={scene.href} href={scene.href} className={`one-hero-scene s${index + 1}`}><small>{scene.code}</small><b>{scene.name}</b><span>+ {heroDevices[scene.href]}</span></a>)}
+          </nav>
+          <figcaption><span>EIDOLON ONE</span><b>OFFICIAL FLAGSHIP PERSONAL AI HOST</b></figcaption>
+        </figure>
       </section>
 
       <section id="scenes" className="one-scenes-section section-pad"><div className="page-frame">

@@ -56,26 +56,25 @@
 .sh-card p{font-size:1.4cqw;color:rgba(236,230,218,.7)}
 .sh-card .sh-card-heard{font-size:1.35cqw;color:rgba(236,230,218,.55)}
 .sh-card .sh-card-main{margin-top:.4cqw;font-size:1.75cqw;font-weight:600;color:#fff}
-.sh-card small{display:inline-block;margin-top:.8cqw;padding:.3cqw .9cqw;border-radius:2cqw;background:rgba(143,208,156,.16);font-size:1.05cqw;color:#9fdaa9}
-.sh-card small.is-llm{background:rgba(185,167,236,.18);color:#c9b9f5}
-.sh-card.is-missing .sh-card-main,.sh-card.is-unrelated .sh-card-main{color:var(--sh-amber)}
-.sh-card.is-error .sh-card-main{color:#f08c77}
+
+
+
+
 .sh-card-choices{display:flex;justify-content:center;gap:1cqw;margin-top:1cqw}
 .sh-card-choices button{padding:.9cqw 2cqw;border:1px solid rgba(127,198,222,.5);border-radius:.8cqw;background:rgba(127,198,222,.12);font-size:1.4cqw}
 .sh-card-choices button:hover{background:rgba(127,198,222,.24)}
-.sh-card-wave{display:inline-flex;gap:.4cqw;height:2.4cqw;align-items:center}
-.sh-card-wave i{width:.4cqw;height:2.2cqw;border-radius:1cqw;background:#e0624a;animation:sh-wave .8s ease-in-out infinite}
-.sh-card-wave i:nth-child(2){animation-delay:.1s}.sh-card-wave i:nth-child(3){animation-delay:.2s}.sh-card-wave i:nth-child(4){animation-delay:.3s}.sh-card-wave i:nth-child(5){animation-delay:.4s}
-.sh-bottom{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:2cqw;padding:0 2.2cqw;border-top:1px solid rgba(255,255,255,.07)}
-.sh-scenes{display:flex;gap:.8cqw}
-.sh-scenes button{padding:.9cqw 1.9cqw;border:1px solid rgba(255,255,255,.08);border-radius:3cqw;background:rgba(255,255,255,.05);font-size:1.35cqw}
-.sh-scenes button:hover:not(:disabled){background:rgba(255,255,255,.12)}
-.sh-scenes button:disabled{opacity:.4}
-.sh-bottom p{display:flex;align-items:baseline;gap:1cqw;min-width:0;font-size:1.25cqw;color:rgba(236,230,218,.8);white-space:nowrap;overflow:hidden}
-.sh-bottom p span{font:500 1.1cqw/1 var(--mono);color:rgba(236,230,218,.4)}
-.sh-bottom p i{font-style:normal;color:rgba(236,230,218,.42);overflow:hidden;text-overflow:ellipsis}
+
+
+
+
+
+
+
+
+
+
+
 @keyframes sh-pulse{0%{box-shadow:0 0 0 0 rgba(224,98,74,.55)}100%{box-shadow:0 0 0 1.6cqw rgba(224,98,74,0)}}
-@keyframes sh-wave{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
 @keyframes sh-rise{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
 
 .sh-console{display:grid;grid-template-columns:1fr auto;gap:18px 40px;align-items:start;margin-top:26px}
@@ -129,15 +128,15 @@
 .sh-rules-grid p{margin-top:12px;font-size:13px;line-height:1.8;color:rgba(244,237,225,.6)}
 
 
-@media(prefers-reduced-motion:reduce){.sh-mic,.sh-card,.sh-card-wave i{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.sh-mic,.sh-card{animation:none!important}}
 @media(max-width:1000px){.sh-heading{grid-template-columns:1fr;gap:22px;align-items:start}.sh-roles-grid{grid-template-columns:1fr}.sh-rules-grid{grid-template-columns:repeat(2,1fr)}.sh-rules-grid article:nth-child(3){border-left:0;padding-left:0}.sh-rules-grid article:nth-child(n+3){border-top:1px solid var(--sh-line-dark)}.sh-console{grid-template-columns:1fr}}
 @media(max-width:760px){.sh-hero{padding-top:118px;padding-bottom:70px}.sh-label span{margin:10px 0 0;display:inline-block}.sh-demo{margin-top:40px}
   .sh-screen{aspect-ratio:auto;grid-template-columns:1fr;grid-template-rows:auto auto auto auto;font-size:13px}
   .sh-top{gap:10px;padding:10px 12px}.sh-top b{font-size:13px}.sh-top b span{display:block;font-size:11px}.sh-top time{font-size:12px}.sh-link{flex:0 0 auto;gap:5px;font-size:11px}.sh-link i{width:7px;height:7px}.sh-mic{flex-basis:36px;height:36px}.sh-mic i{width:10px;height:15px;border-width:2px;border-radius:8px}.sh-mic i:after{bottom:-7px;width:2px;height:5px}
   .sh-rooms{flex-direction:row;gap:6px;padding:10px 12px;border-right:0;border-bottom:1px solid rgba(255,255,255,.07);overflow-x:auto}.sh-rooms button{flex:0 0 auto;padding:6px 12px;border-radius:6px;font-size:12px}.sh-rooms button[aria-pressed=true]{box-shadow:inset 0 -2px 0 var(--sh-amber)}
   .sh-tiles{grid-template-columns:repeat(2,1fr);grid-auto-rows:88px;gap:8px;padding:12px;padding-bottom:132px;min-height:360px}.sh-tile{border-radius:10px}.sh-tile-main{padding:10px 12px}.sh-tile-icon{width:26px;height:26px;font-size:12px}.sh-tile b{font-size:13px}.sh-tile small{font-size:11px}.sh-steps{right:8px;top:8px;gap:4px}.sh-steps button{width:24px;height:24px;border-radius:6px;font-size:14px}
-  .sh-card{bottom:12px;min-width:0;width:calc(100% - 24px);max-width:none;padding:12px 14px;border-radius:12px}.sh-card p,.sh-card .sh-card-heard{font-size:12px}.sh-card .sh-card-main{margin-top:4px;font-size:15px}.sh-card small{margin-top:8px;padding:3px 8px;font-size:10px}.sh-card-choices{gap:8px;margin-top:10px}.sh-card-choices button{padding:7px 12px;border-radius:7px;font-size:12px}.sh-card-wave{gap:3px;height:20px}.sh-card-wave i{width:3px;height:18px}
-  .sh-bottom{flex-direction:column;align-items:stretch;gap:8px;padding:10px 12px}.sh-scenes{gap:6px;overflow-x:auto}.sh-scenes button{flex:0 0 auto;padding:6px 12px;border-radius:20px;font-size:12px}.sh-bottom p{gap:6px;font-size:11px}.sh-bottom p span{font-size:10px}
+  .sh-card{bottom:12px;min-width:0;width:calc(100% - 24px);max-width:none;padding:12px 14px;border-radius:12px}.sh-card p,.sh-card .sh-card-heard{font-size:12px}.sh-card .sh-card-main{margin-top:4px;font-size:15px}.sh-card-choices{gap:8px;margin-top:10px}.sh-card-choices button{padding:7px 12px;border-radius:7px;font-size:12px}
+  
   .sh-rules-grid{grid-template-columns:1fr}.sh-rules-grid article,.sh-rules-grid article:first-child{min-height:auto;padding:22px 0;border-left:0;border-top:1px solid var(--sh-line)}.sh-rules-grid article,.sh-rules-grid article:first-child{border-top-color:var(--sh-line-dark)}.sh-rules-grid article:first-child{border-top:0}.sh-rules-grid h3{margin-top:20px}}
 @media(max-width:560px){.sh-hero h1{font-size:clamp(28px,8.4vw,40px)}}
 
@@ -158,9 +157,28 @@
 .sh-moments-grid article>p{margin-bottom:18px}
 
 /* compatibility */
-.sh-compat{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;margin-top:34px}
+.sh-compat{display:grid;grid-template-columns:1fr;gap:24px;margin-top:34px}
 .sh-compat span{display:block;margin-bottom:12px;font:650 10px/1 var(--mono);letter-spacing:.12em;color:rgba(244,237,225,.5)}
 .sh-compat p{display:flex;flex-wrap:wrap;gap:8px}
 .sh-compat i{padding:6px 12px;border:1px solid var(--sh-line-dark);border-radius:999px;font-size:13px;font-style:normal;color:rgba(244,237,225,.82)}
 @media(max-width:1000px){.sh-moments-grid{grid-template-columns:repeat(2,1fr)}.sh-compat{grid-template-columns:1fr}}
 @media(max-width:560px){.sh-moments-grid{grid-template-columns:1fr}.sh-moments-grid h3{margin-top:20px;font-size:28px}}
+
+/* panel status bar: phases and results live on one line, mic at the right */
+.sh-status{grid-column:1/-1;display:flex;align-items:center;gap:1.4cqw;padding:0 1.6cqw 0 2.4cqw;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+.sh-status p{flex:1;min-width:0;font-size:1.45cqw;color:rgba(236,230,218,.72);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sh-status.is-listening p{color:#ffb7a8}
+.sh-status.is-processing p{color:var(--sh-amber)}
+.sh-status.is-done p{color:#fff}
+.sh-status.is-ask p{color:#9fd6e8}
+.sh-status.is-info p{color:var(--sh-amber)}
+.sh-status.is-error p{color:#f08c77}
+.sh-status .sh-mic{flex:0 0 4.6cqw;height:4.6cqw}
+.sh-status-wave{display:inline-flex;gap:.35cqw;align-items:center;height:2cqw}
+.sh-status-wave i{width:.35cqw;height:1.8cqw;border-radius:1cqw;background:#e0624a;animation:sh-bars .8s ease-in-out infinite}
+.sh-status-wave i:nth-child(2){animation-delay:.1s}.sh-status-wave i:nth-child(3){animation-delay:.2s}.sh-status-wave i:nth-child(4){animation-delay:.3s}.sh-status-wave i:nth-child(5){animation-delay:.4s}
+@keyframes sh-bars{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.sh-card-say{margin-top:1cqw;padding:.4cqw .9cqw;border:0;border-radius:2cqw;background:rgba(255,255,255,.06);font-size:1.15cqw;color:rgba(236,230,218,.7)}
+.sh-card-say:hover{background:rgba(255,255,255,.12)}
+@media(prefers-reduced-motion:reduce){.sh-status-wave i{animation:none}}
+@media(max-width:760px){.sh-status{gap:10px;padding:10px 12px}.sh-status p{font-size:12px;white-space:normal}.sh-status .sh-mic{flex-basis:38px;height:38px}.sh-status-wave{gap:3px;height:16px}.sh-status-wave i{width:3px;height:14px}.sh-card-say{margin-top:8px;padding:4px 10px;font-size:11px}}

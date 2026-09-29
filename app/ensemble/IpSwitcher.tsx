@@ -23,7 +23,7 @@ export function IpSwitcher() {
             <article key={member.name} style={{ "--c": member.color } as CSSProperties} className={i === cast.listener ? "is-listener" : undefined}>
               <div className="en-ip-device"><span>{member.glyph}</span></div>
               <b>{member.name}</b>
-              <small>{i === cast.listener ? "这轮旁听" : member.trait}</small>
+              <small>{i === cast.listener ? "这轮没开口" : member.trait}</small>
             </article>
           ))}
         </div>

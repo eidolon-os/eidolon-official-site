@@ -25,6 +25,6 @@ export const nav = [
 // Scenes that grow on one Eidolon One host; shared by the home page and /one.
 export const oneScenes = [
   { n: "01", code: "COMPANIONS", name: "角色陪伴", desc: "五种性格的桌面伙伴，陪你聊天，也能安静待着。", adds: "桌面陪伴设备", href: "/companions" },
-  { n: "02", code: "IP ENSEMBLE", name: "IP 角色团", desc: "一个故事的角色住进多台设备，单独聊、一起聊、放手讨论都可以。", adds: "每位角色一台桌面设备 · 按键说话器", href: "/ensemble" },
+  { n: "02", code: "IP ENSEMBLE", name: "IP 角色团", desc: "给伙伴们派一组本场角色，在多台设备上一起聊；换一套 IP，就是另一场戏。", adds: "每位角色一台桌面设备 · 按键说话器", href: "/ensemble" },
   { n: "03", code: "SMART HOME", name: "智能家居", desc: "一块面板按房间看全家，一句话控制家里的设备。", adds: "家居中控面板", href: "/smart-home" },
 ] as const;

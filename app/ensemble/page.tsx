@@ -7,18 +7,18 @@ import "./ensemble.css";
 
 export const metadata: Metadata = {
   title: "IP 角色团 | 一台 Eidolon One，托起一整组角色",
-  description: "把一个故事里的角色请到你的多台设备上。换一套 IP，同样的设备就换了一班角色、一种相处方式；单独聊、一起聊、放手讨论、随时打断，都由同一台 Eidolon One 托起。",
+  description: "给你的伙伴们派一组本场角色，在多台设备上开一场团队：点名回应、一起出主意、接着聊下去、随时打断。换一套 IP，同样的设备就是另一场戏，都由同一台 Eidolon One 托起。",
   openGraph: { title: "IP 角色团 | 一台 Eidolon One，托起一整组角色", description: "一组角色，多台设备，一台主机。按住说话键开口，由合适的那位在自己的设备上回应；按下即停，所有设备立刻安静。", images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: "Eidolon OS — 个人 AI 操作系统" }] },
 };
 
 const controls = [
-  ["我在跟谁说话？", "手机显示当前单聊对象或参与的伙伴；每位伙伴的设备显示思考中、等待中或正在说。"],
-  ["谁能知道我说的内容？", "私聊默认只属于你和那一位；团队对话只在本次允许的成员之间共享，不默认打开所有历史。"],
-  ["谁在回答，从哪里回答？", "看得见当前回应者，也可以选择允许哪些设备、以什么方式回应。"],
-  ["想插话，或者不想继续了？", "按下说话键，所有设备立刻停下来听你；也可以在手机上结束这次一起聊。"],
-  ["别的设备会不会录到声音？", "不会。一起聊时只有说话键在收音，桌面设备的麦克风都关着；伙伴之间用文字接话。"],
-  ["一台设备掉线怎么办？", "显示这台未完成；其他回应照常，不会擅自换到别的设备播放。"],
-  ["重新连接会不会又说一遍？", "已确认说完的内容不会重复播放；无法确认时如实标明，不假装成功。"],
+  ["我在跟谁说话？", "手机上列着这一场的成员和各自的本场角色；正在想、正在说的那台设备会亮起状态。"],
+  ["谁能知道我说的内容？", "团队里的话只在这一场的成员之间公开；你和伙伴的私聊、记忆都不会被带进来。"],
+  ["别的设备会不会录到声音？", "不会。团队里只有说话键在收音，桌面设备只发声；伙伴之间用文字接话。"],
+  ["想插话，或者想结束？", "按下说话键，所有设备立刻停下来听你；想结束，就在手机上点「结束团队」。"],
+  ["离开手机页面，团队会散吗？", "不会。手机只是遥控器：离开页面、大家安静下来，团队都照常在；点「结束团队」才结束，设备随后回到原来的单聊。"],
+  ["想换角色或者加人？", "一场开始后，成员和本场角色就固定了；想换，结束后重新开一场。"],
+  ["重新连接会不会又说一遍？", "已经说完的内容不会重复播放；没说完的半句也不会被当成说过。"],
 ] as const;
 
 export default function EnsemblePage() {
@@ -30,7 +30,7 @@ export default function EnsemblePage() {
         <div className="en-hero-copy page-frame">
           <p className="en-label">EIDOLON ONE · SCENE <span>IP 角色团</span></p>
           <h1>一个故事里的角色，<br /><em>住进你的每一台设备。</em></h1>
-          <p className="en-lead">把一整组角色请到桌面上，每位住在自己的设备里，各有性格与说话方式。按住手边的说话键开口，合适的那位就在自己的设备上回应；想插话，按下就行。换一套 IP，同样的设备就换了一班角色、一种气氛。</p>
+          <p className="en-lead">给桌上的几位伙伴各派一个本场角色，开一场团队。按住手边的说话键开口，合适的那位就在自己的设备上回应；想插话，按下就行。换一套 IP，只要换一组本场角色，同样的设备就是另一场戏。</p>
           <div className="en-actions"><a className="en-button" href="#stories">换一套 IP 试试 <span>↓</span></a><a className="en-text-link" href="/one">这一切背后，只有一台 One ↗</a></div>
         </div>
         <div className="en-lineup page-frame" aria-label="示例角色团：唐僧、悟空、八戒、沙僧，各自一台桌面设备，由一台 Eidolon One 托起">
@@ -51,39 +51,37 @@ export default function EnsemblePage() {
 
       <section className="en-section en-stories" id="stories">
         <div className="page-frame">
-          <header className="en-heading"><div><p className="en-label">01 / ONE STAGE, MANY STORIES</p><h2>换一套 IP，<br />就是另一种相处。</h2></div><p>同样的桌面设备、同一台 One、同一个说话键。换一组角色，性格、说话方式、彼此的关系和接话的节奏全都跟着变。问同一句话，听听三个故事怎么回答。</p></header>
+          <header className="en-heading"><div><p className="en-label">01 / ONE STAGE, MANY STORIES</p><h2>换一套 IP，<br />就是另一种相处。</h2></div><p>同样的桌面设备、同一台 One、同一个说话键。开团前给成员换一组本场角色，性格、说话方式、彼此的关系和接话的节奏全都跟着变。问同一句话，听听三个故事怎么回答。</p></header>
           <IpSwitcher />
           <div className="en-swap">
-            <article><span>换一套 IP，换掉的是</span><ul><li>角色与性格</li><li>说话方式</li><li>角色之间的关系</li><li>谁先开口、怎么接话</li><li>屏幕上的形象与表情</li></ul></article>
-            <article><span>一直不变的是</span><ul><li>同一台 Eidolon One</li><li>同一套桌面设备</li><li>同一个说话键和手机 App</li><li>你的数据，留在你自己的主机上</li></ul></article>
+            <article><span>换一组本场角色，换掉的是</span><ul><li>角色与性格</li><li>说话方式</li><li>角色之间的关系</li><li>谁接话、怎么接</li><li>这一场的交流目标</li></ul></article>
+            <article><span>一直不变的是</span><ul><li>同一台 Eidolon One</li><li>同一套桌面设备</li><li>同一个说话键和手机 App</li><li>伙伴原来的身份和私聊，结束后一切照旧</li></ul></article>
           </div>
-          <p className="en-stories-more">不止名著。你自己的伙伴——小铮、青芽、澄澄、烁烁、团团——也能组团；遇到一个问题，也可以临时拉两位来讨论。<a href="/companions">认识五位伙伴 ↗</a></p>
+          <p className="en-stories-more">本场角色写什么都行：名著里的人物、你喜欢的故事，或者干脆留空，让小铮、青芽、澄澄、烁烁、团团用自己的身份来聊。<a href="/companions">认识五位伙伴 ↗</a></p>
           <p className="en-stories-note">示例角色取材自古典名著《西游记》《三国演义》《红楼梦》</p>
         </div>
       </section>
 
       <section className="en-section en-modes" id="modes">
         <div className="page-frame">
-          <header className="en-heading"><div><p className="en-label">02 / SIX WAYS TO TALK</p><h2>六种交流方式，<br />都在同一个角色团里。</h2></div><p>点选下面六种交流方式，看看一句话怎样从说话键进来、由谁回应、在哪台设备上呈现。你不需要了解设备如何通信，只需要知道现在在和谁说话。</p></header>
+          <header className="en-heading"><div><p className="en-label">02 / FOUR WAYS TO PLAY</p><h2>一场团队，<br />四种聊法。</h2></div><p>点选下面四种聊法，看看一句话怎样从说话键进来、由谁接话、在哪台设备上说出来。你不需要了解设备如何通信，只需要知道现在谁在说。</p></header>
           <EnsembleStage />
         </div>
       </section>
 
       <section className="en-section en-body">
-        <div className="page-frame en-split">
-          <div>
-            <p className="en-label">03 / ROLE ≠ DEVICE</p>
-            <h2>角色是角色，<br />设备是设备。</h2>
-            <p className="en-prose">悟空是你认识的那一位，桌上的小设备只是他此刻表达自己的地方。角色的名字、性格和你们的共同经历都由 Eidolon One 保管；设备只负责听见、说出、显示和表情。</p>
-          </div>
+        <div className="page-frame">
+          <header className="en-heading"><div><p className="en-label">03 / COMPANION · ROLE · DEVICE</p><h2>伙伴是伙伴，<br />角色只演这一场。</h2></div><p className="en-prose">烁烁是一直陪你的那位伙伴；这一场，TA 扮演悟空；桌上的小设备，是 TA 此刻说话的地方。三者分开，团队结束，一切回到原样。</p></header>
           <div className="en-body-diagram">
-            <article className="en-body-role"><span>ROLE · 住在 One 里</span><b>悟空</b><ul><li>名字与性格</li><li>说话方式</li><li>和你的共同经历</li></ul></article>
-            <i aria-hidden="true">此刻使用</i>
-            <article className="en-body-device"><span>DEVICE · 此刻的身体</span><b>桌面设备</b><ul><li>收音</li><li>声音</li><li>文字</li><li>表情 · 简单动作</li></ul></article>
+            <article className="en-body-role"><span>COMPANION · 住在 One 里</span><b>烁烁</b><ul><li>长期的名字与性格</li><li>你们的私聊和共同经历</li></ul></article>
+            <i aria-hidden="true">这一场扮演</i>
+            <article className="en-body-cast"><span>ROLE · 只在这一场</span><b>悟空</b><ul><li>角色名与角色说明</li><li>开始后固定，结束就卸下</li></ul></article>
+            <i aria-hidden="true">借用</i>
+            <article className="en-body-device"><span>DEVICE · 此刻的身体</span><b>桌面设备</b><ul><li>在团队里只发声</li><li>一次只有一台在说</li></ul></article>
             <ol className="en-body-rules">
-              <li><b>换一台设备，</b>还是同一个悟空。</li>
-              <li><b>设备暂时离线，</b>悟空不会因此消失。</li>
-              <li><b>一起聊结束，</b>每台设备还是原来的伙伴。</li>
+              <li><b>团队结束，</b>每台设备回到原来的伙伴和单聊。</li>
+              <li><b>团队里说的话，</b>不会被当成真事记进伙伴的记忆。</li>
+              <li><b>参加团队的设备，</b>这一场结束前先不单聊。</li>
             </ol>
           </div>
         </div>
@@ -104,9 +102,9 @@ export default function EnsemblePage() {
               <h3>同台演出</h3>
               <ul>
                 <li><b>用文字接话</b><p>前一位的公开发言以文字交给下一位，接得准，也不会互相录到对方的声音。</p></li>
-                <li><b>轮流出声</b><p>一位说完，下一位再开口；正在想的显示「思考中」，排队的显示「等待中」。</p></li>
-                <li><b>一按就停</b><p>按下说话键，所有设备同时停下；排队的发言取消，旧话题不会再冒出来。</p></li>
-                <li><b>记忆分得清</b><p>每位伙伴用自己的记忆回应；私聊只属于你和那一位，不会在团里公开。</p></li>
+                <li><b>一步一步接话</b><p>没有排好的顺序：前一位说完，再决定下一位；正在想的那台显示「思考中」。</p></li>
+                <li><b>一按就停</b><p>按下说话键，所有设备同时停下；没说完的半句不算数，旧话题不会再冒出来。</p></li>
+                <li><b>私聊不带进团队</b><p>团队里只用这一场公开说过的话；你和伙伴的私聊、记忆都不会被带进来。</p></li>
               </ul>
             </article>
           </div>
@@ -130,7 +128,7 @@ export default function EnsemblePage() {
         <div className="page-frame">
           <div className="en-partner">
             <div><p className="en-label">FOR IP PARTNERS</p><h3>角色不再困在<br />一只玩具里。</h3></div>
-            <div><p>IP 方提供角色设定、形象与说话风格；上新一套角色团，用户家里已有的设备马上就能用。Eidolon One 负责长期记忆、多角色调度、跨设备呈现和权限，用户与角色的共同经历留在用户自己的主机上——不必为每个 IP 各做一套 App 和云端。</p></div>
+            <div><p>IP 方提供角色设定与说话风格，用户家里已有的桌面设备就能开演。Eidolon One 负责多角色接话、跨设备呈现和权限；团队里的对话只属于这一场，用户的私聊和数据留在用户自己的主机上——不必为每个 IP 各做一套 App 和云端。</p></div>
           </div>
         </div>
       </section>
@@ -138,12 +136,12 @@ export default function EnsemblePage() {
       <section className="en-section en-status">
         <div className="page-frame">
           <p className="en-label">GET STARTED</p>
-          <h2>四步，<br />把角色团请到桌面上。</h2>
+          <h2>四步，<br />开一场团队。</h2>
           <ol className="en-start">
-            <li><span>01</span><b>准备一台 Eidolon One</b><p>角色、记忆和所有设备，都由这台主机统一托起。</p><a href="/one">了解 Eidolon One ↗</a></li>
-            <li><span>02</span><b>请来一组角色</b><p>选一套 IP 角色团，想换就换；也可以用你自己的伙伴组队。</p></li>
-            <li><span>03</span><b>给每位一台设备</b><p>每位角色在自己的桌面设备上回应，再备一个按键说话器用来开口。</p></li>
-            <li><span>04</span><b>在手机上开始</b><p>选好参与的伙伴，选「你来提问」或「允许讨论」，按住说话键就能聊。</p></li>
+            <li><span>01</span><b>准备一台 Eidolon One</b><p>伙伴、角色和所有设备，都由这台主机统一托起。</p><a href="/one">了解 Eidolon One ↗</a></li>
+            <li><span>02</span><b>选好成员</b><p>在手机上选几台已经有伙伴的桌面设备当成员，再选一个按键说话器用来开口。</p></li>
+            <li><span>03</span><b>派本场角色</b><p>给每位成员填一个本场角色和角色说明；还可以写下交流目标、设好连续回复的次数。留空就用伙伴原来的身份。</p></li>
+            <li><span>04</span><b>开始团队</b><p>点「开始团队」，按住说话键就能聊；聊完在手机上点「结束团队」。</p></li>
           </ol>
         </div>
       </section>
